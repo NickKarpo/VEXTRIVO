@@ -1,301 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="VEXTRIVO is an AI website builder that turns your idea into a stunning, conversion-ready website in minutes."
-    />
-    <title>VEXTRIVO | AI Website Builder</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="topbar container">
-        <div class="brand">
-          <span class="brand-mark">V</span>
-          <span class="brand-text">VEXTRIVO</span>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VEXTRIVO — Website Builder & Marketing</title>
+<style>
+:root {
+  --bg:#080b15;
+  --panel:#12192a;
+  --line:#2a3550;
+  --blue:#497cff;
+  --muted:#aebad0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+[hidden]{display:none!important}
+.container{max-width:1200px;margin:auto;padding:0 24px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:24px 0}
+.logo{font-weight:900;font-size:24px;letter-spacing:2px}
+.logo span{color:var(--blue)}
+nav{display:flex;gap:23px;align-items:center;flex-wrap:wrap}
+nav a{color:#c5cee0}
+nav a:hover{color:white}
+.btn{border:0;border-radius:10px;background:var(--blue);color:white;font-weight:700;padding:14px 20px;display:inline-block}
+.btn:hover{filter:brightness(1.12)}
+.btn.secondary{background:#242e46}
+.btn.outline{background:transparent;border:1px solid #53658a}
+.hero{text-align:center;padding:100px 0}
+.hero h1{font-size:clamp(40px,6vw,76px);line-height:1.08;max-width:950px;margin:20px auto}
+.hero p{max-width:710px;margin:20px auto 30px;font-size:18px}
+p{color:var(--muted);line-height:1.7}
+.eyebrow{color:#91aeff;font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.section{padding:72px 0}
+.center{text-align:center}
+h2{font-size:clamp(29px,4vw,44px)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:27px}
+.card h3{font-size:23px;margin:13px 0}
+.card ul{color:#c7d1e2;line-height:2;padding-left:21px}
+.featured{border-color:var(--blue)}
+.price{font-size:39px;font-weight:900;margin:16px 0}
+.price small{font-size:15px;color:var(--muted)}
+.pill{display:inline-block;padding:8px 13px;border-radius:30px;background:#21345b;color:#bed0ff;font-size:12px;font-weight:bold}
+.notice{background:#141f35;border:1px solid var(--line);border-radius:13px;padding:22px;margin-top:24px}
+footer{border-top:1px solid var(--line);text-align:center;padding:30px;color:var(--muted)}
+.page{display:none}
+.page.active{display:block}
+.marketing-hero{background:radial-gradient(circle at 75% 20%,#315ad155,transparent 50%)}
+.formbox{max-width:760px;margin:30px auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+label{display:block;color:#cbd5e6;font-size:13px;margin:16px 0 7px}
+input,textarea,select{width:100%;background:#1b263c;color:white;border:1px solid #40506e;border-radius:9px;padding:12px}
+textarea{min-height:100px;resize:vertical}
+input[type=color]{height:48px;padding:4px}
+input[type=checkbox]{width:auto}
+.checkline{display:flex;gap:8px;align-items:center}
+.checkline input{margin:0}
+details{margin:12px 0}
+summary{cursor:pointer;font-weight:bold}
+#studio{display:none;height:100vh;flex-direction:column}
+.studio-head{display:flex;align-items:center;justify-content:space-between;padding:15px 22px;border-bottom:1px solid var(--line)}
+.studio-layout{display:grid;grid-template-columns:350px minmax(0,1fr);flex:1;min-height:0}
+.sidebar{background:#0e1423;border-right:1px solid var(--line);padding:22px;overflow:auto}
+.sidebar .btn{margin-top:12px}
+.preview-area{display:flex;flex-direction:column;background:#171d2b;min-width:0}
+.toolbar{display:flex;gap:8px;padding:12px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.toolbar .btn{padding:10px 13px;font-size:13px}
+.viewport{display:flex;justify-content:center;flex:1;min-height:0;padding:18px}
+iframe{width:100%;height:100%;border:0;border-radius:10px;background:white}
+iframe.mobile{max-width:390px}
+#codeEditor{display:none;flex:1;width:100%;border:0;border-radius:0;background:#080e1b;color:#dce8ff;padding:20px;font:13px/1.5 monospace;resize:none}
+#status{font-size:12px;color:#b4c5e7}
+@media(max-width:800px){
+  .header{flex-wrap:wrap}
+  nav{order:3;width:100%;justify-content:center}
+  .grid{grid-template-columns:1fr}
+  .studio-layout{grid-template-columns:1fr;overflow:auto}
+  .sidebar{max-height:55vh}
+  .viewport{min-height:500px}
+  .formgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+<div class="container">
+<header class="header">
+<a class="logo" href="#" onclick="showPage('home');return false">VEX<span>TRIVO</span></a>
+<nav>
+<a href="#features">Features</a>
+<a href="#pricing">Pricing</a>
+<a href="#faq">FAQ</a>
+<a href="#marketing" onclick="showPage('marketing')">Marketing</a>
+</nav>
+<button class="btn" onclick="openStudio()">Start Building</button>
+</header>
+
+<section class="hero">
+<div class="eyebrow">Build. Launch. Grow.</div>
+<h1>Build extraordinary websites. Grow extraordinary businesses.</h1>
+<p>Create customized website demos, edit your designs, and explore professional marketing services—all from VEXTRIVO.</p>
+<div class="actions">
+<button class="btn" onclick="openStudio()">Start Building Free</button>
+<button class="btn secondary" onclick="showPage('marketing')">Explore Marketing</button>
+</div>
+</section>
+
+<section id="features" class="section">
+<div class="center">
+<div class="eyebrow">Our platform</div>
+<h2>Everything you need to get started</h2>
+</div>
+<div class="grid">
+<div class="card"><h3>Website Generator</h3><p>Describe your business and create a personalized template-based website demo.</p></div>
+<div class="card"><h3>Live Preview</h3><p>See your design instantly on desktop or mobile.</p></div>
+<div class="card"><h3>Visual Customization</h3><p>Change your business name, headline, colors, and content.</p></div>
+<div class="card"><h3>Code Editor</h3><p>View and edit the HTML source code of your generated site.</p></div>
+<div class="card"><h3>HTML Download</h3><p>Export your finished demo as a standalone HTML file.</p></div>
+<div class="card">
+<h3>Marketing Services</h3>
+<p>Explore organic marketing, Meta Ads, and Google Ads management.</p>
+<button class="btn secondary" onclick="showPage('marketing')">Explore Services</button>
+</div>
+</div>
+</section>
+
+<section id="pricing" class="section">
+<div class="center">
+<div class="eyebrow">Website plans</div>
+<h2>Find the right starting point</h2>
+</div>
+<div class="grid">
+<div class="card featured">
+<span class="pill">Free to explore</span>
+<h3>Free Demo</h3>
+<div class="price">$0</div>
+<p>Try the website builder or request a free marketing consultation.</p>
+<ul>
+<li>Free website demo</li>
+<li>Live preview</li>
+<li>Website customization</li>
+<li>HTML download</li>
+<li>Free marketing meeting request</li>
+</ul>
+<button class="btn" onclick="openStudio()">Try Website Builder</button>
+<button class="btn secondary" onclick="openConsultation()">Marketing Meeting</button>
+</div>
+<div class="card">
+<h3>Starter</h3>
+<div class="price">$39<small>/month</small></div>
+<p>Planned subscription for growing businesses.</p>
+<ul><li>Website projects</li><li>Customization tools</li><li>HTML export</li></ul>
+<button class="btn secondary" onclick="showPlan('Starter')">Explore Plan</button>
+</div>
+<div class="card">
+<h3>Growth</h3>
+<div class="price">$79<small>/month</small></div>
+<p>Planned subscription with advanced website tools.</p>
+<ul><li>Advanced site tools</li><li>Business integrations</li><li>Publishing capabilities</li></ul>
+<button class="btn secondary" onclick="showPlan('Growth')">Explore Plan</button>
+</div>
+</div>
+<p class="center">Paid website subscriptions are not active in this demo. No payments are collected.</p>
+</section>
+
+<section id="faq" class="section">
+<h2 class="center">Frequently Asked Questions</h2>
+<details class="card"><summary>Can I try VEXTRIVO for free?</summary><p>Yes. The website builder demo is free to explore.</p></details>
+<details class="card"><summary>Can I schedule a marketing discussion?</summary><p>You can request a free marketing meeting. Your appointment is not confirmed until the team responds.</p></details>
+<details class="card"><summary>Does the builder use AI?</summary><p>The current demo uses templates and prompt matching. A real AI generation backend is not connected yet.</p></details>
+<details class="card"><summary>Is advertising spend included?</summary><p>No. Meta and Google Ads management fees are separate from the advertising budget.</p></details>
+</section>
+</div>
+<footer>© 2026 VEXTRIVO. All rights reserved.</footer>
+</div>
+
+<!-- MARKETING PAGE -->
+<div id="marketing" class="page">
+<div class="container">
+<header class="header">
+<a class="logo" href="#home" onclick="showPage('home')">VEX<span>TRIVO</span></a>
+<nav>
+<a href="#home" onclick="showPage('home')">Home</a>
+<a href="#marketing-services">Services</a>
+<a href="#marketing-pricing">Pricing</a>
+<a href="#consultation">Book a Meeting</a>
+</nav>
+<button class="btn" onclick="openConsultation()">Free Consultation</button>
+</header>
+
+<section class="hero marketing-hero">
+<div class="eyebrow">VEXTRIVO Marketing</div>
+<h1>Grow your business with smarter marketing.</h1>
+<p>Build your brand, reach potential customers, and explore strategies tailored to your business through organic marketing and paid advertising.</p>
+<div class="actions">
+<button class="btn" onclick="openConsultation()">Request Free Marketing Meeting</button>
+<a class="btn secondary" href="#marketing-pricing">View Pricing</a>
+</div>
+</section>
+
+<section id="marketing-services" class="section">
+<div class="center">
+<div class="eyebrow">Our services</div>
+<h2>Marketing designed around your goals</h2>
+</div>
+<div class="grid">
+<div class="card">
+<span class="pill">Organic growth</span>
+<h3>Social Media Marketing</h3>
+<p>Develop your online presence with organic marketing strategy and content support.</p>
+<ul><li>Content planning</li><li>Organic growth strategy</li><li>Brand visibility</li><li>Social media guidance</li></ul>
+</div>
+<div class="card">
+<span class="pill">Paid social</span>
+<h3>Meta Ads</h3>
+<p>Advertise your business through Facebook and Instagram.</p>
+<ul><li>Campaign setup</li><li>Audience targeting</li><li>Creative strategy</li><li>Campaign monitoring</li></ul>
+</div>
+<div class="card">
+<span class="pill">Search advertising</span>
+<h3>Google Ads</h3>
+<p>Connect with customers actively searching for businesses like yours.</p>
+<ul><li>Search campaigns</li><li>Keyword strategy</li><li>Campaign management</li><li>Performance monitoring</li></ul>
+</div>
+</div>
+</section>
+
+<section id="marketing-pricing" class="section">
+<div class="center">
+<div class="eyebrow">Transparent pricing</div>
+<h2>Choose your marketing service</h2>
+</div>
+<div class="grid">
+<div class="card">
+<h3>Organic Marketing</h3>
+<div class="price">$500<small>/month</small></div>
+<p>Organic social media marketing support.</p>
+<ul><li>Content strategy</li><li>Social media guidance</li><li>Organic visibility</li></ul>
+<button class="btn" onclick="selectMarketing('Organic Marketing')">Discuss This Service</button>
+</div>
+<div class="card featured">
+<span class="pill">Facebook + Instagram</span>
+<h3>Meta Ads Management</h3>
+<div class="price">$1,700<small>/month</small></div>
+<p><strong>Plus ad spend.</strong> Advertising budget is separate.</p>
+<ul><li>Campaign setup</li><li>Audience targeting</li><li>Campaign management</li><li>Performance reporting</li></ul>
+<button class="btn" onclick="selectMarketing('Meta Ads')">Discuss Meta Ads</button>
+</div>
+<div class="card">
+<h3>Google Ads Management</h3>
+<div class="price">$1,700<small>/month</small></div>
+<p><strong>Plus ad spend.</strong> Advertising budget is separate.</p>
+<ul><li>Google search campaigns</li><li>Keyword research</li><li>Campaign management</li><li>Performance reporting</li></ul>
+<button class="btn" onclick="selectMarketing('Google Ads')">Discuss Google Ads</button>
+</div>
+</div>
+<div class="notice">
+<strong>What does "+ ad spend" mean?</strong>
+<p>The $1,700 monthly fee covers management of your advertising campaigns. You choose an additional advertising budget to pay for the actual ads on Meta or Google.</p>
+<p>Example: $1,700 management fee + $1,000 ad budget = $2,700 total for that month.</p>
+<p>Results vary by business, budget, market, and campaign. No return on investment is guaranteed.</p>
+</div>
+</section>
+
+<section id="consultation" class="section">
+<div class="center">
+<div class="eyebrow">Let's talk strategy</div>
+<h2>Request your free marketing meeting</h2>
+<p>Tell us about your business and the marketing services you're interested in.</p>
+</div>
+<div class="formbox">
+<h3>Marketing Consultation Request</h3>
+<p>Fill out the form to prepare an email request. A meeting is confirmed only after you receive a response.</p>
+<form id="marketingForm">
+<div class="formgrid">
+<div><label for="clientName">Full Name</label><input id="clientName" required></div>
+<div><label for="clientEmail">Email Address</label><input id="clientEmail" type="email" required></div>
+<div><label for="clientBusiness">Business Name</label><input id="clientBusiness" required></div>
+<div><label for="clientPhone">Phone Number</label><input id="clientPhone" type="tel"></div>
+</div>
+<label for="marketingService">Interested Service</label>
+<select id="marketingService" required>
+<option value="">Choose a service</option>
+<option>Organic Marketing</option>
+<option>Meta Ads</option>
+<option>Google Ads</option>
+<option>Multiple Services</option>
+<option>Not Sure Yet</option>
+</select>
+<div class="formgrid">
+<div><label for="meetingDate">Preferred Meeting Date</label><input id="meetingDate" type="date" required></div>
+<div><label for="meetingTime">Preferred Meeting Time</label><input id="meetingTime" type="time" required></div>
+</div>
+<label for="meetingZone">Time Zone</label>
+<select id="meetingZone" required>
+<option>Mountain Time</option>
+<option>Pacific Time</option>
+<option>Central Time</option>
+<option>Eastern Time</option>
+<option>Other (specify in message)</option>
+</select>
+<label for="marketingGoals">Your Marketing Goals</label>
+<textarea id="marketingGoals" required placeholder="Tell us about your business and what you're looking to accomplish."></textarea>
+<button class="btn" type="submit">Prepare Meeting Request</button>
+<p id="meetingStatus" role="status"></p>
+</form>
+</div>
+</section>
+</div>
+<footer>© 2026 VEXTRIVO Marketing</footer>
+</div>
+
+<!-- WEBSITE BUILDER STUDIO -->
+<div id="studio">
+<div class="studio-head">
+<strong class="logo">VEX<span>TRIVO</span> STUDIO</strong>
+<button class="btn secondary" onclick="closeStudio()">Back to Website</button>
+</div>
+<div class="studio-layout">
+<aside class="sidebar">
+<div class="eyebrow">Website Creation Studio</div>
+<h2>Build Your Website</h2>
+<p>Describe the website you want.</p>
+
+<label for="prompt">Website Prompt</label>
+<textarea id="prompt" placeholder="Build a luxury car detailing website with a black and blue theme, services, reviews, and booking."></textarea>
+<button class="btn" onclick="generate()">Generate Website Demo</button>
+
+<h3>Customize Website</h3>
+<label for="business">Business Name</label>
+<input id="business" value="Your Business">
+
+<label for="headline">Headline</label>
+<input id="headline" value="Built for excellence.">
+
+<label for="description">Description</label>
+<textarea id="description">Premium services and exceptional customer experiences.</textarea>
+
+<label for="category">Business Category</label>
+<select id="category">
+<option value="service">Service Business</option>
+<option value="auto">Automotive</option>
+<option value="restaurant">Restaurant</option>
+<option value="fashion">Clothing & Fashion</option>
+<option value="fitness">Fitness</option>
+<option value="realestate">Real Estate</option>
+</select>
+
+<label for="color">Accent Color</label>
+<input id="color" type="color" value="#497cff">
+
+<label for="email">Contact Email</label>
+<input id="email" type="email" value="hello@example.com">
+
+<label class="checkline"><input id="reviews" type="checkbox" checked> Include sample testimonials</label>
+<label class="checkline"><input id="booking" type="checkbox" checked> Include booking request</label>
+
+<button class="btn secondary" onclick="applyChanges()">Apply Changes</button>
+<p id="status">Ready to build your website.</p>
+</aside>
+
+<main class="preview-area">
+<div class="toolbar">
+<button class="btn secondary" onclick="setMobile(false)">Desktop</button>
+<button class="btn secondary" onclick="setMobile(true)">Mobile</button>
+<button class="btn secondary" onclick="toggleCode()">Code Editor</button>
+<button class="btn secondary" onclick="applyCode()">Apply Code</button>
+<button class="btn" onclick="downloadSite()">Download HTML</button>
+</div>
+<div class="viewport" id="viewport">
+<iframe id="preview" title="Website Preview" sandbox="allow-forms allow-popups allow-scripts"></iframe>
+</div>
+<textarea id="codeEditor" spellcheck="false"></textarea>
+</main>
+</div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+let previousPage = 'home';
+let generatedHTML = '';
+let customCode = false;
+
+const defaults = {
+  name:'Your Business',
+  headline:'Built for excellence.',
+  description:'Premium services and exceptional customer experiences.',
+  category:'service',
+  color:'#497cff',
+  email:'hello@example.com',
+  reviews:true,
+  booking:true
+};
+let state = {...defaults};
+
+function showPage(page){
+  document.querySelectorAll('.page').forEach(el=>{
+    el.classList.toggle('active',el.id===page);
+  });
+  $('studio').style.display='none';
+  window.scrollTo(0,0);
+}
+
+function openStudio(){
+  previousPage=$('marketing').classList.contains('active')?'marketing':'home';
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  $('studio').style.display='flex';
+  window.scrollTo(0,0);
+  refresh();
+}
+
+function closeStudio(){
+  showPage(previousPage);
+}
+
+function showPlan(plan){
+  alert(plan+' subscriptions are coming soon. You can try the free website demo now.');
+  openStudio();
+}
+
+function openConsultation(){
+  showPage('marketing');
+  $('consultation').scrollIntoView({behavior:'smooth'});
+}
+
+function selectMarketing(service){
+  $('marketingService').value=service;
+  openConsultation();
+}
+
+function esc(value){
+  return String(value).replace(/[&<>"']/g,c=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;',
+    '"':'&quot;',"'":'&#39;'
+  })[c]);
+}
+
+/* IMPORTANT: REPLACE WITH YOUR BUSINESS EMAIL */
+const MARKETING_EMAIL='YOUR_EMAIL@example.com';
+
+$('marketingForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  if(!this.reportValidity())return;
+
+  const details=[
+    'New VEXTRIVO Marketing Consultation Request',
+    '',
+    'Name: '+$('clientName').value,
+    'Email: '+$('clientEmail').value,
+    'Business: '+$('clientBusiness').value,
+    'Phone: '+$('clientPhone').value,
+    'Service: '+$('marketingService').value,
+    'Preferred Date: '+$('meetingDate').value,
+    'Preferred Time: '+$('meetingTime').value,
+    'Time Zone: '+$('meetingZone').value,
+    '',
+    'Goals:',
+    $('marketingGoals').value
+  ].join('\n');
+
+  const subject=encodeURIComponent('VEXTRIVO Marketing Meeting Request');
+  const body=encodeURIComponent(details);
+  $('meetingStatus').textContent='Your email application will open. Send the email to request the meeting.';
+  window.location.href='mailto:'+MARKETING_EMAIL+'?subject='+subject+'&body='+body;
+});
+
+function readFields(){
+  state={
+    name:$('business').value,
+    headline:$('headline').value,
+    description:$('description').value,
+    category:$('category').value,
+    color:$('color').value,
+    email:$('email').value,
+    reviews:$('reviews').checked,
+    booking:$('booking').checked
+  };
+}
+
+function writeFields(){
+  $('business').value=state.name;
+  $('headline').value=state.headline;
+  $('description').value=state.description;
+  $('category').value=state.category;
+  $('color').value=state.color;
+  $('email').value=state.email;
+  $('reviews').checked=state.reviews;
+  $('booking').checked=state.booking;
+}
+
+function generate(){
+  const q=$('prompt').value.trim();
+  if(!q){
+    $('status').textContent='Enter a website description first.';
+    return;
+  }
+
+  const low=q.toLowerCase();
+  let category='service';
+
+  if(/car|auto|detail|truck|tint/.test(low))category='auto';
+  else if(/restaurant|food|cafe|pizza/.test(low))category='restaurant';
+  else if(/clothing|fashion|streetwear|shop/.test(low))category='fashion';
+  else if(/gym|fitness|training/.test(low))category='fitness';
+  else if(/real estate|realtor|property/.test(low))category='realestate';
+
+  state.category=category;
+
+  const colors={
+    blue:'#497cff',red:'#e54857',green:'#169b70',
+    purple:'#8b5cf6',orange:'#ed8135',
+    gold:'#c99a41',pink:'#e65ba1',black:'#111827'
+  };
+
+  for(const [name,value] of Object.entries(colors)){
+    if(new RegExp('\\b'+name+'\\b').test(low)){
+      state.color=value;
+      break;
+    }
+  }
+
+  const match=q.match(/(?:called|named)\s+["']?([a-z0-9 &'\-]{3,45})/i);
+  if(match)state.name=match[1].trim().replace(/["']$/,'');
+
+  state.description=q.slice(0,250);
+  state.headline={
+    auto:'Precision in every detail.',
+    restaurant:'An unforgettable dining experience.',
+    fashion:'Wear something extraordinary.',
+    fitness:'Build your strongest self.',
+    realestate:'Find a place to call home.',
+    service:'Exceptional service. Remarkable results.'
+  }[category];
+
+  if(/review|testimonial/.test(low))state.reviews=true;
+  if(/book|calendar|appointment/.test(low))state.booking=true;
+
+  writeFields();
+  customCode=false;
+  refresh();
+  $('status').textContent='Demo generated. Customize your website below.';
+}
+
+function buildHTML(){
+  const s=state;
+  const name=esc(s.name);
+  const head=esc(s.headline);
+  const desc=esc(s.description);
+  const color=s.color;
+  const email=esc(s.email);
+
+  const titles={
+    auto:['Premium Detailing','Paint Protection','Interior Restoration'],
+    restaurant:['Signature Menu','Private Events','Reservations'],
+    fashion:['New Collection','Signature Pieces','Our Story'],
+    fitness:['Personal Training','Strength Programs','Coaching'],
+    realestate:['Featured Properties','Buyer Services','Seller Services'],
+    service:['Professional Services','Custom Solutions','Consultations']
+  };
+  const services=titles[s.category]||titles.service;
+
+  const cards=services.map((x,i)=>`
+    <article class="service">
+      <div class="number">0${i+1}</div>
+      <h3>${esc(x)}</h3>
+      <p>Explore our approach to ${esc(x.toLowerCase())}, tailored to your needs.</p>
+    </article>
+  `).join('');
+
+  const reviews=s.reviews?`
+    <section class="section alt">
+      <div class="wrap">
+        <h2>What our clients say</h2>
+        <div class="service">
+          <p>"Add a verified customer testimonial here."</p>
+          <strong>Sample testimonial — replace before publishing</strong>
         </div>
-        <nav class="nav">
-          <a href="#features">Features</a>
-          <a href="#results">Results</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-        <button class="button button-small button-secondary">Book demo</button>
-      </header>
+      </div>
+    </section>
+  `:'';
 
-      <main>
-        <section class="hero container">
-          <div class="hero-copy">
-            <span class="eyebrow">AI website builder for growth brands</span>
-            <h1>Build a polished website with AI — and launch faster.</h1>
-            <p>
-              VEXTRIVO turns your idea, offer, and goals into a premium website
-              experience. Build pages, add calendars, accept payments, create
-              animations, and grow with marketing support in one place.
-            </p>
+  const booking=s.booking?`
+    <section class="section" id="booking">
+      <div class="wrap">
+        <h2>Request an appointment</h2>
+        <p>Tell us what you need and we'll be in touch.</p>
+        <form id="bookingForm">
+          <input name="name" placeholder="Your name" required>
+          <input name="contact" type="email" placeholder="Email address" required>
+          <input name="date" type="date" required>
+          <textarea name="message" placeholder="Tell us about your project"></textarea>
+          <button type="submit">Prepare Booking Request</button>
+        </form>
+      </div>
+    </section>
+  `:'';
 
-            <div class="hero-actions">
-              <button class="button button-primary">Start building</button>
-              <button class="button button-ghost">See live demo</button>
-            </div>
+  const mail=encodeURIComponent(s.email);
 
-            <div class="user-proof">
-              <div class="avatars">
-                <span>A</span>
-                <span>J</span>
-                <span>K</span>
-              </div>
-              <p><strong>2,100+</strong> businesses launched with VEXTRIVO</p>
-            </div>
-          </div>
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${name}</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b0e16;color:white;font-family:Arial,sans-serif}
+.wrap{max-width:1120px;margin:auto;padding:0 25px}
+header{padding:25px 0;display:flex;justify-content:space-between;align-items:center;gap:20px}
+header strong{font-size:23px}
+a{color:inherit;text-decoration:none}
+nav{display:flex;gap:20px}
+button,.button{display:inline-block;border:0;border-radius:8px;padding:14px 22px;background:${color};color:white;font-weight:bold;cursor:pointer}
+.hero{padding:110px 0;background:radial-gradient(circle at 80% 20%,${color}55,transparent 45%),#101522}
+.tag{color:${color};text-transform:uppercase;letter-spacing:2px;font-weight:bold;font-size:12px}
+h1{font-size:clamp(40px,7vw,83px);line-height:1.05;max-width:850px}
+h2{font-size:clamp(30px,4vw,45px)}
+p{color:#b8c0d0;line-height:1.7}
+.hero p{max-width:650px;font-size:18px}
+.section{padding:85px 0}
+.alt{background:#131a29}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}
+.service{padding:30px;border:1px solid #344055;border-radius:15px;background:#151c2b}
+.number{color:${color};font-size:25px;font-weight:bold}
+form{max-width:550px;display:grid;gap:12px}
+input,textarea{padding:14px;border-radius:8px;border:1px solid #43506b;background:#182033;color:white;font:inherit}
+textarea{min-height:100px}
+footer{border-top:1px solid #344055;padding:30px 0;color:#aab5c8}
+@media(max-width:700px){.services{grid-template-columns:1fr}nav{display:none}}
+</style>
+</head>
+<body>
+<header class="wrap">
+<strong>${name}</strong>
+<nav><a href="#services">Services</a><a href="#contact">Contact</a></nav>
+<a class="button" href="#contact">Get Started</a>
+</header>
+<section class="hero">
+<div class="wrap">
+<div class="tag">Welcome to ${name}</div>
+<h1>${head}</h1>
+<p>${desc}</p>
+<a class="button" href="#services">Explore Services</a>
+</div>
+</section>
+<section class="section" id="services">
+<div class="wrap">
+<div class="tag">What we offer</div>
+<h2>Designed around you.</h2>
+<div class="services">${cards}</div>
+</div>
+</section>
+${reviews}
+${booking}
+<section class="section alt" id="contact">
+<div class="wrap">
+<h2>Let's work together.</h2>
+<p>Contact our team to get started.</p>
+<a class="button" href="mailto:${mail}">Email Us</a>
+</div>
+</section>
+<footer><div class="wrap">© ${new Date().getFullYear()} ${name}</div></footer>
+<script>
+const form=document.getElementById('bookingForm');
+if(form)form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const data=new FormData(form);
+  const subject=encodeURIComponent('Appointment request');
+  const body=encodeURIComponent(
+    'Name: '+data.get('name')+'\\n'+
+    'Email: '+data.get('contact')+'\\n'+
+    'Date: '+data.get('date')+'\\n'+
+    'Message: '+data.get('message')
+  );
+  window.location.href='mailto:${mail}?subject='+subject+'&body='+body;
+});
+<\\/script>
+</body>
+</html>`;
+}
 
-          <div class="hero-visual" aria-label="AI website builder preview">
-            <div class="window-bar">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="mockup-card main-card">
-              <div class="preview-header">
-                <div>
-                  <small>Website</small>
-                  <h3>LaunchKit Studio</h3>
-                </div>
-                <span class="status-pill">Live</span>
-              </div>
+function refresh(){
+  if(!customCode)generatedHTML=buildHTML();
+  $('preview').srcdoc=generatedHTML;
+  $('codeEditor').value=generatedHTML;
+  try{
+    localStorage.setItem('vextrivo-demo',JSON.stringify(state));
+  }catch(e){}
+}
 
-              <div class="preview-grid">
-                <div class="feature-box feature-blue">
-                  <div class="mini-chart"></div>
-                  <strong>AI Builder</strong>
-                  <span>Instant layout</span>
-                </div>
-                <div class="feature-box feature-purple">
-                  <div class="mini-bars">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <strong>Marketing</strong>
-                  <span>SEO + ads</span>
-                </div>
-                <div class="feature-box feature-orange">
-                  <div class="ring"></div>
-                  <strong>Calendar</strong>
-                  <span>Booking flow</span>
-                </div>
-              </div>
+function applyChanges(){
+  readFields();
+  customCode=false;
+  refresh();
+  $('status').textContent='Changes applied and saved in this browser.';
+}
 
-              <div class="cta-strip">
-                <div>
-                  <small>Conversion</small>
-                  <strong>+176%</strong>
-                </div>
-                <button class="button button-primary button-small">Optimize</button>
-              </div>
-            </div>
-          </div>
-        </section>
+function setMobile(mobile){
+  $('preview').classList.toggle('mobile',mobile);
+}
 
-        <section class="logos container" aria-label="Trusted by growing brands">
-          <span>Built for:</span>
-          <div class="logo-row">
-            <span>Agencies</span>
-            <span>Coaches</span>
-            <span>Restaurants</span>
-            <span>Clinics</span>
-            <span>Startups</span>
-          </div>
-        </section>
+function toggleCode(){
+  const editor=$('codeEditor');
+  const visible=editor.style.display==='block';
+  editor.style.display=visible?'none':'block';
+  $('viewport').style.display=visible?'flex':'none';
+  if(!visible)editor.value=generatedHTML;
+}
 
-        <section id="features" class="features container">
-          <div class="section-heading">
-            <span class="eyebrow">Everything in one platform</span>
-            <h2>Turn an idea into a real business presence.</h2>
-          </div>
+function applyCode(){
+  if($('codeEditor').style.display!=='block'){
+    $('status').textContent='Open Code Editor first.';
+    return;
+  }
+  generatedHTML=$('codeEditor').value;
+  customCode=true;
+  $('preview').srcdoc=generatedHTML;
+  $('codeEditor').style.display='none';
+  $('viewport').style.display='flex';
+  $('status').textContent='Custom code applied. Download HTML to keep it.';
+}
 
-          <div class="feature-grid">
-            <article class="feature-card">
-              <div class="icon-wrap blue">✦</div>
-              <h3>AI website generation</h3>
-              <p>Generate complete page layouts, sections, and messaging from a simple prompt.</p>
-            </article>
+function downloadSite(){
+  const blob=new Blob([generatedHTML],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement('a');
+  link.href=url;
+  link.download=(state.name||'website')
+    .toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.html';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  $('status').textContent='Website HTML downloaded.';
+}
 
-            <article class="feature-card">
-              <div class="icon-wrap purple">↗</div>
-              <h3>Customization via chat</h3>
-              <p>Edit the design, colors, copy, and structure without needing a developer.</p>
-            </article>
+try{
+  const saved=JSON.parse(localStorage.getItem('vextrivo-demo')||'null');
+  if(saved)state={...defaults,...saved};
+}catch(e){}
 
-            <article class="feature-card">
-              <div class="icon-wrap orange">◌</div>
-              <h3>Calendars and booking</h3>
-              <p>Add appointment flows for sales calls, consultations, demos, and live sessions.</p>
-            </article>
+writeFields();
+refresh();
 
-            <article class="feature-card">
-              <div class="icon-wrap green">◎</div>
-              <h3>Payments and checkout</h3>
-              <p>Collect payments fast with clean conversion-focused product or service experiences.</p>
-            </article>
+const today=new Date();
+$('meetingDate').min=
+  today.getFullYear()+'-'+
+  String(today.getMonth()+1).padStart(2,'0')+'-'+
+  String(today.getDate()).padStart(2,'0');
 
-            <article class="feature-card">
-              <div class="icon-wrap pink">✧</div>
-              <h3>Animations and polish</h3>
-              <p>Bring pages to life with motion, layered UI, and more engaging interactions.</p>
-            </article>
-
-            <article class="feature-card">
-              <div class="icon-wrap red">⬢</div>
-              <h3>Growth support</h3>
-              <p>Plan organic marketing and paid campaigns to turn your website into a growth engine.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="results" class="stats container">
-          <div class="stat-box">
-            <strong>3x faster</strong>
-            <span>site launches</span>
-          </div>
-          <div class="stat-box">
-            <strong>SEO-ready</strong>
-            <span>structure</span>
-          </div>
-          <div class="stat-box">
-            <strong>Built-in</strong>
-            <span>marketing tools</span>
-          </div>
-          <div class="stat-box">
-            <strong>Flexible</strong>
-            <span>for any offer</span>
-          </div>
-        </section>
-
-        <section class="builder-demo container">
-          <div class="demo-copy">
-            <span class="eyebrow">Chat-to-site workflow</span>
-            <h2>Describe your business. VEXTRIVO builds the foundation.</h2>
-            <ul>
-              <li>Tell it your niche, audience, and offer.</li>
-              <li>Choose your style, sections, and messaging.</li>
-              <li>Publish and optimize with conversion insight.</li>
-            </ul>
-          </div>
-
-          <div class="chat-panel">
-            <div class="chat-header">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="prompt-stack">
-              <div class="prompt-row user-prompt">Build a luxury fitness brand website for a premium coaching studio.</div>
-              <div class="prompt-row assistant-prompt">I created a homepage with hero section, pricing, testimonials, CTA, and booking flow.</div>
-              <div class="prompt-options">
-                <button>Landing page</button>
-                <button>Book a call</button>
-                <button>Daily offer</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="pricing" class="pricing container">
-          <div class="section-heading center">
-            <span class="eyebrow">Simple pricing</span>
-            <h2>Launch without the overhead.</h2>
-          </div>
-
-          <div class="pricing-grid">
-            <article class="price-card">
-              <span class="plan-name">Starter</span>
-              <h3>$39<span>/mo</span></h3>
-              <ul>
-                <li>AI site generation</li>
-                <li>Up to 5 pages</li>
-                <li>Basic analytics</li>
-              </ul>
-              <button class="button button-ghost">Choose Starter</button>
-            </article>
-
-            <article class="price-card featured">
-              <span class="plan-badge">Most popular</span>
-              <span class="plan-name">Growth</span>
-              <h3>$79<span>/mo</span></h3>
-              <ul>
-                <li>Everything in Starter</li>
-                <li>Calendar + payments</li>
-                <li>SEO and launch support</li>
-              </ul>
-              <button class="button button-primary">Choose Growth</button>
-            </article>
-
-            <article class="price-card">
-              <span class="plan-name">Scale</span>
-              <h3>$149<span>/mo</span></h3>
-              <ul>
-                <li>Advanced AI automation</li>
-                <li>High-conversion funnels</li>
-                <li>Marketing optimization</li>
-              </ul>
-              <button class="button button-ghost">Choose Scale</button>
-            </article>
-          </div>
-        </section>
-
-        <section id="faq" class="faq container">
-          <div class="section-heading center">
-            <span class="eyebrow">FAQ</span>
-            <h2>Questions before you launch?</h2>
-          </div>
-
-          <div class="faq-list">
-            <details open>
-              <summary>Does VEXTRIVO work for service businesses?</summary>
-              <p>Yes. It supports personal brands, agencies, clinics, coaches, and service businesses with conversion-focused pages and offers.</p>
-            </details>
-            <details>
-              <summary>Can I edit pages after generation?</summary>
-              <p>Absolutely. Every section is editable through chat prompts or direct design controls.</p>
-            </details>
-            <details>
-              <summary>Do you support paid marketing services?</summary>
-              <p>Yes. VEXTRIVO offers marketing support for organic growth, Meta Ads, and Google Ads.</p>
-            </details>
-          </div>
-        </section>
-      </main>
-
-      <footer class="footer container">
-        <div>
-          <div class="brand">
-            <span class="brand-mark">V</span>
-            <span class="brand-text">VEXTRIVO</span>
-          </div>
-          <p>AI website builder for modern businesses.</p>
-        </div>
-        <div class="footer-links">
-          <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
-        </div>
-        <div class="footer-meta">
-          <span>© <span id="year"></span> VEXTRIVO</span>
-          <a href="mailto:hello@vextrivo.ai">hello@vextrivo.ai</a>
-        </div>
-      </footer>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
+if(location.hash==='#marketing'){
+  showPage('marketing');
+}
+</script>
+</body>
 </html>
