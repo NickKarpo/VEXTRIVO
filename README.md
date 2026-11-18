@@ -2,301 +2,225 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VEXTRIVO | Websites & Marketing</title>
 <style>
 :root {
-  --bg: #080b15;
-  --panel: #111a2c;
-  --panel2: #1b2942;
-  --border: #30405e;
-  --blue: #4b7cff;
-  --white: #f5f7ff;
-  --muted: #acb9d0;
+  --bg:#090d19;
+  --panel:#11192b;
+  --panel2:#1c2941;
+  --border:#30415e;
+  --blue:#4d7cff;
+  --white:#f6f8ff;
+  --muted:#adbad2;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--white);
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--white);
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Arial,sans-serif;
 }
-a { color: inherit; text-decoration: none; }
-button, input, select, textarea { font: inherit; }
-button { cursor: pointer; }
-.container {
-  width: min(1150px, 92%);
-  margin: auto;
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1150px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:30;
+  background:#090d19f2;
+  border-bottom:1px solid var(--border);
 }
-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: #080b15f5;
-  border-bottom: 1px solid var(--border);
+.nav{
+  display:flex;align-items:center;
+  justify-content:space-between;gap:18px;
+  flex-wrap:wrap;padding:15px 0;
 }
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 16px 0;
+.logo{font-size:25px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--blue)}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a:hover{color:#91adff}
+.btn{
+  display:inline-block;border:0;border-radius:10px;
+  padding:13px 21px;background:var(--blue);
+  color:white;font-weight:750;text-align:center;
 }
-.logo {
-  font-size: 25px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-.logo span { color: var(--blue); }
-nav {
-  display: flex;
-  gap: 22px;
-  flex-wrap: wrap;
-}
-nav a:hover { color: var(--blue); }
-.btn {
-  display: inline-block;
-  border: none;
-  border-radius: 10px;
-  background: var(--blue);
-  color: white;
-  font-weight: bold;
-  padding: 14px 22px;
-  text-align: center;
-  transition: .2s;
-}
-.btn:hover {
-  filter: brightness(1.15);
-  transform: translateY(-2px);
-}
-.btn.secondary { background: #263550; }
-.page { display: none; }
-.page.active { display: block; }
-.hero {
-  text-align: center;
-  padding: 105px 20px;
-  background: radial-gradient(
-    ellipse at 50% 0%,
-    #294b9566,
-    transparent 65%
+.btn:hover{filter:brightness(1.14)}
+.btn.alt{background:#263650}
+.btn:disabled{opacity:.6;cursor:wait}
+.page{display:none}
+.page.active{display:block}
+.hero{
+  padding:105px 20px;text-align:center;
+  background:radial-gradient(
+    ellipse at 50% 0%,#27478366,transparent 65%
   );
 }
-.kicker {
-  color: #9bb7ff;
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.eyebrow{
+  font-size:12px;color:#9ab6ff;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;
 }
-h1 {
-  font-size: clamp(40px, 6vw, 76px);
-  line-height: 1.1;
-  max-width: 950px;
-  margin: 20px auto;
+h1{
+  font-size:clamp(40px,6vw,74px);
+  line-height:1.1;max-width:950px;margin:17px auto;
 }
-h2 { font-size: clamp(28px, 4vw, 42px); }
-h3 { font-size: 23px; }
-p { color: var(--muted); }
-.lead {
-  max-width: 720px;
-  margin: 20px auto 30px;
-  font-size: 19px;
+h2{font-size:clamp(28px,4vw,42px);line-height:1.2}
+h3{font-size:22px}
+p{color:var(--muted)}
+.lead{max-width:710px;margin:20px auto 30px;font-size:19px}
+.actions{
+  display:flex;justify-content:center;
+  gap:12px;flex-wrap:wrap;
 }
-.actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+.section{padding:70px 0}
+.center{text-align:center}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;margin-top:32px;
 }
-.section { padding: 75px 0; }
-.center { text-align: center; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 35px;
+.card{
+  background:linear-gradient(140deg,#18243b,#111827);
+  border:1px solid var(--border);
+  border-radius:18px;padding:26px;
 }
-.card {
-  background: linear-gradient(145deg, #18243d, #101827);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 28px;
+.card.featured{border-color:var(--blue)}
+.price{font-size:38px;font-weight:900}
+.price small{
+  font-size:15px;color:var(--muted);font-weight:400;
 }
-.card.featured { border-color: var(--blue); }
-.price {
-  font-size: 39px;
-  font-weight: 900;
-  margin: 15px 0;
+ul{color:#d4def0;line-height:2;padding-left:20px}
+.banner{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;padding:35px;text-align:center;
 }
-.price small {
-  font-size: 15px;
-  color: var(--muted);
-  font-weight: normal;
+.notice{
+  background:#192741;border:1px solid var(--border);
+  border-radius:12px;padding:16px;
+  color:#cbd7ed;margin:20px 0;
 }
-.card ul {
-  padding-left: 20px;
-  color: #d4def0;
-  line-height: 2;
+
+/* Centered Free Demo form */
+.demo-layout{
+  min-height:calc(100vh - 160px);
+  padding:65px 18px 85px;
+  background:radial-gradient(
+    circle at 50% 0%,#1b3056 0%,var(--bg) 60%
+  );
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
-.card .btn { margin-top: 12px; }
-.banner {
-  text-align: center;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 35px;
+.demo-heading{text-align:center;max-width:760px}
+.demo-form{
+  width:min(780px,100%);
+  margin:28px auto 0;
+  padding:30px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:0 20px 65px #0005;
 }
-.formbox {
-  max-width: 900px;
-  margin: 30px auto 75px;
-  padding: 32px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 20px;
+.demo-form h3{margin:30px 0 16px}
+.formgrid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
 }
-.formgrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 17px;
+.field{margin-bottom:17px}
+.field label{
+  display:block;font-size:14px;
+  font-weight:700;margin-bottom:7px;
 }
-.field { margin-bottom: 18px; }
-.field label {
-  display: block;
-  margin-bottom: 7px;
-  font-weight: bold;
-  font-size: 14px;
+.field input,.field select,.field textarea{
+  width:100%;background:var(--panel2);
+  border:1px solid #475979;color:white;
+  border-radius:9px;padding:13px;min-height:46px;
 }
-.field input,
-.field select,
-.field textarea,
-.studio input,
-.studio textarea {
-  width: 100%;
-  background: var(--panel2);
-  border: 1px solid #455779;
-  border-radius: 10px;
-  color: white;
-  padding: 13px;
+.field textarea{min-height:115px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:2px solid var(--blue);
 }
-.field textarea { min-height: 130px; }
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  outline: 2px solid var(--blue);
+.checkgrid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
 }
-.checkgrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+.check{
+  display:flex;align-items:center;gap:9px;
+  padding:11px;background:var(--panel2);
+  border:1px solid var(--border);border-radius:9px;
 }
-.check {
-  display: flex !important;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
-  background: var(--panel2);
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  font-weight: normal !important;
+.check input{
+  accent-color:var(--blue);width:17px;height:17px;
 }
-.check input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--blue);
+.status{min-height:25px;color:#a8ebc8}
+
+/* Website Studio */
+.studio-shell{
+  display:grid;
+  grid-template-columns:320px minmax(0,1fr);
+  border:1px solid var(--border);
+  border-radius:15px;
+  overflow:hidden;
+  margin:25px 0 70px;
+  background:var(--bg);
 }
-.notice {
-  background: #1b2942;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 17px;
-  color: #c9d6ee;
-  margin: 20px 0;
+.studio-sidebar{
+  background:#101727;padding:24px;
+  border-right:1px solid var(--border);
 }
-.status {
-  min-height: 25px;
-  color: #9ae6c2;
+.studio-sidebar label{
+  display:block;margin:16px 0 6px;font-size:14px;
 }
-.studio {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  margin: 30px 0 65px;
+.studio-sidebar input,.studio-sidebar textarea{
+  width:100%;background:var(--panel2);
+  color:white;border:1px solid #465776;
+  border-radius:9px;padding:12px;
 }
-.studio aside {
-  background: #101827;
-  padding: 24px;
-  border-right: 1px solid var(--border);
+.studio-sidebar textarea{min-height:115px}
+.studio-main{min-width:0;background:#0c1220}
+.toolbar{
+  display:flex;flex-wrap:wrap;gap:8px;
+  padding:13px;border-bottom:1px solid var(--border);
 }
-.studio label {
-  display: block;
-  margin: 15px 0 6px;
+.toolbar button{
+  background:#26344f;color:white;
+  border:0;border-radius:8px;padding:10px 12px;
 }
-.studio textarea { min-height: 130px; }
-.studio main {
-  min-width: 0;
-  background: #111827;
+.toolbar button:hover{background:var(--blue)}
+.preview{
+  padding:18px;background:#0c1220;
+  min-height:610px;overflow:auto;
 }
-.toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 13px;
-  border-bottom: 1px solid var(--border);
+#siteFrame{
+  display:block;width:100%;height:570px;
+  margin:0 auto;border:1px solid #31415d;
+  border-radius:12px;background:#0b1020;color:white;
 }
-.toolbar button {
-  background: #293753;
-  color: white;
-  border: 0;
-  border-radius: 8px;
-  padding: 10px 12px;
+#codeEditor{
+  display:none;width:100%;height:610px;
+  border:0;background:#0a1020;color:#e5edff;
+  padding:18px;font:13px/1.55 monospace;
+  resize:vertical;
 }
-.toolbar button:hover { background: var(--blue); }
-.preview { padding: 15px; overflow: auto; }
-iframe {
-  display: block;
-  width: 100%;
-  height: 580px;
-  margin: auto;
-  background: white;
-  border: none;
+footer{
+  text-align:center;padding:28px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
 }
-#codeEditor {
-  display: none;
-  width: 100%;
-  height: 610px;
-  border: none;
-  border-radius: 0;
-  background: #0a1020;
-  color: #e3edff;
-  padding: 18px;
-  font: 13px/1.5 monospace;
-}
-footer {
-  text-align: center;
-  border-top: 1px solid var(--border);
-  padding: 30px;
-  color: var(--muted);
-}
-@media (max-width: 850px) {
-  .grid, .formgrid, .studio {
-    grid-template-columns: 1fr;
+@media(max-width:850px){
+  .grid,.studio-shell{grid-template-columns:1fr}
+  .studio-sidebar{
+    border-right:0;
+    border-bottom:1px solid var(--border);
   }
-  .studio aside {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-  .nav { justify-content: center; }
-  .hero { padding: 75px 15px; }
+  .nav{justify-content:center}
+  .hero{padding:75px 15px}
 }
-@media (max-width: 520px) {
-  .checkgrid { grid-template-columns: 1fr; }
-  .formbox { padding: 20px; }
-  nav { justify-content: center; gap: 12px; }
+@media(max-width:560px){
+  .formgrid,.checkgrid{grid-template-columns:1fr}
+  .demo-form{padding:20px}
+  nav{justify-content:center;gap:12px}
 }
 </style>
 </head>
@@ -309,67 +233,71 @@ footer {
     </a>
     <nav>
       <a href="#home" data-page="home">Home</a>
-      <a href="#pricing" data-page="home"
-         data-scroll="pricing">Pricing</a>
+      <a href="#pricing" data-page="home" data-scroll="pricing">
+        Pricing
+      </a>
       <a href="#marketing" data-page="marketing">Marketing</a>
       <a href="#studio" data-page="studio">Website Studio</a>
       <a href="#demo" data-page="demo">Free Demo</a>
     </nav>
-    <a href="#demo" data-page="demo" class="btn">
+    <a class="btn" href="#demo" data-page="demo">
       Book Free Demo
     </a>
   </div>
 </header>
 
-<!-- HOME PAGE -->
-<div id="home" class="page active">
-  <section class="hero">
+<!-- HOME -->
+<section class="page active" id="home">
+  <div class="hero">
     <div class="container">
-      <div class="kicker">Custom Websites & Digital Marketing</div>
-      <h1>Your Business Deserves a Website That Stands Out.</h1>
+      <div class="eyebrow">
+        Custom Websites & Digital Marketing
+      </div>
+      <h1>
+        Your Business Deserves a Website That Stands Out.
+      </h1>
       <p class="lead">
-        We build professional websites tailored to your business.
-        Tell us your vision, your preferred colors, and the
+        Professional websites tailored to your business.
+        Tell us your vision, preferred colors, and the
         features you need.
       </p>
       <div class="actions">
-        <a href="#demo" data-page="demo" class="btn">
+        <a class="btn" href="#demo" data-page="demo">
           Get My Free Website Demo
         </a>
-        <a href="#studio" data-page="studio"
-           class="btn secondary">
+        <a class="btn alt" href="#studio" data-page="studio">
           Explore Website Studio
         </a>
       </div>
     </div>
-  </section>
+  </div>
 
   <div class="container">
     <section class="section">
       <div class="center">
-        <div class="kicker">Our Process</div>
+        <div class="eyebrow">How It Works</div>
         <h2>From Idea to Launch</h2>
       </div>
       <div class="grid">
         <div class="card">
           <h3>01. Tell Us Your Vision</h3>
           <p>
-            Describe your business, colors,
-            style, and website features.
+            Describe your business, colors, style and
+            the features you need.
           </p>
         </div>
         <div class="card">
-          <h3>02. Review Your Needs</h3>
+          <h3>02. We Get in Touch</h3>
           <p>
-            We contact you to discuss your custom
-            website demo and project goals.
+            We review your request and contact you
+            about your demo.
           </p>
         </div>
         <div class="card">
           <h3>03. Build & Grow</h3>
           <p>
-            Choose the right website and
-            marketing services for your business.
+            Choose a custom website and marketing
+            services for your business.
           </p>
         </div>
       </div>
@@ -377,24 +305,23 @@ footer {
 
     <section id="pricing" class="section">
       <div class="center">
-        <div class="kicker">Website Pricing</div>
-        <h2>Professional Websites for Every Business</h2>
+        <div class="eyebrow">Website Pricing</div>
+        <h2>Websites for Every Business</h2>
       </div>
-
       <div class="grid">
         <div class="card featured">
           <h3>Free Demo Request</h3>
           <div class="price">$0</div>
           <p>
-            Tell us what you need and request
-            a free website demo consultation.
+            Share your goals and request a free
+            demo consultation.
           </p>
           <ul>
             <li>Business questionnaire</li>
             <li>Design preferences</li>
             <li>Feature requests</li>
           </ul>
-          <a href="#demo" data-page="demo" class="btn">
+          <a class="btn" href="#demo" data-page="demo">
             Request Free Demo
           </a>
         </div>
@@ -405,17 +332,15 @@ footer {
             $1,000 <small>starting at</small>
           </div>
           <p>
-            A professional mobile-friendly website
-            for your business.
+            Professional mobile-friendly business websites.
           </p>
           <ul>
             <li>Responsive design</li>
-            <li>Services and contact information</li>
+            <li>Services and contact</li>
             <li>Custom branding</li>
           </ul>
-          <a href="#demo" data-page="demo"
-             data-service="Simple Website"
-             class="btn secondary">
+          <a class="btn alt" href="#demo" data-page="demo"
+             data-service="Simple Website">
             Request a Quote
           </a>
         </div>
@@ -426,127 +351,119 @@ footer {
             $2,000 <small>starting at</small>
           </div>
           <p>
-            More advanced designs, pages,
-            and interactive functionality.
+            Advanced layouts and custom interactive features.
           </p>
           <ul>
-            <li>Advanced custom design</li>
+            <li>Custom design</li>
             <li>Interactive features</li>
-            <li>Custom integrations</li>
+            <li>Project-specific integrations</li>
           </ul>
-          <a href="#demo" data-page="demo"
-             data-service="Advanced Website"
-             class="btn secondary">
+          <a class="btn alt" href="#demo" data-page="demo"
+             data-service="Advanced Website">
             Request a Quote
           </a>
         </div>
       </div>
       <p class="center">
-        Final pricing depends on project requirements.
+        Final pricing depends on the scope of your project.
       </p>
     </section>
 
     <section class="section">
       <div class="banner">
         <h2>Ready for Your Custom Website?</h2>
-        <p>Tell us about your business and request a free demo.</p>
-        <a href="#demo" data-page="demo" class="btn">
+        <p>
+          Tell us what you need and request your free demo.
+        </p>
+        <a class="btn" href="#demo" data-page="demo">
           Book Your Free Demo
         </a>
       </div>
     </section>
   </div>
-</div>
+</section>
 
-<!-- MARKETING PAGE -->
-<div id="marketing" class="page">
-  <section class="hero">
+<!-- MARKETING -->
+<section class="page" id="marketing">
+  <div class="hero">
     <div class="container">
-      <div class="kicker">VEXTRIVO Marketing</div>
+      <div class="eyebrow">VEXTRIVO Marketing</div>
       <h1>More Visibility. More Opportunities.</h1>
       <p class="lead">
-        Organic marketing, Meta Ads, and Google Ads
+        Organic marketing, Meta Ads and Google Ads
         management for growing businesses.
       </p>
-      <a href="#demo" data-page="demo"
-         data-service="Marketing Consultation"
-         class="btn">
+      <a class="btn" href="#demo" data-page="demo"
+         data-service="Marketing Consultation">
         Discuss Marketing
       </a>
     </div>
-  </section>
+  </div>
 
   <div class="container section">
     <div class="grid">
       <div class="card">
         <h3>Organic Marketing</h3>
         <div class="price">$500 <small>/month</small></div>
-        <p>Content strategy and social media support.</p>
-        <a href="#demo" data-page="demo"
-           data-service="Organic Marketing" class="btn">
+        <p>Content strategy and organic social media support.</p>
+        <a class="btn" href="#demo" data-page="demo"
+           data-service="Organic Marketing">
           Get Started
         </a>
       </div>
       <div class="card featured">
         <h3>Meta Ads</h3>
         <div class="price">$1,700 <small>/month</small></div>
-        <p>Facebook and Instagram ad management.</p>
-        <a href="#demo" data-page="demo"
-           data-service="Meta Ads" class="btn">
+        <p>Facebook and Instagram advertising management.</p>
+        <a class="btn" href="#demo" data-page="demo"
+           data-service="Meta Ads">
           Get Started
         </a>
       </div>
       <div class="card">
         <h3>Google Ads</h3>
         <div class="price">$1,700 <small>/month</small></div>
-        <p>Google advertising campaign management.</p>
-        <a href="#demo" data-page="demo"
-           data-service="Google Ads" class="btn">
+        <p>Google advertising management.</p>
+        <a class="btn" href="#demo" data-page="demo"
+           data-service="Google Ads">
           Get Started
         </a>
       </div>
     </div>
     <div class="notice">
       <strong>Ad spend is separate.</strong>
-      The $1,700 monthly fee covers advertising management.
-      The amount spent on ads is additional and chosen
+      The $1,700 monthly fee covers management;
+      the advertising budget is additional and chosen
       by the client. Results are not guaranteed.
     </div>
   </div>
-</div>
+</section>
 
 <!-- FREE DEMO FORM -->
-<div id="demo" class="page">
-  <section class="hero" style="padding:70px 15px 40px">
-    <div class="container">
-      <div class="kicker">Free Website Demo</div>
-      <h1>Tell Us About Your Dream Website.</h1>
-      <p class="lead">
-        Complete the questionnaire below.
-        We'll reach out to discuss your custom website demo.
+<section class="page" id="demo">
+  <div class="demo-layout">
+    <div class="demo-heading">
+      <div class="eyebrow">Free Website Demo</div>
+      <h2>Tell Us About Your Dream Website.</h2>
+      <p>
+        Fill out the form below. We'll reach out
+        to discuss your custom website demo.
       </p>
     </div>
-  </section>
 
-  <div class="container">
-    <form id="demoForm" class="formbox">
-
-      <h2>Your Business</h2>
-
+    <form class="demo-form" id="demoForm">
+      <h3>Your Business</h3>
       <div class="formgrid">
         <div class="field">
           <label for="businessName">Business Name *</label>
           <input id="businessName" name="business_name"
-                 required maxlength="120"
+                 maxlength="120" required
                  placeholder="Your business name">
         </div>
-
         <div class="field">
-          <label for="businessType">
-            What Type of Business Do You Have? *
-          </label>
+          <label for="businessType">Type of Business *</label>
           <select id="businessType" name="business_type" required>
-            <option value="">Select Business Type</option>
+            <option value="">Select business type</option>
             <option>Automotive / Detailing</option>
             <option>Construction / Contracting</option>
             <option>Landscaping</option>
@@ -570,15 +487,12 @@ footer {
                   placeholder="Tell us about your services."></textarea>
       </div>
 
-      <h2>Your Website Design</h2>
-
+      <h3>Your Website Design</h3>
       <div class="formgrid">
         <div class="field">
-          <label for="colorTheme">
-            What Color Theme Do You Want? *
-          </label>
+          <label for="colorTheme">Preferred Color Theme *</label>
           <select id="colorTheme" name="color_theme" required>
-            <option value="">Select Color Theme</option>
+            <option value="">Choose colors</option>
             <option>Black and Gold</option>
             <option>Black and Blue</option>
             <option>Black and White</option>
@@ -587,16 +501,13 @@ footer {
             <option>Plum and Orange</option>
             <option>Earth Tones</option>
             <option>Custom Colors</option>
-            <option>Not Sure - Help Me Choose</option>
+            <option>Help Me Choose</option>
           </select>
         </div>
-
         <div class="field">
-          <label for="websiteStyle">
-            What Style Do You Like? *
-          </label>
+          <label for="websiteStyle">Website Style *</label>
           <select id="websiteStyle" name="website_style" required>
-            <option value="">Select Website Style</option>
+            <option value="">Choose style</option>
             <option>Luxury / Premium</option>
             <option>Modern / Minimal</option>
             <option>Bold / High Energy</option>
@@ -608,17 +519,15 @@ footer {
       </div>
 
       <div class="field">
-        <label for="customColors">
-          Specific Colors or Websites You Like
+        <label for="inspiration">
+          Custom Colors or Example Websites
         </label>
-        <input id="customColors"
-               name="custom_colors_and_inspiration"
+        <input id="inspiration"
+               name="colors_and_inspiration"
                placeholder="Example: Navy blue and silver">
       </div>
 
-      <h2>Website Features</h2>
-      <p>What would you like your website to include?</p>
-
+      <h3>What Features Do You Want?</h3>
       <div class="checkgrid">
         <label class="check">
           <input type="checkbox" name="features"
@@ -662,20 +571,17 @@ footer {
         </label>
       </div>
 
-      <div class="field" style="margin-top:25px">
-        <label for="websiteVision">
+      <div class="field" style="margin-top:22px">
+        <label for="vision">
           Describe Your Dream Website *
         </label>
-        <textarea id="websiteVision"
-                  name="website_vision"
-                  required maxlength="2500"
-                  placeholder="Tell us about the colors, photos, pages, buttons, animations, and other features you want."></textarea>
+        <textarea id="vision" name="website_vision"
+                  maxlength="2500" required
+                  placeholder="Tell us about photos, pages, buttons, animations, and anything else you want."></textarea>
       </div>
 
       <div class="field">
-        <label for="service">
-          What Service Are You Interested In?
-        </label>
+        <label for="service">Service You're Interested In</label>
         <select id="service" name="service_interest">
           <option>Free Website Demo</option>
           <option>Simple Website</option>
@@ -687,30 +593,26 @@ footer {
         </select>
       </div>
 
-      <h2>How Can We Reach You?</h2>
-
+      <h3>How Can We Reach You?</h3>
       <div class="formgrid">
         <div class="field">
-          <label for="contactName">Full Name *</label>
-          <input id="contactName" name="full_name"
+          <label for="fullName">Full Name *</label>
+          <input id="fullName" name="full_name"
                  autocomplete="name" required>
         </div>
-
         <div class="field">
           <label for="contactEmail">Email Address *</label>
           <input id="contactEmail" name="email"
                  type="email" autocomplete="email"
                  required placeholder="you@example.com">
         </div>
-
         <div class="field">
-          <label for="contactPhone">Phone Number *</label>
-          <input id="contactPhone" name="phone"
+          <label for="phone">Phone Number *</label>
+          <input id="phone" name="phone"
                  type="tel" autocomplete="tel"
                  minlength="7" maxlength="30" required
                  placeholder="(555) 123-4567">
         </div>
-
         <div class="field">
           <label for="contactPreference">
             Preferred Contact Method
@@ -726,43 +628,39 @@ footer {
 
       <div class="notice">
         By submitting, you agree that VEXTRIVO
-        may contact you about your website or
-        marketing request. This is a demo request,
-        not a confirmed appointment.
+        may contact you about your request.
+        This is a demo request, not a confirmed appointment.
       </div>
 
       <input type="text" name="_honey"
              tabindex="-1" autocomplete="off"
-             style="position:absolute;left:-9999px"
-             aria-hidden="true">
+             aria-hidden="true"
+             style="position:absolute;left:-9999px">
 
-      <button id="submitDemo" type="submit" class="btn">
+      <button id="submitDemo" class="btn" type="submit">
         Send My Free Demo Request
       </button>
-
       <p id="formStatus" class="status" role="status"></p>
     </form>
   </div>
-</div>
+</section>
 
 <!-- WEBSITE STUDIO -->
-<div id="studio" class="page">
+<section class="page" id="studio">
   <div class="container section">
-    <div class="kicker">VEXTRIVO Studio</div>
+    <div class="eyebrow">VEXTRIVO Studio</div>
     <h2>Website Creation Studio</h2>
     <p>
       Customize a starter website, preview it,
       edit the HTML, and download your template.
     </p>
 
-    <div class="studio">
-      <aside>
+    <div class="studio-shell">
+      <aside class="studio-sidebar">
         <h2>Build Your Website</h2>
         <p>Customize your website template.</p>
 
-        <label for="studioPrompt">
-          Website Description
-        </label>
+        <label for="studioPrompt">Website Description</label>
         <textarea id="studioPrompt"
                   placeholder="Describe the website you want"></textarea>
 
@@ -775,29 +673,38 @@ footer {
 
         <label for="studioColor">Accent Color</label>
         <input id="studioColor" type="color"
-               value="#4b7cff"
+               value="#4d7cff"
                style="height:50px;padding:5px">
 
         <button id="generateSite" class="btn"
                 style="width:100%;margin-top:20px">
           Generate Website Template
         </button>
+
         <p style="font-size:13px">
-          This studio uses a customizable template,
-          not an AI website-generation service.
+          This is a customizable template generator,
+          not an AI website builder.
         </p>
+
+        <a href="#demo" data-page="demo"
+           class="btn alt"
+           style="margin-top:15px;width:100%">
+          Request a Free Demo
+        </a>
       </aside>
 
-      <main>
+      <div class="studio-main">
         <div class="toolbar">
           <button id="desktopBtn" type="button">Desktop</button>
           <button id="mobileBtn" type="button">Mobile</button>
           <button id="editorBtn" type="button">Code Editor</button>
           <button id="applyBtn" type="button">Apply Code</button>
-          <button id="downloadBtn" type="button">Download HTML</button>
+          <button id="downloadBtn" type="button">
+            Download HTML
+          </button>
         </div>
 
-        <div id="previewBox" class="preview">
+        <div class="preview" id="previewBox">
           <iframe id="siteFrame"
                   title="Website Preview"
                   sandbox="allow-scripts"></iframe>
@@ -806,10 +713,10 @@ footer {
         <textarea id="codeEditor"
                   spellcheck="false"
                   aria-label="Website HTML Code"></textarea>
-      </main>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <footer>
   © <span id="year"></span> VEXTRIVO.
@@ -819,65 +726,59 @@ footer {
 <script>
 'use strict';
 
-// Booking requests go to this email.
 const BOOKING_EMAIL = 'nkarpo49@gmail.com';
+const $ = id => document.getElementById(id);
+const pages = ['home','marketing','demo','studio'];
 
-const pages = ['home', 'marketing', 'demo', 'studio'];
-const el = id => document.getElementById(id);
-
-// Website navigation
-function navigate(page, scroll) {
+function navigate(page,scroll) {
   if (!pages.includes(page)) page = 'home';
 
   pages.forEach(id => {
-    el(id).classList.toggle('active', id === page);
+    $(id).classList.toggle('active',id===page);
   });
 
   history.replaceState(
-    null, '',
-    '#' + (scroll || page)
+    null,'','#'+(scroll||page)
   );
 
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
 
   if (scroll) {
-    setTimeout(() => {
-      el(scroll)?.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }, 60);
+    requestAnimationFrame(() => {
+      $(scroll)?.scrollIntoView({behavior:'smooth'});
+    });
   }
 }
 
 document.querySelectorAll('[data-page]').forEach(link => {
-  link.addEventListener('click', event => {
-    event.preventDefault();
+  link.addEventListener('click',e => {
+    e.preventDefault();
 
     if (link.dataset.service) {
-      el('service').value = link.dataset.service;
+      $('service').value = link.dataset.service;
     }
 
-    navigate(link.dataset.page, link.dataset.scroll);
+    navigate(link.dataset.page,link.dataset.scroll);
   });
 });
 
-const hash = location.hash.slice(1);
-if (pages.includes(hash)) {
-  navigate(hash);
-} else if (hash === 'pricing') {
-  navigate('home', 'pricing');
+$('year').textContent = new Date().getFullYear();
+
+const initial = location.hash.slice(1);
+
+if (pages.includes(initial)) {
+  navigate(initial);
+} else if (initial === 'pricing') {
+  navigate('home','pricing');
 }
 
-el('year').textContent = new Date().getFullYear();
+// FormSubmit email submission
+$('demoForm').addEventListener('submit',async e => {
+  e.preventDefault();
 
-// FREE DEMO FORM
-// Uses FormSubmit. First-time email activation is required.
-el('demoForm').addEventListener('submit', async event => {
-  event.preventDefault();
-
-  const form = el('demoForm');
-  const button = el('submitDemo');
-  const status = el('formStatus');
+  const form = $('demoForm');
+  const button = $('submitDemo');
+  const status = $('formStatus');
 
   if (!form.reportValidity()) return;
 
@@ -885,11 +786,12 @@ el('demoForm').addEventListener('submit', async event => {
 
   data.set(
     '_subject',
-    'New VEXTRIVO Free Demo Request - ' +
+    'New VEXTRIVO Demo Request - ' +
     data.get('business_name')
   );
-  data.set('_captcha', 'true');
-  data.set('_template', 'table');
+
+  data.set('_captcha','true');
+  data.set('_template','table');
 
   button.disabled = true;
   button.textContent = 'Sending Request...';
@@ -899,9 +801,9 @@ el('demoForm').addEventListener('submit', async event => {
     const response = await fetch(
       'https://formsubmit.co/ajax/' + BOOKING_EMAIL,
       {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' }
+        method:'POST',
+        body:data,
+        headers:{Accept:'application/json'}
       }
     );
 
@@ -912,52 +814,51 @@ el('demoForm').addEventListener('submit', async event => {
       result.success === false ||
       result.success === 'false'
     ) {
-      throw new Error(
-        result.message || 'Unable to submit request'
-      );
+      throw Error(result.message || 'Request failed');
     }
 
     status.textContent =
-      'Your request has been submitted! ' +
-      'We will reach out to you soon.';
+      'Request submitted. If this is the first submission, ' +
+      'the recipient must activate FormSubmit by email ' +
+      'before requests can be delivered.';
 
     form.reset();
 
-  } catch (error) {
+  } catch(error) {
     status.textContent =
-      'There was a problem submitting your request. ' +
-      'Please email ' + BOOKING_EMAIL + ' directly.';
+      'Submission failed. Please email ' +
+      BOOKING_EMAIL + ' directly.';
   } finally {
     button.disabled = false;
     button.textContent = 'Send My Free Demo Request';
   }
 });
 
-// WEBSITE STUDIO
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;'
-  }[char]));
+// Safe text for generated HTML
+function esc(value) {
+  return String(value).replace(/[&<>"']/g,c => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[c]));
 }
 
 let generated = '';
 
 function makeTemplate() {
-  const name = escapeHTML(
-    el('studioName').value || 'Your Business'
+  const name = esc(
+    $('studioName').value || 'Your Business'
   );
-  const headline = escapeHTML(
-    el('studioHeadline').value || 'Welcome'
+  const headline = esc(
+    $('studioHeadline').value || 'Welcome'
   );
-  const description = escapeHTML(
-    el('studioPrompt').value ||
+  const description = esc(
+    $('studioPrompt').value ||
     'Professional services tailored to your needs.'
   );
-  const color = el('studioColor').value;
+  const color = $('studioColor').value;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -969,8 +870,8 @@ function makeTemplate() {
 *{box-sizing:border-box}
 body{
   margin:0;
-  background:#0b0e16;
-  color:white;
+  background:#0b1020;
+  color:#fff;
   font-family:Arial,sans-serif;
 }
 header{
@@ -978,11 +879,12 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  background:#0d1425;
 }
 nav{display:flex;gap:20px}
 a{color:inherit;text-decoration:none}
 .hero{
-  padding:110px 7%;
+  padding:100px 7%;
   background:radial-gradient(
     circle at 80% 20%,
     ${color}44,
@@ -990,10 +892,10 @@ a{color:inherit;text-decoration:none}
   ),#101725;
 }
 .hero h1{
-  font-size:clamp(40px,6vw,75px);
+  font-size:clamp(36px,6vw,72px);
   max-width:800px;
 }
-.hero p{color:#bbc5d7;line-height:1.7}
+.hero p{color:#c2cce0;line-height:1.7}
 .button{
   display:inline-block;
   padding:15px 25px;
@@ -1001,7 +903,7 @@ a{color:inherit;text-decoration:none}
   border-radius:9px;
   margin-top:20px;
 }
-section.content{padding:70px 7%}
+section{padding:70px 7%}
 .cards{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -1009,7 +911,7 @@ section.content{padding:70px 7%}
 }
 .card{
   padding:25px;
-  background:#182033;
+  background:#1b2940;
   border-radius:14px;
 }
 footer{
@@ -1037,7 +939,7 @@ footer{
   <p>${description}</p>
   <a class="button" href="#contact">Get in Touch</a>
 </div>
-<section class="content" id="services">
+<section id="services">
   <h2>Our Services</h2>
   <div class="cards">
     <div class="card"><h3>Quality Work</h3></div>
@@ -1045,11 +947,11 @@ footer{
     <div class="card"><h3>Reliable Support</h3></div>
   </div>
 </section>
-<section class="content" id="about">
+<section id="about">
   <h2>About Us</h2>
   <p>${description}</p>
 </section>
-<section class="content" id="contact">
+<section id="contact">
   <h2>Contact Us</h2>
   <p>Add your contact information here.</p>
 </section>
@@ -1059,57 +961,58 @@ footer{
 }
 
 function updatePreview() {
-  el('siteFrame').srcdoc = generated;
-  el('codeEditor').value = generated;
+  $('siteFrame').srcdoc = generated;
+  $('codeEditor').value = generated;
 }
 
-el('generateSite').addEventListener('click', () => {
+$('generateSite').addEventListener('click',() => {
   generated = makeTemplate();
   updatePreview();
-  el('previewBox').style.display = 'block';
-  el('codeEditor').style.display = 'none';
+  $('previewBox').style.display = 'block';
+  $('codeEditor').style.display = 'none';
 });
 
-el('desktopBtn').addEventListener('click', () => {
-  el('previewBox').style.display = 'block';
-  el('codeEditor').style.display = 'none';
-  el('siteFrame').style.width = '100%';
+$('desktopBtn').addEventListener('click',() => {
+  $('previewBox').style.display = 'block';
+  $('codeEditor').style.display = 'none';
+  $('siteFrame').style.width = '100%';
 });
 
-el('mobileBtn').addEventListener('click', () => {
-  el('previewBox').style.display = 'block';
-  el('codeEditor').style.display = 'none';
-  el('siteFrame').style.width = 'min(375px,100%)';
+$('mobileBtn').addEventListener('click',() => {
+  $('previewBox').style.display = 'block';
+  $('codeEditor').style.display = 'none';
+  $('siteFrame').style.width = 'min(375px,100%)';
 });
 
-el('editorBtn').addEventListener('click', () => {
-  el('previewBox').style.display = 'none';
-  el('codeEditor').style.display = 'block';
+$('editorBtn').addEventListener('click',() => {
+  $('previewBox').style.display = 'none';
+  $('codeEditor').style.display = 'block';
 });
 
-el('applyBtn').addEventListener('click', () => {
-  generated = el('codeEditor').value;
+$('applyBtn').addEventListener('click',() => {
+  generated = $('codeEditor').value;
   updatePreview();
-  el('previewBox').style.display = 'block';
-  el('codeEditor').style.display = 'none';
+  $('previewBox').style.display = 'block';
+  $('codeEditor').style.display = 'none';
 });
 
-el('downloadBtn').addEventListener('click', () => {
+$('downloadBtn').addEventListener('click',() => {
   const blob = new Blob(
     [generated],
-    { type: 'text/html' }
+    {type:'text/html'}
   );
 
   const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
+  const a = document.createElement('a');
 
-  link.href = url;
-  link.download = 'website-demo.html';
-  link.click();
+  a.href = url;
+  a.download = 'website-demo.html';
+  a.click();
 
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setTimeout(() => URL.revokeObjectURL(url),1000);
 });
 
+// Show a dark starter website immediately
 generated = makeTemplate();
 updatePreview();
 </script>
