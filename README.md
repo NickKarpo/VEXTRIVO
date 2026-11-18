@@ -1,831 +1,1117 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VEXTRIVO | Websites & Marketing</title>
 <style>
 :root {
-  --bg:#080b14;
-  --panel:#111a2d;
-  --line:#293550;
-  --text:#f4f7ff;
-  --muted:#a9b7d1;
-  --blue:#668aff;
+  --bg: #080b15;
+  --panel: #111a2c;
+  --panel2: #1b2942;
+  --border: #30405e;
+  --blue: #4b7cff;
+  --white: #f5f7ff;
+  --muted: #acb9d0;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--white);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
 }
-a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.wrap{max-width:1160px;margin:auto;padding:0 22px}
-header{
-  position:sticky;
-  top:0;
-  background:#080b14ed;
-  border-bottom:1px solid var(--line);
-  z-index:10;
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+.container {
+  width: min(1150px, 92%);
+  margin: auto;
 }
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  padding:15px 0;
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #080b15f5;
+  border-bottom: 1px solid var(--border);
 }
-.logo{font-size:24px;font-weight:900;letter-spacing:2px}
-.logo span{color:var(--blue)}
-nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
-nav a:hover{color:var(--blue)}
-.btn{
-  display:inline-block;
-  background:var(--blue);
-  border:0;
-  border-radius:11px;
-  padding:13px 19px;
-  color:#081127;
-  font-weight:800;
-  text-align:center;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 16px 0;
 }
-.btn:hover{filter:brightness(1.12)}
-.btn.alt{background:#202d49;color:#fff}
-.hero{
-  padding:110px 0 95px;
-  text-align:center;
-  background:radial-gradient(circle at 50% 0,#213b794f,transparent 60%);
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
-.eyebrow{
-  color:#9ab1ff;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:2px;
-  text-transform:uppercase;
+.logo span { color: var(--blue); }
+nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
 }
-h1{
-  font-size:clamp(42px,6.4vw,76px);
-  line-height:1.08;
-  margin:16px auto;
-  max-width:950px;
+nav a:hover { color: var(--blue); }
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+  padding: 14px 22px;
+  text-align: center;
+  transition: .2s;
 }
-h2{font-size:clamp(29px,4vw,44px);line-height:1.2}
-h3{font-size:23px;margin:10px 0}
-p{color:var(--muted)}
-.hero p{max-width:670px;margin:20px auto 28px;font-size:19px}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.section{padding:75px 0}
-.center{text-align:center}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
+.btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
 }
-.card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:25px;
+.btn.secondary { background: #263550; }
+.page { display: none; }
+.page.active { display: block; }
+.hero {
+  text-align: center;
+  padding: 105px 20px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    #294b9566,
+    transparent 65%
+  );
 }
-.card.featured{border-color:var(--blue)}
-.price{font-size:40px;font-weight:900;margin:12px 0}
-.price small{font-size:15px;font-weight:400;color:var(--muted)}
-ul{padding-left:20px;color:#c8d2e5;line-height:2}
-.card .btn{margin-top:12px}
-.tag{
-  display:inline-block;
-  border-radius:99px;
-  background:#21365d;
-  color:#c2d1ff;
-  padding:5px 12px;
-  font-size:12px;
-  font-weight:700;
+.kicker {
+  color: #9bb7ff;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
-.page{display:none}
-.page.active{display:block}
-.form{
-  max-width:820px;
-  margin:30px auto;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:30px;
+h1 {
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 1.1;
+  max-width: 950px;
+  margin: 20px auto;
 }
-.fields{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
+h2 { font-size: clamp(28px, 4vw, 42px); }
+h3 { font-size: 23px; }
+p { color: var(--muted); }
+.lead {
+  max-width: 720px;
+  margin: 20px auto 30px;
+  font-size: 19px;
 }
-label{
-  display:block;
-  margin:14px 0 6px;
-  color:#dce5f6;
-  font-size:14px;
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
-input,select,textarea{
-  width:100%;
-  padding:13px;
-  background:#1c2941;
-  border:1px solid #465776;
-  border-radius:9px;
-  color:white;
+.section { padding: 75px 0; }
+.center { text-align: center; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 35px;
 }
-textarea{min-height:110px;resize:vertical}
-input:focus,select:focus,textarea:focus{
-  outline:2px solid var(--blue);
+.card {
+  background: linear-gradient(145deg, #18243d, #101827);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
 }
-.note{
-  background:#17243a;
-  border:1px solid #34486b;
-  padding:17px;
-  border-radius:12px;
-  margin:20px 0;
+.card.featured { border-color: var(--blue); }
+.price {
+  font-size: 39px;
+  font-weight: 900;
+  margin: 15px 0;
 }
-footer{
-  border-top:1px solid var(--line);
-  text-align:center;
-  padding:28px;
-  color:var(--muted);
+.price small {
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: normal;
 }
-.status{min-height:25px;color:#a9c2ff}
-.calendar{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:5px;
-  margin:14px 0;
+.card ul {
+  padding-left: 20px;
+  color: #d4def0;
+  line-height: 2;
 }
-.dayname{
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
+.card .btn { margin-top: 12px; }
+.banner {
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 35px;
 }
-.day{
-  background:#1d2a43;
-  border:1px solid #344767;
-  color:#fff;
-  border-radius:8px;
-  min-height:43px;
+.formbox {
+  max-width: 900px;
+  margin: 30px auto 75px;
+  padding: 32px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
 }
-.day:disabled{opacity:.25;cursor:not-allowed}
-.day.selected{background:var(--blue);color:#071024}
-.monthbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
+.formgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 17px;
 }
-.monthbar button{
-  background:#22304b;
-  color:white;
-  border:0;
-  border-radius:8px;
-  padding:7px 12px;
+.field { margin-bottom: 18px; }
+.field label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+  font-size: 14px;
 }
-.monthbar button:disabled{opacity:.35;cursor:not-allowed}
-.two{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
-  align-items:start;
+.field input,
+.field select,
+.field textarea,
+.studio input,
+.studio textarea {
+  width: 100%;
+  background: var(--panel2);
+  border: 1px solid #455779;
+  border-radius: 10px;
+  color: white;
+  padding: 13px;
 }
-@media(max-width:820px){
-  .grid,.two{grid-template-columns:1fr}
-  .nav{flex-wrap:wrap}
-  nav{order:3;width:100%;gap:14px}
-  .fields{grid-template-columns:1fr}
-  .hero{padding:75px 0}
-  .form{padding:20px}
+.field textarea { min-height: 130px; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--blue);
+}
+.checkgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.check {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-weight: normal !important;
+}
+.check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue);
+}
+.notice {
+  background: #1b2942;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 17px;
+  color: #c9d6ee;
+  margin: 20px 0;
+}
+.status {
+  min-height: 25px;
+  color: #9ae6c2;
+}
+.studio {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 30px 0 65px;
+}
+.studio aside {
+  background: #101827;
+  padding: 24px;
+  border-right: 1px solid var(--border);
+}
+.studio label {
+  display: block;
+  margin: 15px 0 6px;
+}
+.studio textarea { min-height: 130px; }
+.studio main {
+  min-width: 0;
+  background: #111827;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 13px;
+  border-bottom: 1px solid var(--border);
+}
+.toolbar button {
+  background: #293753;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.toolbar button:hover { background: var(--blue); }
+.preview { padding: 15px; overflow: auto; }
+iframe {
+  display: block;
+  width: 100%;
+  height: 580px;
+  margin: auto;
+  background: white;
+  border: none;
+}
+#codeEditor {
+  display: none;
+  width: 100%;
+  height: 610px;
+  border: none;
+  border-radius: 0;
+  background: #0a1020;
+  color: #e3edff;
+  padding: 18px;
+  font: 13px/1.5 monospace;
+}
+footer {
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding: 30px;
+  color: var(--muted);
+}
+@media (max-width: 850px) {
+  .grid, .formgrid, .studio {
+    grid-template-columns: 1fr;
+  }
+  .studio aside {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav { justify-content: center; }
+  .hero { padding: 75px 15px; }
+}
+@media (max-width: 520px) {
+  .checkgrid { grid-template-columns: 1fr; }
+  .formbox { padding: 20px; }
+  nav { justify-content: center; gap: 12px; }
 }
 </style>
 </head>
-
 <body>
+
 <header>
-  <div class="wrap nav">
+  <div class="container nav">
     <a class="logo" href="#home" data-page="home">
       VEX<span>TRIVO</span>
     </a>
     <nav>
       <a href="#home" data-page="home">Home</a>
-      <a href="#pricing" data-page="home" data-scroll="pricing">
-        Pricing
-      </a>
+      <a href="#pricing" data-page="home"
+         data-scroll="pricing">Pricing</a>
       <a href="#marketing" data-page="marketing">Marketing</a>
-      <a href="#book" data-page="book">Book Demo</a>
+      <a href="#studio" data-page="studio">Website Studio</a>
+      <a href="#demo" data-page="demo">Free Demo</a>
     </nav>
-    <a class="btn" href="#book" data-page="book">
+    <a href="#demo" data-page="demo" class="btn">
       Book Free Demo
     </a>
   </div>
 </header>
 
-<main>
-  <!-- HOME PAGE -->
-  <section id="home" class="page active">
-    <div class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Websites built for your business</div>
-        <h1>Get a custom website demo built around your vision.</h1>
-        <p>
-          Tell us about your business, the features you need,
-          and the look you want. We'll discuss your project
-          and prepare a personalized website demo.
-        </p>
-        <div class="actions">
-          <a class="btn" href="#book" data-page="book">
-            Book Your Free Demo
-          </a>
-          <a class="btn alt" href="#marketing" data-page="marketing">
-            Explore Marketing
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="wrap">
-      <section class="section">
-        <div class="center">
-          <div class="eyebrow">How it works</div>
-          <h2>From your idea to a custom demo</h2>
-        </div>
-        <div class="grid">
-          <div class="card">
-            <span class="tag">Step 1</span>
-            <h3>Tell us about your business</h3>
-            <p>
-              Share your industry, current website,
-              and what you'd like to improve.
-            </p>
-          </div>
-          <div class="card">
-            <span class="tag">Step 2</span>
-            <h3>Request a meeting</h3>
-            <p>
-              Choose a preferred date and time and tell
-              us which features matter most.
-            </p>
-          </div>
-          <div class="card">
-            <span class="tag">Step 3</span>
-            <h3>Review your demo</h3>
-            <p>
-              We'll discuss your vision and the next
-              steps for creating your website demo.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- WEBSITE PRICING -->
-      <section id="pricing" class="section">
-        <div class="center">
-          <div class="eyebrow">Pricing</div>
-          <h2>Start with a free website demo</h2>
-        </div>
-
-        <div class="grid">
-          <div class="card featured">
-            <span class="tag">No upfront cost to request</span>
-            <h3>Free Demo Consultation</h3>
-            <div class="price">$0</div>
-            <p>
-              Discuss your website idea with us before
-              committing to a build.
-            </p>
-            <ul>
-              <li>Website goals discussion</li>
-              <li>Design and feature preferences</li>
-              <li>Preferred meeting date and time</li>
-              <li>Custom demo planning</li>
-            </ul>
-            <a class="btn" href="#book" data-page="book">
-              Book Free Demo
-            </a>
-          </div>
-
-          <div class="card">
-            <h3>Simple Website</h3>
-            <div class="price">
-              $1,000 <small>starting price</small>
-            </div>
-            <p>A straightforward professional business website.</p>
-            <ul>
-              <li>Responsive layout</li>
-              <li>Service and contact sections</li>
-              <li>Custom branding</li>
-            </ul>
-            <a class="btn alt" href="#book" data-page="book"
-               data-plan="Simple Website">
-              Discuss This Website
-            </a>
-          </div>
-
-          <div class="card">
-            <h3>Advanced Website</h3>
-            <div class="price">
-              $2,000 <small>starting price</small>
-            </div>
-            <p>For more advanced designs, pages, and functionality.</p>
-            <ul>
-              <li>Custom interactive features</li>
-              <li>Multiple pages or sections</li>
-              <li>Project-specific integrations</li>
-            </ul>
-            <a class="btn alt" href="#book" data-page="book"
-               data-plan="Advanced Website">
-              Discuss This Website
-            </a>
-          </div>
-        </div>
-
-        <p class="center">
-          Final website pricing depends on the requested scope.
-          The free demo consultation is not a promise of a
-          completed website at no charge.
-        </p>
-      </section>
-
-      <section class="section center">
-        <h2>Ready to see what's possible?</h2>
-        <p>
-          Request a meeting and tell us what you want
-          your website to do.
-        </p>
-        <a class="btn" href="#book" data-page="book">
-          Book a Free Demo Meeting
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+  <section class="hero">
+    <div class="container">
+      <div class="kicker">Custom Websites & Digital Marketing</div>
+      <h1>Your Business Deserves a Website That Stands Out.</h1>
+      <p class="lead">
+        We build professional websites tailored to your business.
+        Tell us your vision, your preferred colors, and the
+        features you need.
+      </p>
+      <div class="actions">
+        <a href="#demo" data-page="demo" class="btn">
+          Get My Free Website Demo
         </a>
-      </section>
+        <a href="#studio" data-page="studio"
+           class="btn secondary">
+          Explore Website Studio
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- MARKETING PAGE -->
-  <section id="marketing" class="page">
-    <div class="hero">
-      <div class="wrap">
-        <div class="eyebrow">VEXTRIVO Marketing</div>
-        <h1>
-          Websites that look great.
-          Marketing that helps you grow.
-        </h1>
-        <p>
-          Explore organic social media marketing,
-          Meta Ads, and Google Ads management for your business.
-        </p>
-        <div class="actions">
-          <a class="btn" href="#book" data-page="book"
-             data-plan="Marketing Consultation">
-            Request Marketing Meeting
+  <div class="container">
+    <section class="section">
+      <div class="center">
+        <div class="kicker">Our Process</div>
+        <h2>From Idea to Launch</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>01. Tell Us Your Vision</h3>
+          <p>
+            Describe your business, colors,
+            style, and website features.
+          </p>
+        </div>
+        <div class="card">
+          <h3>02. Review Your Needs</h3>
+          <p>
+            We contact you to discuss your custom
+            website demo and project goals.
+          </p>
+        </div>
+        <div class="card">
+          <h3>03. Build & Grow</h3>
+          <p>
+            Choose the right website and
+            marketing services for your business.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="center">
+        <div class="kicker">Website Pricing</div>
+        <h2>Professional Websites for Every Business</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card featured">
+          <h3>Free Demo Request</h3>
+          <div class="price">$0</div>
+          <p>
+            Tell us what you need and request
+            a free website demo consultation.
+          </p>
+          <ul>
+            <li>Business questionnaire</li>
+            <li>Design preferences</li>
+            <li>Feature requests</li>
+          </ul>
+          <a href="#demo" data-page="demo" class="btn">
+            Request Free Demo
           </a>
-          <a class="btn alt" href="#marketing-pricing">
-            See Marketing Prices
+        </div>
+
+        <div class="card">
+          <h3>Simple Website</h3>
+          <div class="price">
+            $1,000 <small>starting at</small>
+          </div>
+          <p>
+            A professional mobile-friendly website
+            for your business.
+          </p>
+          <ul>
+            <li>Responsive design</li>
+            <li>Services and contact information</li>
+            <li>Custom branding</li>
+          </ul>
+          <a href="#demo" data-page="demo"
+             data-service="Simple Website"
+             class="btn secondary">
+            Request a Quote
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>Advanced Website</h3>
+          <div class="price">
+            $2,000 <small>starting at</small>
+          </div>
+          <p>
+            More advanced designs, pages,
+            and interactive functionality.
+          </p>
+          <ul>
+            <li>Advanced custom design</li>
+            <li>Interactive features</li>
+            <li>Custom integrations</li>
+          </ul>
+          <a href="#demo" data-page="demo"
+             data-service="Advanced Website"
+             class="btn secondary">
+            Request a Quote
           </a>
         </div>
       </div>
-    </div>
+      <p class="center">
+        Final pricing depends on project requirements.
+      </p>
+    </section>
 
-    <div class="wrap">
-      <section id="marketing-pricing" class="section">
-        <div class="center">
-          <div class="eyebrow">Marketing services</div>
-          <h2>Choose how you want to grow</h2>
-        </div>
+    <section class="section">
+      <div class="banner">
+        <h2>Ready for Your Custom Website?</h2>
+        <p>Tell us about your business and request a free demo.</p>
+        <a href="#demo" data-page="demo" class="btn">
+          Book Your Free Demo
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
 
-        <div class="grid">
-          <div class="card">
-            <h3>Organic Marketing</h3>
-            <div class="price">$500 <small>/month</small></div>
-            <p>
-              Organic content and social media strategy
-              to strengthen your brand.
-            </p>
-            <ul>
-              <li>Content strategy</li>
-              <li>Social media support</li>
-              <li>Organic visibility</li>
-            </ul>
-            <a class="btn" href="#book" data-page="book"
-               data-plan="Organic Marketing">
-              Discuss Organic Marketing
-            </a>
-          </div>
-
-          <div class="card featured">
-            <h3>Meta Ads</h3>
-            <div class="price">$1,700 <small>/month</small></div>
-            <p>
-              Facebook and Instagram advertising management,
-              plus ad spend.
-            </p>
-            <ul>
-              <li>Campaign strategy</li>
-              <li>Audience targeting</li>
-              <li>Management and optimization</li>
-            </ul>
-            <a class="btn" href="#book" data-page="book"
-               data-plan="Meta Ads">
-              Discuss Meta Ads
-            </a>
-          </div>
-
-          <div class="card">
-            <h3>Google Ads</h3>
-            <div class="price">$1,700 <small>/month</small></div>
-            <p>
-              Google advertising management,
-              plus ad spend.
-            </p>
-            <ul>
-              <li>Keyword strategy</li>
-              <li>Search campaigns</li>
-              <li>Management and optimization</li>
-            </ul>
-            <a class="btn" href="#book" data-page="book"
-               data-plan="Google Ads">
-              Discuss Google Ads
-            </a>
-          </div>
-        </div>
-
-        <div class="note">
-          <strong>Ad spend is separate.</strong>
-          <p>
-            The $1,700 monthly management fee does not
-            include the amount paid to Meta or Google
-            to run ads. You choose that additional
-            advertising budget. Results are not guaranteed.
-          </p>
-        </div>
-      </section>
+<!-- MARKETING PAGE -->
+<div id="marketing" class="page">
+  <section class="hero">
+    <div class="container">
+      <div class="kicker">VEXTRIVO Marketing</div>
+      <h1>More Visibility. More Opportunities.</h1>
+      <p class="lead">
+        Organic marketing, Meta Ads, and Google Ads
+        management for growing businesses.
+      </p>
+      <a href="#demo" data-page="demo"
+         data-service="Marketing Consultation"
+         class="btn">
+        Discuss Marketing
+      </a>
     </div>
   </section>
 
-  <!-- FREE DEMO BOOKING PAGE -->
-  <section id="book" class="page">
-    <div class="wrap">
-      <section class="section">
-        <div class="center">
-          <div class="eyebrow">Free demo meeting</div>
-          <h2>Tell us about your business</h2>
-          <p>
-            Choose a preferred meeting time and describe
-            the website you want us to demo.
-          </p>
+  <div class="container section">
+    <div class="grid">
+      <div class="card">
+        <h3>Organic Marketing</h3>
+        <div class="price">$500 <small>/month</small></div>
+        <p>Content strategy and social media support.</p>
+        <a href="#demo" data-page="demo"
+           data-service="Organic Marketing" class="btn">
+          Get Started
+        </a>
+      </div>
+      <div class="card featured">
+        <h3>Meta Ads</h3>
+        <div class="price">$1,700 <small>/month</small></div>
+        <p>Facebook and Instagram ad management.</p>
+        <a href="#demo" data-page="demo"
+           data-service="Meta Ads" class="btn">
+          Get Started
+        </a>
+      </div>
+      <div class="card">
+        <h3>Google Ads</h3>
+        <div class="price">$1,700 <small>/month</small></div>
+        <p>Google advertising campaign management.</p>
+        <a href="#demo" data-page="demo"
+           data-service="Google Ads" class="btn">
+          Get Started
+        </a>
+      </div>
+    </div>
+    <div class="notice">
+      <strong>Ad spend is separate.</strong>
+      The $1,700 monthly fee covers advertising management.
+      The amount spent on ads is additional and chosen
+      by the client. Results are not guaranteed.
+    </div>
+  </div>
+</div>
+
+<!-- FREE DEMO FORM -->
+<div id="demo" class="page">
+  <section class="hero" style="padding:70px 15px 40px">
+    <div class="container">
+      <div class="kicker">Free Website Demo</div>
+      <h1>Tell Us About Your Dream Website.</h1>
+      <p class="lead">
+        Complete the questionnaire below.
+        We'll reach out to discuss your custom website demo.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <form id="demoForm" class="formbox">
+
+      <h2>Your Business</h2>
+
+      <div class="formgrid">
+        <div class="field">
+          <label for="businessName">Business Name *</label>
+          <input id="businessName" name="business_name"
+                 required maxlength="120"
+                 placeholder="Your business name">
         </div>
 
-        <form id="bookingForm" class="form">
-          <div class="fields">
-            <div>
-              <label for="fullName">Your name *</label>
-              <input id="fullName" name="fullName"
-                     autocomplete="name" required>
-            </div>
-            <div>
-              <label for="email">Email *</label>
-              <input id="email" name="email"
-                     type="email" autocomplete="email" required>
-            </div>
-            <div>
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone"
-                     type="tel" autocomplete="tel">
-            </div>
-            <div>
-              <label for="business">Business name *</label>
-              <input id="business" name="business" required>
-            </div>
-            <div>
-              <label for="industry">Business type *</label>
-              <select id="industry" name="industry" required>
-                <option value="">Select your industry</option>
-                <option>Automotive</option>
-                <option>Construction / Trades</option>
-                <option>Landscaping</option>
-                <option>Restaurant</option>
-                <option>Clothing / E-commerce</option>
-                <option>Real Estate</option>
-                <option>Health / Fitness</option>
-                <option>Professional Services</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div>
-              <label for="service">
-                What are you interested in? *
-              </label>
-              <select id="service" name="service" required>
-                <option>Free Website Demo</option>
-                <option>Simple Website</option>
-                <option>Advanced Website</option>
-                <option>Marketing Consultation</option>
-                <option>Organic Marketing</option>
-                <option>Meta Ads</option>
-                <option>Google Ads</option>
-              </select>
-            </div>
-          </div>
-
-          <label for="website">Current website (optional)</label>
-          <input id="website" name="website" type="url"
-                 placeholder="https://yourbusiness.com">
-
-          <label for="vision">
-            What should your website look like and do? *
+        <div class="field">
+          <label for="businessType">
+            What Type of Business Do You Have? *
           </label>
-          <textarea id="vision" name="vision" required
-            placeholder="Example: A luxury black-and-gold website with photos, services, customer reviews, online booking, and a contact form."></textarea>
+          <select id="businessType" name="business_type" required>
+            <option value="">Select Business Type</option>
+            <option>Automotive / Detailing</option>
+            <option>Construction / Contracting</option>
+            <option>Landscaping</option>
+            <option>Restaurant</option>
+            <option>Clothing / E-commerce</option>
+            <option>Real Estate</option>
+            <option>Beauty / Tattoo / Barber</option>
+            <option>Health / Fitness</option>
+            <option>Professional Services</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
 
-          <div class="two">
-            <div>
-              <label>Preferred meeting date *</label>
-              <div class="monthbar">
-                <button id="prevMonth" type="button"
-                        aria-label="Previous month">‹</button>
-                <strong id="monthLabel"></strong>
-                <button id="nextMonth" type="button"
-                        aria-label="Next month">›</button>
-              </div>
-              <div class="calendar" id="calendar"
-                   aria-label="Choose a preferred date"></div>
-              <input id="meetingDate" name="meetingDate"
-                     type="hidden" required>
-              <p id="dateDisplay" class="status">
-                Select a date.
-              </p>
-            </div>
+      <div class="field">
+        <label for="businessDescription">
+          What Does Your Business Do?
+        </label>
+        <textarea id="businessDescription"
+                  name="business_description"
+                  placeholder="Tell us about your services."></textarea>
+      </div>
 
-            <div>
-              <label for="meetingTime">
-                Preferred meeting time *
-              </label>
-              <select id="meetingTime" name="meetingTime" required>
-                <option value="">Choose a time</option>
-                <option>9:00 AM</option>
-                <option>10:00 AM</option>
-                <option>11:00 AM</option>
-                <option>12:00 PM</option>
-                <option>1:00 PM</option>
-                <option>2:00 PM</option>
-                <option>3:00 PM</option>
-                <option>4:00 PM</option>
-                <option>5:00 PM</option>
-              </select>
+      <h2>Your Website Design</h2>
 
-              <label for="timezone">Your time zone *</label>
-              <select id="timezone" name="timezone" required>
-                <option>Mountain Time</option>
-                <option>Pacific Time</option>
-                <option>Central Time</option>
-                <option>Eastern Time</option>
-                <option>Other (mention in notes)</option>
-              </select>
+      <div class="formgrid">
+        <div class="field">
+          <label for="colorTheme">
+            What Color Theme Do You Want? *
+          </label>
+          <select id="colorTheme" name="color_theme" required>
+            <option value="">Select Color Theme</option>
+            <option>Black and Gold</option>
+            <option>Black and Blue</option>
+            <option>Black and White</option>
+            <option>White and Blue</option>
+            <option>White and Green</option>
+            <option>Plum and Orange</option>
+            <option>Earth Tones</option>
+            <option>Custom Colors</option>
+            <option>Not Sure - Help Me Choose</option>
+          </select>
+        </div>
 
-              <label for="notes">Anything else?</label>
-              <textarea id="notes" name="notes"
-                placeholder="Specific features, examples, budget, or questions."></textarea>
-            </div>
-          </div>
+        <div class="field">
+          <label for="websiteStyle">
+            What Style Do You Like? *
+          </label>
+          <select id="websiteStyle" name="website_style" required>
+            <option value="">Select Website Style</option>
+            <option>Luxury / Premium</option>
+            <option>Modern / Minimal</option>
+            <option>Bold / High Energy</option>
+            <option>Clean / Professional</option>
+            <option>Creative / Artistic</option>
+            <option>Not Sure</option>
+          </select>
+        </div>
+      </div>
 
-          <div class="note">
-            <strong>
-              Meeting request, not confirmed booking.
-            </strong>
-            <p>
-              The calendar shows possible dates to request,
-              not your live availability. After submitting,
-              your email app opens with the meeting details.
-              You must send the email and receive confirmation.
-              For automatic booking, connect a scheduling service.
-            </p>
-          </div>
+      <div class="field">
+        <label for="customColors">
+          Specific Colors or Websites You Like
+        </label>
+        <input id="customColors"
+               name="custom_colors_and_inspiration"
+               placeholder="Example: Navy blue and silver">
+      </div>
 
-          <button class="btn" type="submit">
-            Send Free Demo Meeting Request
-          </button>
+      <h2>Website Features</h2>
+      <p>What would you like your website to include?</p>
 
-          <p class="status" id="bookingStatus"
-             role="status"></p>
-          <p style="font-size:13px">
-            Meeting requests are addressed to VEXTRIVO.
-          </p>
-        </form>
-      </section>
+      <div class="checkgrid">
+        <label class="check">
+          <input type="checkbox" name="features"
+                 value="Online Booking">
+          Online Booking / Calendar
+        </label>
+        <label class="check">
+          <input type="checkbox" name="features"
+                 value="Photo Gallery">
+          Photo Gallery / Portfolio
+        </label>
+        <label class="check">
+          <input type="checkbox" name="features"
+                 value="Online Store">
+          Online Store / Payments
+        </label>
+        <label class="check">
+          <input type="checkbox" name="features"
+                 value="Customer Reviews">
+          Customer Reviews
+        </label>
+        <label class="check">
+          <input type="checkbox" name="features"
+                 value="Quote Request">
+          Quote Request Form
+        </label>
+        <label class="check">
+          <input type="checkbox" name="features"
+                 value="Services and Pricing">
+          Services and Pricing
+        </label>
+        <label class="check">
+          <input type="checkbox" name="features"
+                 value="Contact Form">
+          Contact Form
+        </label>
+        <label class="check">
+          <input type="checkbox" name="features"
+                 value="Other">
+          Other / Not Sure
+        </label>
+      </div>
+
+      <div class="field" style="margin-top:25px">
+        <label for="websiteVision">
+          Describe Your Dream Website *
+        </label>
+        <textarea id="websiteVision"
+                  name="website_vision"
+                  required maxlength="2500"
+                  placeholder="Tell us about the colors, photos, pages, buttons, animations, and other features you want."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="service">
+          What Service Are You Interested In?
+        </label>
+        <select id="service" name="service_interest">
+          <option>Free Website Demo</option>
+          <option>Simple Website</option>
+          <option>Advanced Website</option>
+          <option>Marketing Consultation</option>
+          <option>Organic Marketing</option>
+          <option>Meta Ads</option>
+          <option>Google Ads</option>
+        </select>
+      </div>
+
+      <h2>How Can We Reach You?</h2>
+
+      <div class="formgrid">
+        <div class="field">
+          <label for="contactName">Full Name *</label>
+          <input id="contactName" name="full_name"
+                 autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="contactEmail">Email Address *</label>
+          <input id="contactEmail" name="email"
+                 type="email" autocomplete="email"
+                 required placeholder="you@example.com">
+        </div>
+
+        <div class="field">
+          <label for="contactPhone">Phone Number *</label>
+          <input id="contactPhone" name="phone"
+                 type="tel" autocomplete="tel"
+                 minlength="7" maxlength="30" required
+                 placeholder="(555) 123-4567">
+        </div>
+
+        <div class="field">
+          <label for="contactPreference">
+            Preferred Contact Method
+          </label>
+          <select id="contactPreference"
+                  name="contact_preference">
+            <option>Email</option>
+            <option>Phone Call</option>
+            <option>Text Message</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="notice">
+        By submitting, you agree that VEXTRIVO
+        may contact you about your website or
+        marketing request. This is a demo request,
+        not a confirmed appointment.
+      </div>
+
+      <input type="text" name="_honey"
+             tabindex="-1" autocomplete="off"
+             style="position:absolute;left:-9999px"
+             aria-hidden="true">
+
+      <button id="submitDemo" type="submit" class="btn">
+        Send My Free Demo Request
+      </button>
+
+      <p id="formStatus" class="status" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<!-- WEBSITE STUDIO -->
+<div id="studio" class="page">
+  <div class="container section">
+    <div class="kicker">VEXTRIVO Studio</div>
+    <h2>Website Creation Studio</h2>
+    <p>
+      Customize a starter website, preview it,
+      edit the HTML, and download your template.
+    </p>
+
+    <div class="studio">
+      <aside>
+        <h2>Build Your Website</h2>
+        <p>Customize your website template.</p>
+
+        <label for="studioPrompt">
+          Website Description
+        </label>
+        <textarea id="studioPrompt"
+                  placeholder="Describe the website you want"></textarea>
+
+        <label for="studioName">Business Name</label>
+        <input id="studioName" value="Your Business">
+
+        <label for="studioHeadline">Headline</label>
+        <input id="studioHeadline"
+               value="A Better Experience Starts Here">
+
+        <label for="studioColor">Accent Color</label>
+        <input id="studioColor" type="color"
+               value="#4b7cff"
+               style="height:50px;padding:5px">
+
+        <button id="generateSite" class="btn"
+                style="width:100%;margin-top:20px">
+          Generate Website Template
+        </button>
+        <p style="font-size:13px">
+          This studio uses a customizable template,
+          not an AI website-generation service.
+        </p>
+      </aside>
+
+      <main>
+        <div class="toolbar">
+          <button id="desktopBtn" type="button">Desktop</button>
+          <button id="mobileBtn" type="button">Mobile</button>
+          <button id="editorBtn" type="button">Code Editor</button>
+          <button id="applyBtn" type="button">Apply Code</button>
+          <button id="downloadBtn" type="button">Download HTML</button>
+        </div>
+
+        <div id="previewBox" class="preview">
+          <iframe id="siteFrame"
+                  title="Website Preview"
+                  sandbox="allow-scripts"></iframe>
+        </div>
+
+        <textarea id="codeEditor"
+                  spellcheck="false"
+                  aria-label="Website HTML Code"></textarea>
+      </main>
     </div>
-  </section>
-</main>
+  </div>
+</div>
 
 <footer>
   © <span id="year"></span> VEXTRIVO.
-  Built for businesses ready to grow.
+  Custom Websites & Marketing.
 </footer>
 
 <script>
 'use strict';
 
-const BOOKING_EMAIL = 'nkarpo419@gmail.com';
-const pages = ['home', 'marketing', 'book'];
-const $ = id => document.getElementById(id);
+// Booking requests go to this email.
+const BOOKING_EMAIL = 'nkarpo49@gmail.com';
 
-function showPage(name, scrollId) {
-  if (!pages.includes(name)) name = 'home';
+const pages = ['home', 'marketing', 'demo', 'studio'];
+const el = id => document.getElementById(id);
+
+// Website navigation
+function navigate(page, scroll) {
+  if (!pages.includes(page)) page = 'home';
 
   pages.forEach(id => {
-    $(id).classList.toggle('active', id === name);
+    el(id).classList.toggle('active', id === page);
   });
+
+  history.replaceState(
+    null, '',
+    '#' + (scroll || page)
+  );
 
   window.scrollTo(0, 0);
 
-  if (scrollId) {
-    requestAnimationFrame(() => {
-      $(scrollId)?.scrollIntoView({
+  if (scroll) {
+    setTimeout(() => {
+      el(scroll)?.scrollIntoView({
         behavior: 'smooth'
       });
-    });
+    }, 60);
   }
 }
 
-// Make navigation and booking buttons clickable.
 document.querySelectorAll('[data-page]').forEach(link => {
   link.addEventListener('click', event => {
     event.preventDefault();
 
-    const page = link.dataset.page;
-
-    if (link.dataset.plan) {
-      $('service').value = link.dataset.plan;
+    if (link.dataset.service) {
+      el('service').value = link.dataset.service;
     }
 
-    showPage(page, link.dataset.scroll);
-    history.replaceState(null, '', '#' + page);
+    navigate(link.dataset.page, link.dataset.scroll);
   });
 });
 
-$('year').textContent = new Date().getFullYear();
-
-// Calendar
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-
-let displayYear = today.getFullYear();
-let displayMonth = today.getMonth();
-
-const weekdays = [
-  'Sun', 'Mon', 'Tue', 'Wed',
-  'Thu', 'Fri', 'Sat'
-];
-
-function formatDate(year, month, day) {
-  return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+const hash = location.hash.slice(1);
+if (pages.includes(hash)) {
+  navigate(hash);
+} else if (hash === 'pricing') {
+  navigate('home', 'pricing');
 }
 
-function renderCalendar() {
-  const calendar = $('calendar');
-  calendar.replaceChildren();
+el('year').textContent = new Date().getFullYear();
 
-  $('monthLabel').textContent =
-    new Date(displayYear, displayMonth, 1)
-      .toLocaleDateString('en-US', {
-        month: 'long',
-        year: 'numeric'
-      });
-
-  $('prevMonth').disabled =
-    displayYear === today.getFullYear() &&
-    displayMonth === today.getMonth();
-
-  weekdays.forEach(name => {
-    const el = document.createElement('div');
-    el.className = 'dayname';
-    el.textContent = name;
-    calendar.appendChild(el);
-  });
-
-  const first =
-    new Date(displayYear, displayMonth, 1).getDay();
-
-  for (let i = 0; i < first; i++) {
-    calendar.appendChild(document.createElement('div'));
-  }
-
-  const count =
-    new Date(displayYear, displayMonth + 1, 0).getDate();
-
-  for (let day = 1; day <= count; day++) {
-    const date = new Date(displayYear, displayMonth, day);
-    const value = formatDate(displayYear, displayMonth, day);
-
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'day';
-    button.textContent = day;
-    button.disabled = date < today;
-
-    button.setAttribute('aria-label', date.toDateString());
-    button.setAttribute(
-      'aria-pressed',
-      String($('meetingDate').value === value)
-    );
-
-    if ($('meetingDate').value === value) {
-      button.classList.add('selected');
-    }
-
-    button.addEventListener('click', () => {
-      $('meetingDate').value = value;
-
-      $('dateDisplay').textContent =
-        'Requested: ' +
-        date.toLocaleDateString('en-US', {
-          weekday: 'long',
-          month: 'long',
-          day: 'numeric',
-          year: 'numeric'
-        });
-
-      renderCalendar();
-    });
-
-    calendar.appendChild(button);
-  }
-}
-
-$('prevMonth').addEventListener('click', () => {
-  displayMonth--;
-
-  if (displayMonth < 0) {
-    displayMonth = 11;
-    displayYear--;
-  }
-
-  renderCalendar();
-});
-
-$('nextMonth').addEventListener('click', () => {
-  displayMonth++;
-
-  if (displayMonth > 11) {
-    displayMonth = 0;
-    displayYear++;
-  }
-
-  renderCalendar();
-});
-
-renderCalendar();
-
-// Booking form sends the request to your email app.
-$('bookingForm').addEventListener('submit', event => {
+// FREE DEMO FORM
+// Uses FormSubmit. First-time email activation is required.
+el('demoForm').addEventListener('submit', async event => {
   event.preventDefault();
 
-  if (!$('bookingForm').reportValidity()) return;
+  const form = el('demoForm');
+  const button = el('submitDemo');
+  const status = el('formStatus');
 
-  if (!$('meetingDate').value) {
-    $('bookingStatus').textContent =
-      'Please choose a date on the calendar.';
-    return;
-  }
+  if (!form.reportValidity()) return;
 
-  const ids = [
-    'fullName', 'email', 'phone', 'business',
-    'industry', 'service', 'website', 'vision',
-    'meetingDate', 'meetingTime', 'timezone', 'notes'
-  ];
+  const data = new FormData(form);
 
-  const labels = [
-    'Name', 'Email', 'Phone', 'Business',
-    'Industry', 'Service', 'Current Website',
-    'Website Vision', 'Requested Date',
-    'Requested Time', 'Time Zone', 'Other Notes'
-  ];
-
-  const body = ids.map((id, i) =>
-    labels[i] + ': ' + $(id).value
-  ).join('\n');
-
-  const subject = encodeURIComponent(
-    'VEXTRIVO Free Demo Meeting Request — ' +
-    $('business').value
+  data.set(
+    '_subject',
+    'New VEXTRIVO Free Demo Request - ' +
+    data.get('business_name')
   );
+  data.set('_captcha', 'true');
+  data.set('_template', 'table');
 
-  $('bookingStatus').textContent =
-    'Your email application is opening. ' +
-    'Please send the prepared email to request the meeting.';
+  button.disabled = true;
+  button.textContent = 'Sending Request...';
+  status.textContent = '';
 
-  window.location.href =
-    'mailto:' + BOOKING_EMAIL +
-    '?subject=' + subject +
-    '&body=' + encodeURIComponent(body);
+  try {
+    const response = await fetch(
+      'https://formsubmit.co/ajax/' + BOOKING_EMAIL,
+      {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      }
+    );
+
+    const result = await response.json();
+
+    if (
+      !response.ok ||
+      result.success === false ||
+      result.success === 'false'
+    ) {
+      throw new Error(
+        result.message || 'Unable to submit request'
+      );
+    }
+
+    status.textContent =
+      'Your request has been submitted! ' +
+      'We will reach out to you soon.';
+
+    form.reset();
+
+  } catch (error) {
+    status.textContent =
+      'There was a problem submitting your request. ' +
+      'Please email ' + BOOKING_EMAIL + ' directly.';
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Send My Free Demo Request';
+  }
 });
 
-const initial = location.hash.replace('#', '');
-
-if (pages.includes(initial)) {
-  showPage(initial);
+// WEBSITE STUDIO
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[char]));
 }
+
+let generated = '';
+
+function makeTemplate() {
+  const name = escapeHTML(
+    el('studioName').value || 'Your Business'
+  );
+  const headline = escapeHTML(
+    el('studioHeadline').value || 'Welcome'
+  );
+  const description = escapeHTML(
+    el('studioPrompt').value ||
+    'Professional services tailored to your needs.'
+  );
+  const color = el('studioColor').value;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${name}</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#0b0e16;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+header{
+  padding:24px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav{display:flex;gap:20px}
+a{color:inherit;text-decoration:none}
+.hero{
+  padding:110px 7%;
+  background:radial-gradient(
+    circle at 80% 20%,
+    ${color}44,
+    transparent 55%
+  ),#101725;
+}
+.hero h1{
+  font-size:clamp(40px,6vw,75px);
+  max-width:800px;
+}
+.hero p{color:#bbc5d7;line-height:1.7}
+.button{
+  display:inline-block;
+  padding:15px 25px;
+  background:${color};
+  border-radius:9px;
+  margin-top:20px;
+}
+section.content{padding:70px 7%}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  padding:25px;
+  background:#182033;
+  border-radius:14px;
+}
+footer{
+  padding:30px 7%;
+  border-top:1px solid #293653;
+}
+@media(max-width:700px){
+  .cards{grid-template-columns:1fr}
+  nav{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <strong>${name}</strong>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+<div class="hero">
+  <small>WELCOME TO ${name}</small>
+  <h1>${headline}</h1>
+  <p>${description}</p>
+  <a class="button" href="#contact">Get in Touch</a>
+</div>
+<section class="content" id="services">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card"><h3>Quality Work</h3></div>
+    <div class="card"><h3>Personal Service</h3></div>
+    <div class="card"><h3>Reliable Support</h3></div>
+  </div>
+</section>
+<section class="content" id="about">
+  <h2>About Us</h2>
+  <p>${description}</p>
+</section>
+<section class="content" id="contact">
+  <h2>Contact Us</h2>
+  <p>Add your contact information here.</p>
+</section>
+<footer>© ${new Date().getFullYear()} ${name}</footer>
+</body>
+</html>`;
+}
+
+function updatePreview() {
+  el('siteFrame').srcdoc = generated;
+  el('codeEditor').value = generated;
+}
+
+el('generateSite').addEventListener('click', () => {
+  generated = makeTemplate();
+  updatePreview();
+  el('previewBox').style.display = 'block';
+  el('codeEditor').style.display = 'none';
+});
+
+el('desktopBtn').addEventListener('click', () => {
+  el('previewBox').style.display = 'block';
+  el('codeEditor').style.display = 'none';
+  el('siteFrame').style.width = '100%';
+});
+
+el('mobileBtn').addEventListener('click', () => {
+  el('previewBox').style.display = 'block';
+  el('codeEditor').style.display = 'none';
+  el('siteFrame').style.width = 'min(375px,100%)';
+});
+
+el('editorBtn').addEventListener('click', () => {
+  el('previewBox').style.display = 'none';
+  el('codeEditor').style.display = 'block';
+});
+
+el('applyBtn').addEventListener('click', () => {
+  generated = el('codeEditor').value;
+  updatePreview();
+  el('previewBox').style.display = 'block';
+  el('codeEditor').style.display = 'none';
+});
+
+el('downloadBtn').addEventListener('click', () => {
+  const blob = new Blob(
+    [generated],
+    { type: 'text/html' }
+  );
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = 'website-demo.html';
+  link.click();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+
+generated = makeTemplate();
+updatePreview();
 </script>
 </body>
 </html>
