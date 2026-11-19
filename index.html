@@ -1,765 +1,1754 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VEXTRIVO — Website Builder & Marketing</title>
-<style>
-:root {
-  --bg:#080b15;
-  --panel:#12192a;
-  --line:#2a3550;
-  --blue:#497cff;
-  --muted:#aebad0;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-[hidden]{display:none!important}
-.container{max-width:1200px;margin:auto;padding:0 24px}
-.header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:24px 0}
-.logo{font-weight:900;font-size:24px;letter-spacing:2px}
-.logo span{color:var(--blue)}
-nav{display:flex;gap:23px;align-items:center;flex-wrap:wrap}
-nav a{color:#c5cee0}
-nav a:hover{color:white}
-.btn{border:0;border-radius:10px;background:var(--blue);color:white;font-weight:700;padding:14px 20px;display:inline-block}
-.btn:hover{filter:brightness(1.12)}
-.btn.secondary{background:#242e46}
-.btn.outline{background:transparent;border:1px solid #53658a}
-.hero{text-align:center;padding:100px 0}
-.hero h1{font-size:clamp(40px,6vw,76px);line-height:1.08;max-width:950px;margin:20px auto}
-.hero p{max-width:710px;margin:20px auto 30px;font-size:18px}
-p{color:var(--muted);line-height:1.7}
-.eyebrow{color:#91aeff;font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.section{padding:72px 0}
-.center{text-align:center}
-h2{font-size:clamp(29px,4vw,44px)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:27px}
-.card h3{font-size:23px;margin:13px 0}
-.card ul{color:#c7d1e2;line-height:2;padding-left:21px}
-.featured{border-color:var(--blue)}
-.price{font-size:39px;font-weight:900;margin:16px 0}
-.price small{font-size:15px;color:var(--muted)}
-.pill{display:inline-block;padding:8px 13px;border-radius:30px;background:#21345b;color:#bed0ff;font-size:12px;font-weight:bold}
-.notice{background:#141f35;border:1px solid var(--line);border-radius:13px;padding:22px;margin-top:24px}
-footer{border-top:1px solid var(--line);text-align:center;padding:30px;color:var(--muted)}
-.page{display:none}
-.page.active{display:block}
-.marketing-hero{background:radial-gradient(circle at 75% 20%,#315ad155,transparent 50%)}
-.formbox{max-width:760px;margin:30px auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-label{display:block;color:#cbd5e6;font-size:13px;margin:16px 0 7px}
-input,textarea,select{width:100%;background:#1b263c;color:white;border:1px solid #40506e;border-radius:9px;padding:12px}
-textarea{min-height:100px;resize:vertical}
-input[type=color]{height:48px;padding:4px}
-input[type=checkbox]{width:auto}
-.checkline{display:flex;gap:8px;align-items:center}
-.checkline input{margin:0}
-details{margin:12px 0}
-summary{cursor:pointer;font-weight:bold}
-#studio{display:none;height:100vh;flex-direction:column}
-.studio-head{display:flex;align-items:center;justify-content:space-between;padding:15px 22px;border-bottom:1px solid var(--line)}
-.studio-layout{display:grid;grid-template-columns:350px minmax(0,1fr);flex:1;min-height:0}
-.sidebar{background:#0e1423;border-right:1px solid var(--line);padding:22px;overflow:auto}
-.sidebar .btn{margin-top:12px}
-.preview-area{display:flex;flex-direction:column;background:#171d2b;min-width:0}
-.toolbar{display:flex;gap:8px;padding:12px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
-.toolbar .btn{padding:10px 13px;font-size:13px}
-.viewport{display:flex;justify-content:center;flex:1;min-height:0;padding:18px}
-iframe{width:100%;height:100%;border:0;border-radius:10px;background:white}
-iframe.mobile{max-width:390px}
-#codeEditor{display:none;flex:1;width:100%;border:0;border-radius:0;background:#080e1b;color:#dce8ff;padding:20px;font:13px/1.5 monospace;resize:none}
-#status{font-size:12px;color:#b4c5e7}
-@media(max-width:800px){
-  .header{flex-wrap:wrap}
-  nav{order:3;width:100%;justify-content:center}
-  .grid{grid-template-columns:1fr}
-  .studio-layout{grid-template-columns:1fr;overflow:auto}
-  .sidebar{max-height:55vh}
-  .viewport{min-height:500px}
-  .formgrid{grid-template-columns:1fr}
-}
-</style>
-</head>
-<body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- HOME PAGE -->
-<div id="home" class="page active">
-<div class="container">
-<header class="header">
-<a class="logo" href="#" onclick="showPage('home');return false">VEX<span>TRIVO</span></a>
-<nav>
-<a href="#features">Features</a>
-<a href="#pricing">Pricing</a>
-<a href="#faq">FAQ</a>
-<a href="#marketing" onclick="showPage('marketing')">Marketing</a>
-</nav>
-<button class="btn" onclick="openStudio()">Start Building</button>
-</header>
+  <title>VEXTRIVO | Websites & Digital Marketing</title>
 
-<section class="hero">
-<div class="eyebrow">Build. Launch. Grow.</div>
-<h1>Build extraordinary websites. Grow extraordinary businesses.</h1>
-<p>Create customized website demos, edit your designs, and explore professional marketing services—all from VEXTRIVO.</p>
-<div class="actions">
-<button class="btn" onclick="openStudio()">Start Building Free</button>
-<button class="btn secondary" onclick="showPage('marketing')">Explore Marketing</button>
-</div>
-</section>
+  <meta name="description"
+    content="VEXTRIVO builds premium custom websites and offers digital marketing services. Request your free custom website demo today.">
 
-<section id="features" class="section">
-<div class="center">
-<div class="eyebrow">Our platform</div>
-<h2>Everything you need to get started</h2>
-</div>
-<div class="grid">
-<div class="card"><h3>Website Generator</h3><p>Describe your business and create a personalized template-based website demo.</p></div>
-<div class="card"><h3>Live Preview</h3><p>See your design instantly on desktop or mobile.</p></div>
-<div class="card"><h3>Visual Customization</h3><p>Change your business name, headline, colors, and content.</p></div>
-<div class="card"><h3>Code Editor</h3><p>View and edit the HTML source code of your generated site.</p></div>
-<div class="card"><h3>HTML Download</h3><p>Export your finished demo as a standalone HTML file.</p></div>
-<div class="card">
-<h3>Marketing Services</h3>
-<p>Explore organic marketing, Meta Ads, and Google Ads management.</p>
-<button class="btn secondary" onclick="showPage('marketing')">Explore Services</button>
-</div>
-</div>
-</section>
-
-<section id="pricing" class="section">
-<div class="center">
-<div class="eyebrow">Website plans</div>
-<h2>Find the right starting point</h2>
-</div>
-<div class="grid">
-<div class="card featured">
-<span class="pill">Free to explore</span>
-<h3>Free Demo</h3>
-<div class="price">$0</div>
-<p>Try the website builder or request a free marketing consultation.</p>
-<ul>
-<li>Free website demo</li>
-<li>Live preview</li>
-<li>Website customization</li>
-<li>HTML download</li>
-<li>Free marketing meeting request</li>
-</ul>
-<button class="btn" onclick="openStudio()">Try Website Builder</button>
-<button class="btn secondary" onclick="openConsultation()">Marketing Meeting</button>
-</div>
-<div class="card">
-<h3>Starter</h3>
-<div class="price">$39<small>/month</small></div>
-<p>Planned subscription for growing businesses.</p>
-<ul><li>Website projects</li><li>Customization tools</li><li>HTML export</li></ul>
-<button class="btn secondary" onclick="showPlan('Starter')">Explore Plan</button>
-</div>
-<div class="card">
-<h3>Growth</h3>
-<div class="price">$79<small>/month</small></div>
-<p>Planned subscription with advanced website tools.</p>
-<ul><li>Advanced site tools</li><li>Business integrations</li><li>Publishing capabilities</li></ul>
-<button class="btn secondary" onclick="showPlan('Growth')">Explore Plan</button>
-</div>
-</div>
-<p class="center">Paid website subscriptions are not active in this demo. No payments are collected.</p>
-</section>
-
-<section id="faq" class="section">
-<h2 class="center">Frequently Asked Questions</h2>
-<details class="card"><summary>Can I try VEXTRIVO for free?</summary><p>Yes. The website builder demo is free to explore.</p></details>
-<details class="card"><summary>Can I schedule a marketing discussion?</summary><p>You can request a free marketing meeting. Your appointment is not confirmed until the team responds.</p></details>
-<details class="card"><summary>Does the builder use AI?</summary><p>The current demo uses templates and prompt matching. A real AI generation backend is not connected yet.</p></details>
-<details class="card"><summary>Is advertising spend included?</summary><p>No. Meta and Google Ads management fees are separate from the advertising budget.</p></details>
-</section>
-</div>
-<footer>© 2026 VEXTRIVO. All rights reserved.</footer>
-</div>
-
-<!-- MARKETING PAGE -->
-<div id="marketing" class="page">
-<div class="container">
-<header class="header">
-<a class="logo" href="#home" onclick="showPage('home')">VEX<span>TRIVO</span></a>
-<nav>
-<a href="#home" onclick="showPage('home')">Home</a>
-<a href="#marketing-services">Services</a>
-<a href="#marketing-pricing">Pricing</a>
-<a href="#consultation">Book a Meeting</a>
-</nav>
-<button class="btn" onclick="openConsultation()">Free Consultation</button>
-</header>
-
-<section class="hero marketing-hero">
-<div class="eyebrow">VEXTRIVO Marketing</div>
-<h1>Grow your business with smarter marketing.</h1>
-<p>Build your brand, reach potential customers, and explore strategies tailored to your business through organic marketing and paid advertising.</p>
-<div class="actions">
-<button class="btn" onclick="openConsultation()">Request Free Marketing Meeting</button>
-<a class="btn secondary" href="#marketing-pricing">View Pricing</a>
-</div>
-</section>
-
-<section id="marketing-services" class="section">
-<div class="center">
-<div class="eyebrow">Our services</div>
-<h2>Marketing designed around your goals</h2>
-</div>
-<div class="grid">
-<div class="card">
-<span class="pill">Organic growth</span>
-<h3>Social Media Marketing</h3>
-<p>Develop your online presence with organic marketing strategy and content support.</p>
-<ul><li>Content planning</li><li>Organic growth strategy</li><li>Brand visibility</li><li>Social media guidance</li></ul>
-</div>
-<div class="card">
-<span class="pill">Paid social</span>
-<h3>Meta Ads</h3>
-<p>Advertise your business through Facebook and Instagram.</p>
-<ul><li>Campaign setup</li><li>Audience targeting</li><li>Creative strategy</li><li>Campaign monitoring</li></ul>
-</div>
-<div class="card">
-<span class="pill">Search advertising</span>
-<h3>Google Ads</h3>
-<p>Connect with customers actively searching for businesses like yours.</p>
-<ul><li>Search campaigns</li><li>Keyword strategy</li><li>Campaign management</li><li>Performance monitoring</li></ul>
-</div>
-</div>
-</section>
-
-<section id="marketing-pricing" class="section">
-<div class="center">
-<div class="eyebrow">Transparent pricing</div>
-<h2>Choose your marketing service</h2>
-</div>
-<div class="grid">
-<div class="card">
-<h3>Organic Marketing</h3>
-<div class="price">$500<small>/month</small></div>
-<p>Organic social media marketing support.</p>
-<ul><li>Content strategy</li><li>Social media guidance</li><li>Organic visibility</li></ul>
-<button class="btn" onclick="selectMarketing('Organic Marketing')">Discuss This Service</button>
-</div>
-<div class="card featured">
-<span class="pill">Facebook + Instagram</span>
-<h3>Meta Ads Management</h3>
-<div class="price">$1,700<small>/month</small></div>
-<p><strong>Plus ad spend.</strong> Advertising budget is separate.</p>
-<ul><li>Campaign setup</li><li>Audience targeting</li><li>Campaign management</li><li>Performance reporting</li></ul>
-<button class="btn" onclick="selectMarketing('Meta Ads')">Discuss Meta Ads</button>
-</div>
-<div class="card">
-<h3>Google Ads Management</h3>
-<div class="price">$1,700<small>/month</small></div>
-<p><strong>Plus ad spend.</strong> Advertising budget is separate.</p>
-<ul><li>Google search campaigns</li><li>Keyword research</li><li>Campaign management</li><li>Performance reporting</li></ul>
-<button class="btn" onclick="selectMarketing('Google Ads')">Discuss Google Ads</button>
-</div>
-</div>
-<div class="notice">
-<strong>What does "+ ad spend" mean?</strong>
-<p>The $1,700 monthly fee covers management of your advertising campaigns. You choose an additional advertising budget to pay for the actual ads on Meta or Google.</p>
-<p>Example: $1,700 management fee + $1,000 ad budget = $2,700 total for that month.</p>
-<p>Results vary by business, budget, market, and campaign. No return on investment is guaranteed.</p>
-</div>
-</section>
-
-<section id="consultation" class="section">
-<div class="center">
-<div class="eyebrow">Let's talk strategy</div>
-<h2>Request your free marketing meeting</h2>
-<p>Tell us about your business and the marketing services you're interested in.</p>
-</div>
-<div class="formbox">
-<h3>Marketing Consultation Request</h3>
-<p>Fill out the form to prepare an email request. A meeting is confirmed only after you receive a response.</p>
-<form id="marketingForm">
-<div class="formgrid">
-<div><label for="clientName">Full Name</label><input id="clientName" required></div>
-<div><label for="clientEmail">Email Address</label><input id="clientEmail" type="email" required></div>
-<div><label for="clientBusiness">Business Name</label><input id="clientBusiness" required></div>
-<div><label for="clientPhone">Phone Number</label><input id="clientPhone" type="tel"></div>
-</div>
-<label for="marketingService">Interested Service</label>
-<select id="marketingService" required>
-<option value="">Choose a service</option>
-<option>Organic Marketing</option>
-<option>Meta Ads</option>
-<option>Google Ads</option>
-<option>Multiple Services</option>
-<option>Not Sure Yet</option>
-</select>
-<div class="formgrid">
-<div><label for="meetingDate">Preferred Meeting Date</label><input id="meetingDate" type="date" required></div>
-<div><label for="meetingTime">Preferred Meeting Time</label><input id="meetingTime" type="time" required></div>
-</div>
-<label for="meetingZone">Time Zone</label>
-<select id="meetingZone" required>
-<option>Mountain Time</option>
-<option>Pacific Time</option>
-<option>Central Time</option>
-<option>Eastern Time</option>
-<option>Other (specify in message)</option>
-</select>
-<label for="marketingGoals">Your Marketing Goals</label>
-<textarea id="marketingGoals" required placeholder="Tell us about your business and what you're looking to accomplish."></textarea>
-<button class="btn" type="submit">Prepare Meeting Request</button>
-<p id="meetingStatus" role="status"></p>
-</form>
-</div>
-</section>
-</div>
-<footer>© 2026 VEXTRIVO Marketing</footer>
-</div>
-
-<!-- WEBSITE BUILDER STUDIO -->
-<div id="studio">
-<div class="studio-head">
-<strong class="logo">VEX<span>TRIVO</span> STUDIO</strong>
-<button class="btn secondary" onclick="closeStudio()">Back to Website</button>
-</div>
-<div class="studio-layout">
-<aside class="sidebar">
-<div class="eyebrow">Website Creation Studio</div>
-<h2>Build Your Website</h2>
-<p>Describe the website you want.</p>
-
-<label for="prompt">Website Prompt</label>
-<textarea id="prompt" placeholder="Build a luxury car detailing website with a black and blue theme, services, reviews, and booking."></textarea>
-<button class="btn" onclick="generate()">Generate Website Demo</button>
-
-<h3>Customize Website</h3>
-<label for="business">Business Name</label>
-<input id="business" value="Your Business">
-
-<label for="headline">Headline</label>
-<input id="headline" value="Built for excellence.">
-
-<label for="description">Description</label>
-<textarea id="description">Premium services and exceptional customer experiences.</textarea>
-
-<label for="category">Business Category</label>
-<select id="category">
-<option value="service">Service Business</option>
-<option value="auto">Automotive</option>
-<option value="restaurant">Restaurant</option>
-<option value="fashion">Clothing & Fashion</option>
-<option value="fitness">Fitness</option>
-<option value="realestate">Real Estate</option>
-</select>
-
-<label for="color">Accent Color</label>
-<input id="color" type="color" value="#497cff">
-
-<label for="email">Contact Email</label>
-<input id="email" type="email" value="hello@example.com">
-
-<label class="checkline"><input id="reviews" type="checkbox" checked> Include sample testimonials</label>
-<label class="checkline"><input id="booking" type="checkbox" checked> Include booking request</label>
-
-<button class="btn secondary" onclick="applyChanges()">Apply Changes</button>
-<p id="status">Ready to build your website.</p>
-</aside>
-
-<main class="preview-area">
-<div class="toolbar">
-<button class="btn secondary" onclick="setMobile(false)">Desktop</button>
-<button class="btn secondary" onclick="setMobile(true)">Mobile</button>
-<button class="btn secondary" onclick="toggleCode()">Code Editor</button>
-<button class="btn secondary" onclick="applyCode()">Apply Code</button>
-<button class="btn" onclick="downloadSite()">Download HTML</button>
-</div>
-<div class="viewport" id="viewport">
-<iframe id="preview" title="Website Preview" sandbox="allow-forms allow-popups allow-scripts"></iframe>
-</div>
-<textarea id="codeEditor" spellcheck="false"></textarea>
-</main>
-</div>
-</div>
-
-<script>
-const $ = id => document.getElementById(id);
-let previousPage = 'home';
-let generatedHTML = '';
-let customCode = false;
-
-const defaults = {
-  name:'Your Business',
-  headline:'Built for excellence.',
-  description:'Premium services and exceptional customer experiences.',
-  category:'service',
-  color:'#497cff',
-  email:'hello@example.com',
-  reviews:true,
-  booking:true
-};
-let state = {...defaults};
-
-function showPage(page){
-  document.querySelectorAll('.page').forEach(el=>{
-    el.classList.toggle('active',el.id===page);
-  });
-  $('studio').style.display='none';
-  window.scrollTo(0,0);
-}
-
-function openStudio(){
-  previousPage=$('marketing').classList.contains('active')?'marketing':'home';
-  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
-  $('studio').style.display='flex';
-  window.scrollTo(0,0);
-  refresh();
-}
-
-function closeStudio(){
-  showPage(previousPage);
-}
-
-function showPlan(plan){
-  alert(plan+' subscriptions are coming soon. You can try the free website demo now.');
-  openStudio();
-}
-
-function openConsultation(){
-  showPage('marketing');
-  $('consultation').scrollIntoView({behavior:'smooth'});
-}
-
-function selectMarketing(service){
-  $('marketingService').value=service;
-  openConsultation();
-}
-
-function esc(value){
-  return String(value).replace(/[&<>"']/g,c=>({
-    '&':'&amp;','<':'&lt;','>':'&gt;',
-    '"':'&quot;',"'":'&#39;'
-  })[c]);
-}
-
-/* IMPORTANT: REPLACE WITH YOUR BUSINESS EMAIL */
-const MARKETING_EMAIL='YOUR_EMAIL@example.com';
-
-$('marketingForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  if(!this.reportValidity())return;
-
-  const details=[
-    'New VEXTRIVO Marketing Consultation Request',
-    '',
-    'Name: '+$('clientName').value,
-    'Email: '+$('clientEmail').value,
-    'Business: '+$('clientBusiness').value,
-    'Phone: '+$('clientPhone').value,
-    'Service: '+$('marketingService').value,
-    'Preferred Date: '+$('meetingDate').value,
-    'Preferred Time: '+$('meetingTime').value,
-    'Time Zone: '+$('meetingZone').value,
-    '',
-    'Goals:',
-    $('marketingGoals').value
-  ].join('\n');
-
-  const subject=encodeURIComponent('VEXTRIVO Marketing Meeting Request');
-  const body=encodeURIComponent(details);
-  $('meetingStatus').textContent='Your email application will open. Send the email to request the meeting.';
-  window.location.href='mailto:'+MARKETING_EMAIL+'?subject='+subject+'&body='+body;
-});
-
-function readFields(){
-  state={
-    name:$('business').value,
-    headline:$('headline').value,
-    description:$('description').value,
-    category:$('category').value,
-    color:$('color').value,
-    email:$('email').value,
-    reviews:$('reviews').checked,
-    booking:$('booking').checked
-  };
-}
-
-function writeFields(){
-  $('business').value=state.name;
-  $('headline').value=state.headline;
-  $('description').value=state.description;
-  $('category').value=state.category;
-  $('color').value=state.color;
-  $('email').value=state.email;
-  $('reviews').checked=state.reviews;
-  $('booking').checked=state.booking;
-}
-
-function generate(){
-  const q=$('prompt').value.trim();
-  if(!q){
-    $('status').textContent='Enter a website description first.';
-    return;
-  }
-
-  const low=q.toLowerCase();
-  let category='service';
-
-  if(/car|auto|detail|truck|tint/.test(low))category='auto';
-  else if(/restaurant|food|cafe|pizza/.test(low))category='restaurant';
-  else if(/clothing|fashion|streetwear|shop/.test(low))category='fashion';
-  else if(/gym|fitness|training/.test(low))category='fitness';
-  else if(/real estate|realtor|property/.test(low))category='realestate';
-
-  state.category=category;
-
-  const colors={
-    blue:'#497cff',red:'#e54857',green:'#169b70',
-    purple:'#8b5cf6',orange:'#ed8135',
-    gold:'#c99a41',pink:'#e65ba1',black:'#111827'
-  };
-
-  for(const [name,value] of Object.entries(colors)){
-    if(new RegExp('\\b'+name+'\\b').test(low)){
-      state.color=value;
-      break;
+  <style>
+    :root {
+      --bg: #080f20;
+      --navy: #0d1930;
+      --panel: #111f38;
+      --field: #1c2c49;
+      --border: #3b5175;
+      --blue: #2878ff;
+      --blue-light: #76adff;
+      --white: #f8faff;
+      --muted: #b2c0d7;
     }
-  }
 
-  const match=q.match(/(?:called|named)\s+["']?([a-z0-9 &'\-]{3,45})/i);
-  if(match)state.name=match[1].trim().replace(/["']$/,'');
+    * {
+      box-sizing: border-box;
+    }
 
-  state.description=q.slice(0,250);
-  state.headline={
-    auto:'Precision in every detail.',
-    restaurant:'An unforgettable dining experience.',
-    fashion:'Wear something extraordinary.',
-    fitness:'Build your strongest self.',
-    realestate:'Find a place to call home.',
-    service:'Exceptional service. Remarkable results.'
-  }[category];
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
 
-  if(/review|testimonial/.test(low))state.reviews=true;
-  if(/book|calendar|appointment/.test(low))state.booking=true;
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
 
-  writeFields();
-  customCode=false;
-  refresh();
-  $('status').textContent='Demo generated. Customize your website below.';
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-function buildHTML(){
-  const s=state;
-  const name=esc(s.name);
-  const head=esc(s.headline);
-  const desc=esc(s.description);
-  const color=s.color;
-  const email=esc(s.email);
+    button, input, select, textarea {
+      font: inherit;
+    }
 
-  const titles={
-    auto:['Premium Detailing','Paint Protection','Interior Restoration'],
-    restaurant:['Signature Menu','Private Events','Reservations'],
-    fashion:['New Collection','Signature Pieces','Our Story'],
-    fitness:['Personal Training','Strength Programs','Coaching'],
-    realestate:['Featured Properties','Buyer Services','Seller Services'],
-    service:['Professional Services','Custom Solutions','Consultations']
-  };
-  const services=titles[s.category]||titles.service;
+    button {
+      cursor: pointer;
+    }
 
-  const cards=services.map((x,i)=>`
-    <article class="service">
-      <div class="number">0${i+1}</div>
-      <h3>${esc(x)}</h3>
-      <p>Explore our approach to ${esc(x.toLowerCase())}, tailored to your needs.</p>
-    </article>
-  `).join('');
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
 
-  const reviews=s.reviews?`
-    <section class="section alt">
-      <div class="wrap">
-        <h2>What our clients say</h2>
-        <div class="service">
-          <p>"Add a verified customer testimonial here."</p>
-          <strong>Sample testimonial — replace before publishing</strong>
-        </div>
-      </div>
-    </section>
-  `:'';
+    /* HEADER */
 
-  const booking=s.booking?`
-    <section class="section" id="booking">
-      <div class="wrap">
-        <h2>Request an appointment</h2>
-        <p>Tell us what you need and we'll be in touch.</p>
-        <form id="bookingForm">
-          <input name="name" placeholder="Your name" required>
-          <input name="contact" type="email" placeholder="Email address" required>
-          <input name="date" type="date" required>
-          <textarea name="message" placeholder="Tell us about your project"></textarea>
-          <button type="submit">Prepare Booking Request</button>
-        </form>
-      </div>
-    </section>
-  `:'';
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 15, 32, 0.96);
+      border-bottom: 1px solid #ffffff20;
+      backdrop-filter: blur(15px);
+    }
 
-  const mail=encodeURIComponent(s.email);
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 17px 0;
+    }
 
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${name}</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b0e16;color:white;font-family:Arial,sans-serif}
-.wrap{max-width:1120px;margin:auto;padding:0 25px}
-header{padding:25px 0;display:flex;justify-content:space-between;align-items:center;gap:20px}
-header strong{font-size:23px}
-a{color:inherit;text-decoration:none}
-nav{display:flex;gap:20px}
-button,.button{display:inline-block;border:0;border-radius:8px;padding:14px 22px;background:${color};color:white;font-weight:bold;cursor:pointer}
-.hero{padding:110px 0;background:radial-gradient(circle at 80% 20%,${color}55,transparent 45%),#101522}
-.tag{color:${color};text-transform:uppercase;letter-spacing:2px;font-weight:bold;font-size:12px}
-h1{font-size:clamp(40px,7vw,83px);line-height:1.05;max-width:850px}
-h2{font-size:clamp(30px,4vw,45px)}
-p{color:#b8c0d0;line-height:1.7}
-.hero p{max-width:650px;font-size:18px}
-.section{padding:85px 0}
-.alt{background:#131a29}
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}
-.service{padding:30px;border:1px solid #344055;border-radius:15px;background:#151c2b}
-.number{color:${color};font-size:25px;font-weight:bold}
-form{max-width:550px;display:grid;gap:12px}
-input,textarea{padding:14px;border-radius:8px;border:1px solid #43506b;background:#182033;color:white;font:inherit}
-textarea{min-height:100px}
-footer{border-top:1px solid #344055;padding:30px 0;color:#aab5c8}
-@media(max-width:700px){.services{grid-template-columns:1fr}nav{display:none}}
-</style>
+    .logo {
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--blue-light);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 10px;
+      background: var(--blue);
+      color: white;
+      font-weight: 800;
+      text-align: center;
+      border: 1px solid transparent;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #4b90ff;
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: #213452;
+      border-color: #47638a;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 125px 20px 115px;
+      text-align: center;
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          #1c4d9570,
+          transparent 65%
+        ),
+        var(--bg);
+    }
+
+    .eyebrow {
+      color: var(--blue-light);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      max-width: 950px;
+      margin: 22px auto;
+    }
+
+    h1 span {
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        #478eff
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      font-size: clamp(29px, 4vw, 45px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .hero p {
+      max-width: 730px;
+      margin: 20px auto 32px;
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    .section {
+      padding: 85px 0;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 35px;
+    }
+
+    .card {
+      background: linear-gradient(
+        145deg,
+        #172945,
+        #0e182b
+      );
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .card.featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 35px #2475ff18;
+    }
+
+    .number {
+      color: var(--blue-light);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .price {
+      font-size: 40px;
+      font-weight: 900;
+      margin: 16px 0;
+    }
+
+    .price small {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: normal;
+    }
+
+    .card ul {
+      color: #d4e0f1;
+      line-height: 2;
+      padding-left: 20px;
+    }
+
+    .card .btn {
+      margin-top: 14px;
+    }
+
+    .banner {
+      background: linear-gradient(
+        120deg,
+        #152e57,
+        #0e1a30
+      );
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 55px 25px;
+      text-align: center;
+    }
+
+    .notice {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      color: #d5e2f4;
+      margin-top: 25px;
+    }
+
+    /* DEMO REQUEST PAGE */
+
+    .demo-section {
+      position: relative;
+      isolation: isolate;
+      padding: 90px 18px 110px;
+      background: #081225;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    .demo-section::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -20%;
+      background:
+        radial-gradient(
+          ellipse at 0% 45%,
+          #12468b85,
+          transparent 43%
+        ),
+        radial-gradient(
+          ellipse at 100% 75%,
+          #13478c70,
+          transparent 43%
+        );
+      animation: flow 20s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes flow {
+      from {
+        transform: translate(-3%, 0);
+      }
+
+      to {
+        transform: translate(3%, 3%);
+      }
+    }
+
+    .demo-container {
+      width: min(880px, 100%);
+      margin: 0 auto;
+    }
+
+    .demo-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .demo-heading h2 {
+      font-size: clamp(35px, 5vw, 52px);
+      margin: 14px 0;
+    }
+
+    .demo-heading h2 span {
+      color: var(--blue-light);
+    }
+
+    .demo-heading p {
+      max-width: 680px;
+      margin: auto;
+      font-size: 17px;
+    }
+
+    .demo-form {
+      background: linear-gradient(
+        145deg,
+        #101e37,
+        #0a1529
+      );
+      border: 1px solid #4c6691;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 30px 80px #0007;
+    }
+
+    .form-section {
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid #405575;
+    }
+
+    .form-section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .form-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 22px;
+    }
+
+    .form-title span {
+      color: var(--blue-light);
+      margin-right: 9px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field {
+      margin-bottom: 19px;
+    }
+
+    .form-grid .field {
+      margin-bottom: 0;
+    }
+
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: var(--field);
+      border: 1px solid #536b91;
+      border-radius: 9px;
+      color: white;
+      padding: 13px 15px;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #aabbd2;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--blue-light);
+      box-shadow: 0 0 0 3px #2475ff30;
+    }
+
+    .field select option {
+      background: var(--field);
+    }
+
+    .field.wide {
+      margin-top: 19px;
+    }
+
+    /* COLOR CHOICES */
+
+    .color-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 11px;
+      margin: 18px 0 22px;
+    }
+
+    .color-option {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: #1b2c49;
+      border: 1px solid #405b82;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .color-option:has(input:checked) {
+      border-color: #78aeff;
+      background: #25446d;
+    }
+
+    .color-option input {
+      accent-color: var(--blue);
+    }
+
+    .swatch {
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      border: 1px solid #ffffff80;
+      flex-shrink: 0;
+    }
+
+    .black-gold {
+      background: linear-gradient(
+        135deg,
+        #000 50%,
+        #d8a72b 50%
+      );
+    }
+
+    .black-blue {
+      background: linear-gradient(
+        135deg,
+        #000 50%,
+        #2475ff 50%
+      );
+    }
+
+    .black-red {
+      background: linear-gradient(
+        135deg,
+        #000 50%,
+        #e83d4d 50%
+      );
+    }
+
+    .white-blue {
+      background: linear-gradient(
+        135deg,
+        #fff 50%,
+        #2475ff 50%
+      );
+    }
+
+    .white-green {
+      background: linear-gradient(
+        135deg,
+        #fff 50%,
+        #12ba66 50%
+      );
+    }
+
+    .other {
+      background: linear-gradient(
+        135deg,
+        #aaa,
+        #4c5264
+      );
+    }
+
+    /* WEBSITE FEATURES */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      background: var(--field);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-size: 13px;
+    }
+
+    .feature input {
+      accent-color: var(--blue);
+    }
+
+    /* SUBMIT */
+
+    .submit-btn {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 17px;
+      background: linear-gradient(
+        90deg,
+        #2879ff,
+        #155bf0
+      );
+      color: white;
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .submit-btn:hover {
+      filter: brightness(1.12);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .status {
+      min-height: 25px;
+      text-align: center;
+      color: #a7efd0;
+    }
+
+    .status.error {
+      color: #ffbaba;
+    }
+
+    .privacy {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 17px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 15px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .hero {
+        padding: 75px 15px;
+      }
+
+      .demo-section {
+        padding: 55px 13px 75px;
+      }
+
+      .demo-form {
+        padding: 23px 18px;
+      }
+
+      .form-grid,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .color-options {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        gap: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .demo-section::before {
+        animation: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header class="wrap">
-<strong>${name}</strong>
-<nav><a href="#services">Services</a><a href="#contact">Contact</a></nav>
-<a class="button" href="#contact">Get Started</a>
-</header>
-<section class="hero">
-<div class="wrap">
-<div class="tag">Welcome to ${name}</div>
-<h1>${head}</h1>
-<p>${desc}</p>
-<a class="button" href="#services">Explore Services</a>
-</div>
-</section>
-<section class="section" id="services">
-<div class="wrap">
-<div class="tag">What we offer</div>
-<h2>Designed around you.</h2>
-<div class="services">${cards}</div>
-</div>
-</section>
-${reviews}
-${booking}
-<section class="section alt" id="contact">
-<div class="wrap">
-<h2>Let's work together.</h2>
-<p>Contact our team to get started.</p>
-<a class="button" href="mailto:${mail}">Email Us</a>
-</div>
-</section>
-<footer><div class="wrap">© ${new Date().getFullYear()} ${name}</div></footer>
-<script>
-const form=document.getElementById('bookingForm');
-if(form)form.addEventListener('submit',e=>{
-  e.preventDefault();
-  const data=new FormData(form);
-  const subject=encodeURIComponent('Appointment request');
-  const body=encodeURIComponent(
-    'Name: '+data.get('name')+'\\n'+
-    'Email: '+data.get('contact')+'\\n'+
-    'Date: '+data.get('date')+'\\n'+
-    'Message: '+data.get('message')
-  );
-  window.location.href='mailto:${mail}?subject='+subject+'&body='+body;
-});
-<\\/script>
-</body>
-</html>`;
-}
 
-function refresh(){
-  if(!customCode)generatedHTML=buildHTML();
-  $('preview').srcdoc=generatedHTML;
-  $('codeEditor').value=generatedHTML;
-  try{
-    localStorage.setItem('vextrivo-demo',JSON.stringify(state));
-  }catch(e){}
-}
+  <!-- HEADER -->
 
-function applyChanges(){
-  readFields();
-  customCode=false;
-  refresh();
-  $('status').textContent='Changes applied and saved in this browser.';
-}
+  <header>
+    <div class="container navbar">
 
-function setMobile(mobile){
-  $('preview').classList.toggle('mobile',mobile);
-}
+      <a href="#home" class="logo">
+        VEX<span>TRIVO</span>
+      </a>
 
-function toggleCode(){
-  const editor=$('codeEditor');
-  const visible=editor.style.display==='block';
-  editor.style.display=visible?'none':'block';
-  $('viewport').style.display=visible?'flex':'none';
-  if(!visible)editor.value=generatedHTML;
-}
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#websites">Websites</a>
+        <a href="#marketing">Marketing</a>
+        <a href="#demo">Request Demo</a>
+      </nav>
 
-function applyCode(){
-  if($('codeEditor').style.display!=='block'){
-    $('status').textContent='Open Code Editor first.';
-    return;
-  }
-  generatedHTML=$('codeEditor').value;
-  customCode=true;
-  $('preview').srcdoc=generatedHTML;
-  $('codeEditor').style.display='none';
-  $('viewport').style.display='flex';
-  $('status').textContent='Custom code applied. Download HTML to keep it.';
-}
+      <a href="#demo" class="btn">
+        Book Free Demo
+      </a>
 
-function downloadSite(){
-  const blob=new Blob([generatedHTML],{type:'text/html'});
-  const url=URL.createObjectURL(blob);
-  const link=document.createElement('a');
-  link.href=url;
-  link.download=(state.name||'website')
-    .toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.html';
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
-  $('status').textContent='Website HTML downloaded.';
-}
+    </div>
+  </header>
 
-try{
-  const saved=JSON.parse(localStorage.getItem('vextrivo-demo')||'null');
-  if(saved)state={...defaults,...saved};
-}catch(e){}
+  <main>
 
-writeFields();
-refresh();
+    <!-- HERO -->
 
-const today=new Date();
-$('meetingDate').min=
-  today.getFullYear()+'-'+
-  String(today.getMonth()+1).padStart(2,'0')+'-'+
-  String(today.getDate()).padStart(2,'0');
+    <section id="home" class="hero">
 
-if(location.hash==='#marketing'){
-  showPage('marketing');
-}
-</script>
+      <div class="container">
+
+        <div class="eyebrow">
+          Premium Websites & Digital Marketing
+        </div>
+
+        <h1>
+          Your Business Deserves
+          <span>Something Exceptional.</span>
+        </h1>
+
+        <p>
+          We design professional, custom websites
+          built around your business.
+          Tell us what you're envisioning and
+          we'll personally create a free website demo.
+        </p>
+
+        <div class="actions">
+
+          <a href="#demo" class="btn">
+            Book My Free Demo
+          </a>
+
+          <a href="#websites" class="btn secondary">
+            Explore Our Websites
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- HOW IT WORKS -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="center">
+
+          <div class="eyebrow">
+            Our Process
+          </div>
+
+          <h2>
+            From Your Vision to Reality
+          </h2>
+
+          <p>
+            Getting your custom website started is simple.
+          </p>
+
+        </div>
+
+        <div class="cards">
+
+          <article class="card">
+
+            <div class="number">01</div>
+
+            <h3>
+              Tell Us About Your Business
+            </h3>
+
+            <p>
+              Fill out our website request form
+              and describe exactly what you want.
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <div class="number">02</div>
+
+            <h3>
+              We Build Your Demo
+            </h3>
+
+            <p>
+              Our team personally creates a
+              website demo based on your vision.
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <div class="number">03</div>
+
+            <h3>
+              Review & Launch
+            </h3>
+
+            <p>
+              Review your demo, request changes,
+              and decide whether to move forward.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- WEBSITE PRICING -->
+
+    <section id="websites" class="section">
+
+      <div class="container">
+
+        <div class="center">
+
+          <div class="eyebrow">
+            Website Services
+          </div>
+
+          <h2>
+            Websites Built to Impress
+          </h2>
+
+          <p>
+            Custom design solutions for businesses
+            of every size.
+          </p>
+
+        </div>
+
+        <div class="cards">
+
+          <!-- FREE DEMO -->
+
+          <article class="card featured">
+
+            <div class="eyebrow">
+              Start Here
+            </div>
+
+            <h3>
+              Free Website Demo
+            </h3>
+
+            <div class="price">
+              $0
+            </div>
+
+            <p>
+              Request a custom website concept
+              personally built for your business.
+            </p>
+
+            <ul>
+              <li>Personal design consultation</li>
+              <li>Business questionnaire</li>
+              <li>Custom demo request</li>
+              <li>No obligation to purchase</li>
+            </ul>
+
+            <a href="#demo"
+               class="btn"
+               data-service="Free Website Demo">
+              Request Free Demo
+            </a>
+
+          </article>
+
+          <!-- SIMPLE WEBSITE -->
+
+          <article class="card">
+
+            <h3>
+              Simple Website
+            </h3>
+
+            <div class="price">
+              $1,000
+              <small>starting at</small>
+            </div>
+
+            <p>
+              Professional websites designed
+              for growing businesses.
+            </p>
+
+            <ul>
+              <li>Custom website design</li>
+              <li>Mobile responsive layout</li>
+              <li>Services and contact sections</li>
+              <li>Business branding</li>
+            </ul>
+
+            <a href="#demo"
+               class="btn secondary"
+               data-service="Simple Website">
+              Get My Website
+            </a>
+
+          </article>
+
+          <!-- ADVANCED WEBSITE -->
+
+          <article class="card">
+
+            <h3>
+              Advanced Website
+            </h3>
+
+            <div class="price">
+              $2,000
+              <small>starting at</small>
+            </div>
+
+            <p>
+              Premium website design with
+              advanced interactive features.
+            </p>
+
+            <ul>
+              <li>Premium custom layouts</li>
+              <li>Interactive features</li>
+              <li>Multiple pages</li>
+              <li>Integrations as scoped</li>
+            </ul>
+
+            <a href="#demo"
+               class="btn secondary"
+               data-service="Advanced Website">
+              Request a Quote
+            </a>
+
+          </article>
+
+        </div>
+
+        <p class="center">
+          Final pricing depends on your project's scope.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- MARKETING -->
+
+    <section id="marketing" class="section">
+
+      <div class="container">
+
+        <div class="center">
+
+          <div class="eyebrow">
+            Digital Marketing
+          </div>
+
+          <h2>
+            Grow Your Business With VEXTRIVO
+          </h2>
+
+          <p>
+            Marketing services designed to help
+            your business reach more customers.
+          </p>
+
+        </div>
+
+        <div class="cards">
+
+          <!-- ORGANIC -->
+
+          <article class="card">
+
+            <h3>
+              Organic Marketing
+            </h3>
+
+            <div class="price">
+              $500
+              <small>/month</small>
+            </div>
+
+            <p>
+              Organic content and social media
+              marketing support.
+            </p>
+
+            <a href="#demo"
+               class="btn"
+               data-service="Organic Marketing">
+              Get Started
+            </a>
+
+          </article>
+
+          <!-- META ADS -->
+
+          <article class="card featured">
+
+            <h3>
+              Meta Ads
+            </h3>
+
+            <div class="price">
+              $1,700
+              <small>/month</small>
+            </div>
+
+            <p>
+              Facebook and Instagram
+              advertising management.
+            </p>
+
+            <a href="#demo"
+               class="btn"
+               data-service="Meta Ads">
+              Get Started
+            </a>
+
+          </article>
+
+          <!-- GOOGLE ADS -->
+
+          <article class="card">
+
+            <h3>
+              Google Ads
+            </h3>
+
+            <div class="price">
+              $1,700
+              <small>/month</small>
+            </div>
+
+            <p>
+              Google advertising campaign management.
+            </p>
+
+            <a href="#demo"
+               class="btn"
+               data-service="Google Ads">
+              Get Started
+            </a>
+
+          </article>
+
+        </div>
+
+        <div class="notice">
+
+          <strong>Ad spend is separate.</strong>
+
+          Meta Ads and Google Ads management
+          are $1,700 per month each, plus the
+          advertising budget you choose.
+          Results are not guaranteed.
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CALL TO ACTION -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="banner">
+
+          <div class="eyebrow">
+            Let's Work Together
+          </div>
+
+          <h2>
+            Ready to Build Something Exceptional?
+          </h2>
+
+          <p>
+            Tell us what you want and we'll
+            personally prepare a website demo.
+          </p>
+
+          <a href="#demo" class="btn">
+            Book Free Demo
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- DEMO REQUEST FORM -->
+
+    <section id="demo" class="demo-section">
+
+      <div class="demo-container">
+
+        <div class="demo-heading">
+
+          <div class="eyebrow">
+            VEXTRIVO
+          </div>
+
+          <h2>
+            Request Your
+            <span>Website Demo</span>
+          </h2>
+
+          <p>
+            Tell us about your business and your vision.
+            We'll personally create a custom website
+            demo for you.
+          </p>
+
+        </div>
+
+        <form
+          id="demoForm"
+          class="demo-form"
+          action="https://formsubmit.co/nkarpo49@gmail.com"
+          method="POST">
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="New VEXTRIVO Website Demo Request">
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table">
+
+          <input
+            type="text"
+            name="_honey"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            style="position:absolute;left:-9999px">
+
+          <!-- ABOUT BUSINESS -->
+
+          <div class="form-section">
+
+            <h3 class="form-title">
+              <span>▣</span>
+              About Your Business
+            </h3>
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label for="businessName">
+                  Business Name *
+                </label>
+
+                <input
+                  id="businessName"
+                  name="Business Name"
+                  placeholder="Enter your business name"
+                  maxlength="120"
+                  required>
+
+              </div>
+
+              <div class="field">
+
+                <label for="businessType">
+                  Business Type *
+                </label>
+
+                <select
+                  id="businessType"
+                  name="Business Type"
+                  required>
+
+                  <option value="">
+                    Select your business type
+                  </option>
+
+                  <option>
+                    Automotive / Detailing
+                  </option>
+
+                  <option>
+                    Construction / Contracting
+                  </option>
+
+                  <option>
+                    Landscaping
+                  </option>
+
+                  <option>
+                    Restaurant / Food
+                  </option>
+
+                  <option>
+                    Clothing / E-commerce
+                  </option>
+
+                  <option>
+                    Real Estate
+                  </option>
+
+                  <option>
+                    Beauty / Barber / Tattoo
+                  </option>
+
+                  <option>
+                    Fitness / Wellness
+                  </option>
+
+                  <option>
+                    Professional Services
+                  </option>
+
+                  <option>
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <div class="field wide">
+
+              <label for="businessDescription">
+                What Does Your Business Do?
+              </label>
+
+              <textarea
+                id="businessDescription"
+                name="Business Description"
+                maxlength="2500"
+                placeholder="Tell us about your services, products, and customers."></textarea>
+
+            </div>
+
+          </div>
+
+          <!-- WEBSITE VISION -->
+
+          <div class="form-section">
+
+            <h3 class="form-title">
+              <span>◉</span>
+              Your Website Vision
+            </h3>
+
+            <div class="field">
+
+              <label for="vision">
+                What Are You Envisioning for Your Website? *
+              </label>
+
+              <textarea
+                id="vision"
+                name="Website Vision"
+                required
+                maxlength="5000"
+                placeholder="Describe the look, style, pages, features, photos, and anything you want included."></textarea>
+
+            </div>
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label for="colorTheme">
+                  Preferred Color Theme *
+                </label>
+
+                <select
+                  id="colorTheme"
+                  name="Preferred Color Theme"
+                  required>
+
+                  <option value="">
+                    Choose a color theme
+                  </option>
+
+                  <option>Black & Gold</option>
+                  <option>Black & Blue</option>
+                  <option>Black & Red</option>
+                  <option>White & Blue</option>
+                  <option>White & Green</option>
+                  <option>Other / Custom Colors</option>
+
+                </select>
+
+              </div>
+
+              <div class="field">
+
+                <label for="websiteStyle">
+                  Website Style
+                </label>
+
+                <select
+                  id="websiteStyle"
+                  name="Website Style">
+
+                  <option value="">
+                    Select a style
+                  </option>
+
+                  <option>Luxury / Premium</option>
+                  <option>Modern / Minimal</option>
+                  <option>Bold / Creative</option>
+                  <option>Clean / Professional</option>
+                  <option>Dark / Futuristic</option>
+                  <option>Help Me Choose</option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <!-- COLOR OPTIONS -->
+
+            <div class="color-options">
+
+              <label class="color-option">
+                <input
+                  type="radio"
+                  name="Color Preview"
+                  value="Black & Gold">
+                <span class="swatch black-gold"></span>
+                Black & Gold
+              </label>
+
+              <label class="color-option">
+                <input
+                  type="radio"
+                  name="Color Preview"
+                  value="Black & Blue">
+                <span class="swatch black-blue"></span>
+                Black & Blue
+              </label>
+
+              <label class="color-option">
+                <input
+                  type="radio"
+                  name="Color Preview"
+                  value="Black & Red">
+                <span class="swatch black-red"></span>
+                Black & Red
+              </label>
+
+              <label class="color-option">
+                <input
+                  type="radio"
+                  name="Color Preview"
+                  value="White & Blue">
+                <span class="swatch white-blue"></span>
+                White & Blue
+              </label>
+
+              <label class="color-option">
+                <input
+                  type="radio"
+                  name="Color Preview"
+                  value="White & Green">
+                <span class="swatch white-green"></span>
+                White & Green
+              </label>
+
+              <label class="color-option">
+                <input
+                  type="radio"
+                  name="Color Preview"
+                  value="Other / Custom Colors">
+                <span class="swatch other"></span>
+                Other
+              </label>
+
+            </div>
+
+            <!-- INSPIRATION -->
+
+            <div class="field">
+
+              <label for="inspiration">
+                Example Websites You Like
+              </label>
+
+              <textarea
+                id="inspiration"
+                name="Website Inspiration"
+                placeholder="Paste links to websites you like or describe a design you love."></textarea>
+
+            </div>
+
+            <!-- FEATURES -->
+
+            <div class="field">
+
+              <label>
+                Features You Want Included
+              </label>
+
+              <div class="feature-grid">
+
+                <label class="feature">
+                  <input
+                    type="checkbox"
+                    name="Features"
+                    value="Booking Calendar">
+                  Booking Calendar
+                </label>
+
+                <label class="feature">
+                  <input
+                    type="checkbox"
+                    name="Features"
+                    value="Photo Gallery">
+                  Photo Gallery
+                </label>
+
+                <label class="feature">
+                  <input
+                    type="checkbox"
+                    name="Features"
+                    value="Online Payments">
+                  Online Payments
+                </label>
+
+                <label class="feature">
+                  <input
+                    type="checkbox"
+                    name="Features"
+                    value="Customer Reviews">
+                  Customer Reviews
+                </label>
+
+                <label class="feature">
+                  <input
+                    type="checkbox"
+                    name="Features"
+                    value="Quote Form">
+                  Quote Request Form
+                </label>
+
+                <label class="feature">
+                  <input
+                    type="checkbox"
+                    name="Features"
+                    value="Online Store">
+                  Online Store
+                </label>
+
+              </div>
+
+            </div>
+
+            <!-- SERVICE INTEREST -->
+
+            <div class="field wide">
+
+              <label for="serviceInterest">
+                Service You're Interested In
+              </label>
+
+              <select
+                id="serviceInterest"
+                name="Service Interest">
+
+                <option>Free Website Demo</option>
+                <option>Simple Website</option>
+                <option>Advanced Website</option>
+                <option>Organic Marketing</option>
+                <option>Meta Ads</option>
+                <option>Google Ads</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <!-- CONTACT INFO -->
+
+          <div class="form-section">
+
+            <h3 class="form-title">
+              <span>♙</span>
+              Your Contact Information
+            </h3>
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label for="fullName">
+                  Full Name *
+                </label>
+
+                <input
+                  id="fullName"
+                  name="Full Name"
+                  autocomplete="name"
+                  required
+                  maxlength="120"
+                  placeholder="Enter your full name">
+
+              </div>
+
+              <div class="field">
+
+                <label for="email">
+                  Email Address *
+                </label>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  placeholder="example@email.com">
+
+              </div>
+
+              <div class="field">
+
+                <label for="phone">
+                  Phone Number *
+                </label>
+
+                <input
+                  id="phone"
+                  name="Phone Number"
+                  type="tel"
+                  autocomplete="tel"
+                  required
+                  maxlength="30"
+                  placeholder="(123) 456-7890">
+
+              </div>
+
+              <div class="field">
+
+                <label for="contactPreference">
+                  Preferred Contact Method
+                </label>
+
+                <select
+                  id="contactPreference"
+                  name="Contact Preference">
+
+                  <option>Email</option>
+                  <option>Phone Call</option>
+                  <option>Text Message</option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+
+          <button
+            type="submit"
+            id="submitBtn"
+            class="submit-btn">
+            Request My Website Demo
+          </button>
+
+          <p
+            id="formStatus"
+            class="status"
+            role="status"
+            aria-live="polite"></p>
+
+          <p class="privacy">
+            Your information will only be used to
+            respond to your request and discuss
+            your custom website demo.
+          </p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © <span id="year"></span>
+    VEXTRIVO · Custom Websites & Digital Marketing
+  </footer>
+
+  <script>
+    'use strict';
+
+    // COPYRIGHT YEAR
+
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+    // SELECT SERVICE FROM PRICING BUTTONS
+
+    document.querySelectorAll('[data-service]').forEach(
+      button => {
+
+        button.addEventListener('click', () => {
+
+          const service = button.dataset.service;
+
+          document.getElementById(
+            'serviceInterest'
+          ).value = service;
+
+        });
+
+      }
+    );
+
+    // COLOR SWATCH SELECTION
+
+    const colorTheme =
+      document.getElementById('colorTheme');
+
+    document.querySelectorAll(
+      'input[name="Color Preview"]'
+    ).forEach(radio => {
+
+      radio.addEventListener('change', () => {
+        colorTheme.value = radio.value;
+      });
+
+    });
+
+    colorTheme.addEventListener('change', () => {
+
+      document.querySelectorAll(
+        'input[name="Color Preview"]'
+      ).forEach(radio => {
+
+        radio.checked =
+          radio.value === colorTheme.value;
+
+      });
+
+    });
+
+    // REDIRECT OLD STUDIO LINKS
+
+    if (
+      location.hash === '#studio' ||
+      location.hash === '#builder'
+    ) {
+
+      history.replaceState(
+        null,
+        '',
+        '#demo'
+      );
+
+      window.addEventListener('load', () => {
+
+        document.getElementById('demo')
+          .scrollIntoView();
+
+      });
+
+    }
+
+    // SUBMIT FORM TO EMAIL
+
+    const demoForm =
+      document.getElementById('demoForm');
+
+    demoForm.addEventListener(
+      'submit',
+      async event => {
+
+        event.preventDefault();
+
+        if (!demoForm.reportValidity()) {
+          return;
+        }
+
+        const submitBtn =
+          document.getElementById('submitBtn');
+
+        const status =
+          document.getElementById('formStatus');
+
+        const formData =
+          new FormData(demoForm);
+
+        formData.set(
+          '_subject',
+          'New VEXTRIVO Demo Request - ' +
+          formData.get('Business Name')
+        );
+
+        submitBtn.disabled = true;
+        submitBtn.textContent =
+          'Sending Request...';
+
+        status.classList.remove('error');
+        status.textContent =
+          'Submitting your request...';
+
+        try {
+
+          const response = await fetch(
+            'https://formsubmit.co/ajax/nkarpo49@gmail.com',
+            {
+              method: 'POST',
+              body: formData,
+              headers: {
+                Accept: 'application/json'
+              }
+            }
+          );
+
+          const result =
+            await response.json();
+
+          if (
+            !response.ok ||
+            result.success === false ||
+            result.success === 'false'
+          ) {
+            throw new Error('Submission failed');
+          }
+
+          status.textContent =
+            'Your request was submitted! ' +
+            'We will contact you about your website demo.';
+
+          demoForm.reset();
+
+        } catch (error) {
+
+          status.classList.add('error');
+
+          status.textContent =
+            'Unable to send your request. ' +
+            'Please email ' +
+            'nkarpo49@gmail.com directly.';
+
+        } finally {
+
+          submitBtn.disabled = false;
+
+          submitBtn.textContent =
+            'Request My Website Demo';
+
+        }
+
+      }
+    );
+  </script>
+
 </body>
 </html>
