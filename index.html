@@ -2,974 +2,613 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>VEXTRIVO | Custom Websites & Digital Marketing</title>
-
-<meta name="description" content="VEXTRIVO creates premium custom websites and provides digital marketing services. Request your free consultation today.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="VEXTRIVO builds premium business websites and provides digital marketing services. Request a free consultation.">
+<title>VEXTRIVO | Websites & Marketing</title>
 
 <style>
-:root {
-  --bg: #080f20;
-  --navy: #0d1930;
-  --panel: #111f38;
-  --field: #1c2c49;
-  --border: #3b5175;
-  --blue: #2878ff;
-  --blue-light: #76adff;
-  --white: #f8faff;
-  --muted: #b2c0d7;
+:root{
+  --bg:#080f20;
+  --navy:#0d1930;
+  --panel:#111f38;
+  --field:#1c2c49;
+  --border:#3b5175;
+  --blue:#2878ff;
+  --light:#76adff;
+  --white:#f8faff;
+  --muted:#b2c0d7;
 }
-
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.6;
 }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1180px,92%);margin:auto}
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#080f20f5;
+  border-bottom:1px solid #ffffff20;
+  backdrop-filter:blur(14px);
 }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:17px 0;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
+.logo{
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:2px;
 }
-
-button, input, select, textarea {
-  font: inherit;
+.logo span{color:var(--blue)}
+nav{display:flex;gap:24px;align-items:center}
+nav a{font-size:14px;font-weight:700}
+nav a:hover{color:var(--light)}
+.btn{
+  display:inline-block;
+  padding:14px 24px;
+  border:0;
+  border-radius:10px;
+  background:var(--blue);
+  color:white;
+  font-weight:800;
+  text-align:center;
+  transition:.2s;
 }
-
-button {
-  cursor: pointer;
+.btn:hover{background:#4b90ff;transform:translateY(-2px)}
+.btn.secondary{
+  background:#213452;
+  border:1px solid #47638a;
 }
-
-.container {
-  width: min(1180px, 92%);
-  margin: auto;
-}
-
-/* NAVIGATION */
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(8, 15, 32, .96);
-  border-bottom: 1px solid #ffffff20;
-  backdrop-filter: blur(15px);
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 17px 0;
-}
-
-.logo {
-  font-size: 27px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  white-space: nowrap;
-}
-
-.logo span {
-  color: var(--blue);
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-nav a {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: var(--blue-light);
-}
-
-.btn {
-  display: inline-block;
-  padding: 14px 24px;
-  border-radius: 10px;
-  background: var(--blue);
-  color: white;
-  font-weight: 800;
-  text-align: center;
-  border: 1px solid transparent;
-  transition: .2s;
-}
-
-.btn:hover {
-  background: #4b90ff;
-  transform: translateY(-2px);
-}
-
-.btn.secondary {
-  background: #213452;
-  border-color: #47638a;
-}
-
-/* HERO */
-
-.hero {
-  padding: 125px 20px 115px;
-  text-align: center;
+.hero{
+  text-align:center;
+  padding:125px 20px 115px;
   background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      #1c4d9570,
-      transparent 65%
-    ),
+    radial-gradient(ellipse at 50% 0%,#1c4d9570,transparent 65%),
     var(--bg);
 }
-
-.eyebrow {
-  color: var(--blue-light);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+.eyebrow{
+  color:var(--light);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+h1{
+  font-size:clamp(40px,6vw,76px);
+  line-height:1.08;
+  letter-spacing:-2px;
+  max-width:950px;
+  margin:22px auto;
+}
+h1 span,h2 span{color:var(--light)}
+h2{
+  font-size:clamp(30px,4vw,46px);
+  line-height:1.2;
+}
+h3{font-size:22px}
+p{color:var(--muted)}
+.hero p{
+  max-width:730px;
+  margin:20px auto 32px;
+  font-size:18px;
+}
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+}
+.section{padding:85px 0}
+.center{text-align:center}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:35px;
+}
+.card{
+  padding:30px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#172945,#0e182b);
+  border:1px solid var(--border);
+}
+.card.featured{
+  border-color:var(--blue);
+  box-shadow:0 0 35px #2475ff18;
+}
+.card ul{
+  padding-left:20px;
+  color:#d4e0f1;
+  line-height:2;
+}
+.card .btn{margin-top:15px}
+.number{
+  color:var(--light);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.price{
+  font-size:40px;
+  font-weight:900;
+  margin:16px 0;
+}
+.price small{
+  font-size:14px;
+  font-weight:400;
+  color:var(--muted);
+}
+.notice{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  margin-top:25px;
+  color:#d5e2f4;
+}
+.banner{
+  padding:55px 25px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:linear-gradient(120deg,#152e57,#0e1a30);
+  text-align:center;
 }
 
-h1 {
-  font-size: clamp(40px, 6vw, 76px);
-  line-height: 1.08;
-  letter-spacing: -2px;
-  max-width: 950px;
-  margin: 22px auto;
+/* CONSULTATION SECTION */
+
+.booking{
+  position:relative;
+  isolation:isolate;
+  padding:90px 18px 110px;
+  background:#081225;
+  overflow:hidden;
 }
-
-h1 span {
-  background: linear-gradient(90deg, #fff, #478eff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-h2 {
-  font-size: clamp(29px, 4vw, 45px);
-  line-height: 1.2;
-  letter-spacing: -1px;
-}
-
-h3 {
-  font-size: 22px;
-}
-
-p {
-  color: var(--muted);
-}
-
-.hero p {
-  max-width: 730px;
-  margin: 20px auto 32px;
-  font-size: 18px;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-/* GENERAL SECTIONS */
-
-.section {
-  padding: 85px 0;
-}
-
-.center {
-  text-align: center;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 35px;
-}
-
-.card {
-  background: linear-gradient(145deg, #172945, #0e182b);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 30px;
-}
-
-.card.featured {
-  border-color: var(--blue);
-  box-shadow: 0 0 35px #2475ff18;
-}
-
-.number {
-  color: var(--blue-light);
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.price {
-  font-size: 40px;
-  font-weight: 900;
-  margin: 16px 0;
-}
-
-.price small {
-  font-size: 14px;
-  color: var(--muted);
-  font-weight: normal;
-}
-
-.card ul {
-  color: #d4e0f1;
-  line-height: 2;
-  padding-left: 20px;
-}
-
-.card .btn {
-  margin-top: 14px;
-}
-
-.banner {
-  background: linear-gradient(120deg, #152e57, #0e1a30);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 55px 25px;
-  text-align: center;
-}
-
-.notice {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  color: #d5e2f4;
-  margin-top: 25px;
-}
-
-/* BOOKING SECTION */
-
-.booking-section {
-  position: relative;
-  isolation: isolate;
-  padding: 90px 18px 110px;
-  background: #081225;
-  overflow: hidden;
-  min-height: 100vh;
-}
-
-.booking-section::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -20%;
+.booking::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-20%;
   background:
-    radial-gradient(
-      ellipse at 0% 45%,
-      #12468b85,
-      transparent 43%
-    ),
-    radial-gradient(
-      ellipse at 100% 75%,
-      #13478c70,
-      transparent 43%
-    );
-  animation: flow 20s ease-in-out infinite alternate;
-  pointer-events: none;
+    radial-gradient(ellipse at 0% 45%,#12468b85,transparent 43%),
+    radial-gradient(ellipse at 100% 75%,#13478c70,transparent 43%);
+  animation:flow 20s ease-in-out infinite alternate;
+  pointer-events:none;
 }
-
-@keyframes flow {
-  from { transform: translate(-3%, 0); }
-  to { transform: translate(3%, 3%); }
+@keyframes flow{
+  from{transform:translate(-3%,0)}
+  to{transform:translate(3%,3%)}
 }
-
-.booking-container {
-  width: min(880px, 100%);
-  margin: 0 auto;
+.booking-container{
+  width:min(880px,100%);
+  margin:auto;
 }
-
-.booking-heading {
-  text-align: center;
-  margin-bottom: 35px;
+.booking-heading{
+  text-align:center;
+  margin-bottom:35px;
 }
-
-.booking-heading h2 {
-  font-size: clamp(35px, 5vw, 52px);
-  margin: 14px 0;
+.booking-heading h2{
+  font-size:clamp(35px,5vw,52px);
+  margin:14px 0;
 }
-
-.booking-heading h2 span {
-  color: var(--blue-light);
+.booking-heading p{
+  max-width:680px;
+  margin:auto;
+  font-size:17px;
 }
-
-.booking-heading p {
-  max-width: 680px;
-  margin: auto;
-  font-size: 17px;
+.service-selection{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:25px;
 }
-
-/* THREE SELECTION BUTTONS */
-
-.service-selection {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-bottom: 25px;
+.service-option{
+  padding:24px 12px;
+  background:#14233d;
+  border:1px solid #405b82;
+  border-radius:14px;
+  color:white;
+  text-align:center;
+  transition:.2s;
 }
-
-.service-option {
-  background: #14233d;
-  border: 1px solid #405b82;
-  border-radius: 14px;
-  padding: 24px 12px;
-  color: white;
-  text-align: center;
-  transition: .2s;
+.service-option:hover{
+  background:#1a3356;
+  border-color:var(--light);
 }
-
-.service-option:hover {
-  border-color: var(--blue-light);
-  background: #1a3356;
+.service-option.active{
+  background:#173d79;
+  border:2px solid #4c91ff;
+  box-shadow:0 0 25px #2475ff25;
 }
-
-.service-option.active {
-  background: #173d79;
-  border: 2px solid #4c91ff;
-  box-shadow: 0 0 25px #2475ff25;
+.service-icon{
+  display:block;
+  font-size:28px;
+  margin-bottom:8px;
 }
-
-.service-icon {
-  font-size: 28px;
-  display: block;
-  margin-bottom: 8px;
+.service-option strong{
+  display:block;
+  font-size:17px;
 }
-
-.service-option strong {
-  display: block;
-  font-size: 17px;
+.service-option small{
+  display:block;
+  margin-top:5px;
+  color:#b6c8e1;
+  font-size:12px;
 }
-
-.service-option small {
-  display: block;
-  color: #b6c8e1;
-  font-size: 12px;
-  margin-top: 5px;
+.booking-form{
+  padding:36px;
+  border:1px solid #4c6691;
+  border-radius:20px;
+  background:linear-gradient(145deg,#101e37,#0a1529);
+  box-shadow:0 30px 80px #0007;
 }
-
-/* FORM */
-
-.booking-form {
-  background: linear-gradient(145deg, #101e37, #0a1529);
-  border: 1px solid #4c6691;
-  border-radius: 20px;
-  padding: 36px;
-  box-shadow: 0 30px 80px #0007;
+.form-section{
+  padding-bottom:28px;
+  margin-bottom:28px;
+  border-bottom:1px solid #405575;
 }
-
-.form-section {
-  padding-bottom: 28px;
-  margin-bottom: 28px;
-  border-bottom: 1px solid #405575;
+.form-section:last-of-type{
+  border-bottom:none;
+  margin-bottom:0;
 }
-
-.form-section:last-of-type {
-  border-bottom: none;
-  margin-bottom: 0;
+.form-title{
+  font-size:20px;
+  font-weight:800;
+  margin:0 0 22px;
 }
-
-.form-title {
-  font-size: 20px;
-  font-weight: 800;
-  margin: 0 0 22px;
+.form-title span{
+  color:var(--light);
+  margin-right:9px;
 }
-
-.form-title span {
-  color: var(--blue-light);
-  margin-right: 9px;
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
 }
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+.field{margin-bottom:19px}
+.form-grid .field{margin-bottom:0}
+.field label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:8px;
 }
-
-.field {
-  margin-bottom: 19px;
-}
-
-.form-grid .field {
-  margin-bottom: 0;
-}
-
-.field label {
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
 .field input,
 .field select,
-.field textarea {
-  width: 100%;
-  background: var(--field);
-  border: 1px solid #536b91;
-  border-radius: 9px;
-  color: white;
-  padding: 13px 15px;
-  outline: none;
+.field textarea{
+  width:100%;
+  padding:13px 15px;
+  background:var(--field);
+  border:1px solid #536b91;
+  border-radius:9px;
+  color:white;
+  outline:none;
 }
-
-.field textarea {
-  min-height: 115px;
-  resize: vertical;
+.field textarea{
+  min-height:115px;
+  resize:vertical;
 }
-
 .field input::placeholder,
-.field textarea::placeholder {
-  color: #aabbd2;
+.field textarea::placeholder{
+  color:#aabbd2;
 }
-
 .field input:focus,
 .field select:focus,
-.field textarea:focus {
-  border-color: var(--blue-light);
-  box-shadow: 0 0 0 3px #2475ff30;
+.field textarea:focus{
+  border-color:var(--light);
+  box-shadow:0 0 0 3px #2475ff30;
 }
-
-.field select option {
-  background: var(--field);
+.field select option{background:var(--field)}
+.field.wide{margin-top:19px}
+.color-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:11px;
+  margin:18px 0 22px;
 }
-
-.field.wide {
-  margin-top: 19px;
+.color-option{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:12px;
+  background:#1b2c49;
+  border:1px solid #405b82;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
 }
-
-/* COLOR SELECTION */
-
-.color-options {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 11px;
-  margin: 18px 0 22px;
+.color-option:has(input:checked){
+  border-color:#78aeff;
+  background:#25446d;
 }
-
-.color-option {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  background: #1b2c49;
-  border: 1px solid #405b82;
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
+.color-option input,
+.feature input{accent-color:var(--blue)}
+.swatch{
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  border:1px solid #ffffff80;
+  flex-shrink:0;
 }
-
-.color-option:has(input:checked) {
-  border-color: #78aeff;
-  background: #25446d;
+.black-gold{background:linear-gradient(135deg,#000 50%,#d8a72b 50%)}
+.black-blue{background:linear-gradient(135deg,#000 50%,#2475ff 50%)}
+.black-red{background:linear-gradient(135deg,#000 50%,#e83d4d 50%)}
+.white-blue{background:linear-gradient(135deg,#fff 50%,#2475ff 50%)}
+.white-green{background:linear-gradient(135deg,#fff 50%,#12ba66 50%)}
+.other{background:linear-gradient(135deg,#aaa,#4c5264)}
+.feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
 }
-
-.color-option input {
-  accent-color: var(--blue);
+.feature{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  background:var(--field);
+  border:1px solid var(--border);
+  border-radius:9px;
+  font-size:13px;
 }
-
-.swatch {
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  border: 1px solid #ffffff80;
-  flex-shrink: 0;
+.dynamic-section[hidden]{display:none!important}
+.submit-btn{
+  width:100%;
+  padding:17px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(90deg,#2879ff,#155bf0);
+  color:white;
+  font-size:17px;
+  font-weight:900;
 }
-
-.black-gold {
-  background: linear-gradient(135deg, #000 50%, #d8a72b 50%);
+.submit-btn:hover{filter:brightness(1.12)}
+.submit-btn:disabled{opacity:.6;cursor:wait}
+.status{
+  min-height:25px;
+  text-align:center;
+  color:#a7efd0;
 }
-
-.black-blue {
-  background: linear-gradient(135deg, #000 50%, #2475ff 50%);
+.status.error{color:#ffbaba}
+.backup{
+  margin:20px 0;
+  text-align:center;
+  padding:18px;
+  border:1px solid #405b82;
+  border-radius:12px;
+  background:#14233d;
 }
-
-.black-red {
-  background: linear-gradient(135deg, #000 50%, #e83d4d 50%);
+.backup a{
+  color:#9bc5ff;
+  font-weight:800;
+  text-decoration:underline;
 }
-
-.white-blue {
-  background: linear-gradient(135deg, #fff 50%, #2475ff 50%);
+.privacy{
+  font-size:12px;
+  text-align:center;
+  margin-top:17px;
 }
-
-.white-green {
-  background: linear-gradient(135deg, #fff 50%, #12ba66 50%);
+footer{
+  text-align:center;
+  padding:28px 15px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:13px;
 }
-
-.other {
-  background: linear-gradient(135deg, #aaa, #4c5264);
+@media(max-width:900px){
+  .cards{grid-template-columns:1fr}
+  .nav{flex-wrap:wrap;justify-content:center}
+  nav{flex-wrap:wrap;justify-content:center}
 }
-
-/* FEATURES */
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 11px;
+@media(max-width:650px){
+  .hero{padding:75px 15px}
+  .booking{padding:55px 13px 75px}
+  .booking-form{padding:23px 18px}
+  .form-grid,.feature-grid{grid-template-columns:1fr}
+  .service-selection{grid-template-columns:1fr}
+  .color-options{grid-template-columns:repeat(2,1fr)}
+  nav{gap:14px}
 }
-
-.feature {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
-  background: var(--field);
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  font-size: 13px;
-}
-
-.feature input {
-  accent-color: var(--blue);
-}
-
-/* CONDITIONAL SECTIONS */
-
-.dynamic-section[hidden] {
-  display: none !important;
-}
-
-/* SUBMIT */
-
-.submit-btn {
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-  padding: 17px;
-  background: linear-gradient(90deg, #2879ff, #155bf0);
-  color: white;
-  font-weight: 900;
-  font-size: 17px;
-}
-
-.submit-btn:hover {
-  filter: brightness(1.12);
-}
-
-.submit-btn:disabled {
-  opacity: .6;
-  cursor: wait;
-}
-
-.status {
-  min-height: 25px;
-  text-align: center;
-  color: #a7efd0;
-}
-
-.status.error {
-  color: #ffbaba;
-}
-
-.privacy {
-  font-size: 12px;
-  text-align: center;
-  margin-top: 17px;
-}
-
-footer {
-  text-align: center;
-  padding: 28px 15px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* MOBILE */
-
-@media(max-width: 900px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .navbar {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-@media(max-width: 650px) {
-  .hero {
-    padding: 75px 15px;
-  }
-
-  .booking-section {
-    padding: 55px 13px 75px;
-  }
-
-  .booking-form {
-    padding: 23px 18px;
-  }
-
-  .form-grid,
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .service-selection {
-    grid-template-columns: 1fr;
-  }
-
-  .color-options {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  nav {
-    gap: 14px;
-  }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  .booking-section::before {
-    animation: none;
-  }
+@media(prefers-reduced-motion:reduce){
+  .booking::before{animation:none}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-  <div class="container navbar">
-
-    <a href="#home" class="logo">
-      VEX<span>TRIVO</span>
-    </a>
-
+  <div class="container nav">
+    <a class="logo" href="#home">VEX<span>TRIVO</span></a>
     <nav>
       <a href="#home">Home</a>
       <a href="#websites">Websites</a>
       <a href="#marketing">Marketing</a>
       <a href="#demo">Book Consultation</a>
     </nav>
-
-    <a href="#demo" class="btn">
-      Book Free Demo
-    </a>
-
+    <a class="btn" href="#demo">Book Free Demo</a>
   </div>
 </header>
 
 <main>
 
-<!-- HERO -->
-
-<section id="home" class="hero">
+<section class="hero" id="home">
   <div class="container">
-
-    <div class="eyebrow">
-      Premium Websites & Digital Marketing
-    </div>
-
-    <h1>
-      Your Business Deserves
-      <span>Something Exceptional.</span>
-    </h1>
-
+    <div class="eyebrow">Premium Websites & Digital Marketing</div>
+    <h1>Your Business Deserves <span>Something Exceptional.</span></h1>
     <p>
-      We design professional custom websites
-      and help businesses grow through
-      powerful digital marketing.
-      Tell us your vision and let's build
-      something exceptional.
+      We design professional custom websites and help
+      businesses grow through digital marketing.
+      Tell us your vision and let's build something exceptional.
     </p>
-
     <div class="actions">
-      <a href="#demo" class="btn">
-        Book Free Demo
-      </a>
-
-      <a href="#websites" class="btn secondary">
-        Explore Our Services
-      </a>
+      <a class="btn" href="#demo">Book Free Demo</a>
+      <a class="btn secondary" href="#websites">Explore Our Services</a>
     </div>
-
   </div>
 </section>
 
-<!-- PROCESS -->
-
 <section class="section">
   <div class="container">
-
     <div class="center">
       <div class="eyebrow">Our Process</div>
       <h2>From Your Vision to Reality</h2>
       <p>Getting started with VEXTRIVO is simple.</p>
     </div>
-
     <div class="cards">
-
       <article class="card">
         <div class="number">01</div>
         <h3>Tell Us What You Need</h3>
-        <p>
-          Choose websites, marketing, or both,
-          then tell us about your business.
-        </p>
+        <p>Choose websites, marketing, or both, then tell us about your business.</p>
       </article>
-
       <article class="card">
         <div class="number">02</div>
         <h3>We Connect With You</h3>
-        <p>
-          We'll review your request and
-          contact you to discuss your goals.
-        </p>
+        <p>We'll review your request and contact you to discuss your goals.</p>
       </article>
-
       <article class="card">
         <div class="number">03</div>
         <h3>Build & Grow</h3>
-        <p>
-          We develop your website or
-          marketing strategy based on
-          your business needs.
-        </p>
+        <p>We develop your website or marketing strategy based on your needs.</p>
       </article>
-
     </div>
-
   </div>
 </section>
 
-<!-- WEBSITE PRICING -->
-
-<section id="websites" class="section">
+<section class="section" id="websites">
   <div class="container">
-
     <div class="center">
       <div class="eyebrow">Website Services</div>
       <h2>Websites Built to Impress</h2>
-      <p>
-        Custom websites for businesses
-        of every size.
-      </p>
+      <p>Custom websites for businesses of every size.</p>
     </div>
 
     <div class="cards">
-
       <article class="card featured">
         <div class="eyebrow">Start Here</div>
         <h3>Free Website Demo</h3>
         <div class="price">$0</div>
-        <p>
-          Tell us your vision and
-          request a custom website demo.
-        </p>
+        <p>Tell us your vision and request a custom website demo.</p>
         <ul>
           <li>Personal consultation request</li>
           <li>Website questionnaire</li>
           <li>Custom demo concept</li>
           <li>No obligation to purchase</li>
         </ul>
-        <a href="#demo"
-           class="btn"
-           data-service="Websites">
+        <a class="btn" href="#demo" data-service="Websites">
           Request Free Demo
         </a>
       </article>
 
       <article class="card">
         <h3>Simple Website</h3>
-        <div class="price">
-          $1,000 <small>starting at</small>
-        </div>
-        <p>
-          Professional websites for
-          growing businesses.
-        </p>
+        <div class="price">$1,000 <small>starting at</small></div>
+        <p>Professional websites for growing businesses.</p>
         <ul>
           <li>Custom website design</li>
           <li>Mobile responsive layout</li>
           <li>Services and contact sections</li>
           <li>Business branding</li>
         </ul>
-        <a href="#demo"
-           class="btn secondary"
-           data-service="Websites">
+        <a class="btn secondary" href="#demo" data-service="Websites">
           Get My Website
         </a>
       </article>
 
       <article class="card">
         <h3>Advanced Website</h3>
-        <div class="price">
-          $2,000 <small>starting at</small>
-        </div>
-        <p>
-          Premium design with
-          advanced interactive features.
-        </p>
+        <div class="price">$2,000 <small>starting at</small></div>
+        <p>Premium design with advanced interactive features.</p>
         <ul>
           <li>Premium custom layouts</li>
           <li>Interactive features</li>
           <li>Multiple pages</li>
           <li>Integrations as scoped</li>
         </ul>
-        <a href="#demo"
-           class="btn secondary"
-           data-service="Websites">
+        <a class="btn secondary" href="#demo" data-service="Websites">
           Request a Quote
         </a>
       </article>
-
     </div>
-
   </div>
 </section>
 
-<!-- MARKETING -->
-
-<section id="marketing" class="section">
+<section class="section" id="marketing">
   <div class="container">
-
     <div class="center">
       <div class="eyebrow">Digital Marketing</div>
       <h2>Grow Your Business With VEXTRIVO</h2>
-      <p>
-        Marketing services to help
-        your business reach more customers.
-      </p>
+      <p>Marketing services to help your business reach more customers.</p>
     </div>
 
     <div class="cards">
-
       <article class="card">
         <h3>Organic Marketing</h3>
-        <div class="price">
-          $500 <small>/month</small>
-        </div>
-        <p>
-          Organic content and social media
-          marketing support.
-        </p>
-        <a href="#demo"
-           class="btn"
-           data-service="Marketing">
-          Get Started
-        </a>
+        <div class="price">$500 <small>/month</small></div>
+        <p>Organic content and social media marketing support.</p>
+        <a class="btn" href="#demo" data-service="Marketing">Get Started</a>
       </article>
 
       <article class="card featured">
         <h3>Meta Ads</h3>
-        <div class="price">
-          $1,700 <small>/month</small>
-        </div>
-        <p>
-          Facebook and Instagram
-          advertising management.
-        </p>
-        <a href="#demo"
-           class="btn"
-           data-service="Marketing">
-          Get Started
-        </a>
+        <div class="price">$1,700 <small>/month</small></div>
+        <p>Facebook and Instagram advertising management.</p>
+        <a class="btn" href="#demo" data-service="Marketing">Get Started</a>
       </article>
 
       <article class="card">
         <h3>Google Ads</h3>
-        <div class="price">
-          $1,700 <small>/month</small>
-        </div>
-        <p>
-          Google advertising
-          campaign management.
-        </p>
-        <a href="#demo"
-           class="btn"
-           data-service="Marketing">
-          Get Started
-        </a>
+        <div class="price">$1,700 <small>/month</small></div>
+        <p>Google advertising campaign management.</p>
+        <a class="btn" href="#demo" data-service="Marketing">Get Started</a>
       </article>
-
     </div>
 
     <div class="notice">
       <strong>Ad spend is separate.</strong>
-      Meta Ads and Google Ads management
-      are $1,700 per month each, plus
-      the advertising budget you choose.
+      Meta Ads and Google Ads management are $1,700 per month each,
+      plus the advertising budget you choose.
       Results are not guaranteed.
     </div>
-
   </div>
 </section>
-
-<!-- CALL TO ACTION -->
 
 <section class="section">
   <div class="container">
-
     <div class="banner">
       <div class="eyebrow">Let's Work Together</div>
       <h2>Ready to Grow Your Business?</h2>
-      <p>
-        Tell us what you're looking for
-        and we'll help you take the next step.
-      </p>
-      <a href="#demo" class="btn">
-        Book Free Consultation
-      </a>
+      <p>Tell us what you're looking for and we'll help you take the next step.</p>
+      <a class="btn" href="#demo">Book Free Consultation</a>
     </div>
-
   </div>
 </section>
 
-<!-- BOOKING SECTION -->
+<!-- BOOKING FORM: NO WEBSITE BUILDER -->
 
-<section id="demo" class="booking-section">
-
+<section class="booking" id="demo">
   <div class="booking-container">
 
     <div class="booking-heading">
-      <div class="eyebrow">
-        VEXTRIVO · FREE CONSULTATION
-      </div>
-
-      <h2>
-        What Can <span>We Help You With?</span>
-      </h2>
-
+      <div class="eyebrow">VEXTRIVO · FREE CONSULTATION</div>
+      <h2>What Can <span>We Help You With?</span></h2>
       <p>
-        Select what you'd like to discuss
-        with our team and tell us a little
+        Select what you'd like to discuss and tell us
         about your business.
       </p>
     </div>
-
-    <!-- THREE SERVICE BUTTONS -->
 
     <div class="service-selection"
          role="group"
@@ -979,43 +618,37 @@ footer {
               class="service-option active"
               data-choice="Websites"
               aria-pressed="true">
-
         <span class="service-icon">▣</span>
         <strong>Websites</strong>
         <small>Design & Development</small>
-
       </button>
 
       <button type="button"
               class="service-option"
               data-choice="Marketing"
               aria-pressed="false">
-
         <span class="service-icon">◎</span>
         <strong>Marketing</strong>
         <small>Ads & Organic Growth</small>
-
       </button>
 
       <button type="button"
               class="service-option"
               data-choice="Both"
               aria-pressed="false">
-
         <span class="service-icon">◈</span>
         <strong>Both</strong>
         <small>Complete Business Growth</small>
-
       </button>
 
     </div>
 
-    <!-- REQUEST FORM -->
-
-    <form id="bookingForm"
-          class="booking-form"
-          action="https://formsubmit.co/nkarpo49@gmail.com"
-          method="POST">
+    <form
+      id="bookingForm"
+      class="booking-form"
+      action="https://formsubmit.co/nkarpo49@gmail.com"
+      method="POST"
+    >
 
       <input type="hidden"
              name="_subject"
@@ -1024,6 +657,10 @@ footer {
       <input type="hidden"
              name="_template"
              value="table">
+
+      <input type="hidden"
+             name="_url"
+             value="https://vextrivo-main.vercel.app/#demo">
 
       <input type="hidden"
              id="selectedService"
@@ -1037,37 +674,28 @@ footer {
              aria-hidden="true"
              style="position:absolute;left:-9999px">
 
-      <!-- BUSINESS INFO -->
-
       <div class="form-section">
-
         <h3 class="form-title">
           <span>▣</span> About Your Business
         </h3>
 
         <div class="form-grid">
-
           <div class="field">
-            <label for="businessName">
-              Business Name *
-            </label>
-            <input id="businessName"
-                   name="Business Name"
-                   required
-                   maxlength="120"
-                   placeholder="Enter your business name">
+            <label for="businessName">Business Name *</label>
+            <input
+              id="businessName"
+              name="Business Name"
+              placeholder="Enter your business name"
+              maxlength="120"
+              required>
           </div>
 
           <div class="field">
-            <label for="businessType">
-              Business Type *
-            </label>
+            <label for="businessType">Business Type *</label>
             <select id="businessType"
                     name="Business Type"
                     required>
-              <option value="">
-                Select your business type
-              </option>
+              <option value="">Select your business type</option>
               <option>Automotive / Detailing</option>
               <option>Construction / Contracting</option>
               <option>Landscaping</option>
@@ -1080,22 +708,19 @@ footer {
               <option>Other</option>
             </select>
           </div>
-
         </div>
 
         <div class="field wide">
           <label for="businessDescription">
             What Does Your Business Do?
           </label>
-          <textarea id="businessDescription"
-                    name="Business Description"
-                    maxlength="2500"
-                    placeholder="Tell us about your products, services, and customers."></textarea>
+          <textarea
+            id="businessDescription"
+            name="Business Description"
+            maxlength="2500"
+            placeholder="Tell us about your products, services, and customers."></textarea>
         </div>
-
       </div>
-
-      <!-- WEBSITE QUESTIONS -->
 
       <div id="websiteQuestions"
            class="form-section dynamic-section">
@@ -1108,15 +733,15 @@ footer {
           <label for="websiteVision">
             What Are You Envisioning for Your Website? *
           </label>
-          <textarea id="websiteVision"
-                    name="Website Vision"
-                    required
-                    maxlength="5000"
-                    placeholder="Describe the look, style, pages, features, and anything you want included."></textarea>
+          <textarea
+            id="websiteVision"
+            name="Website Vision"
+            maxlength="5000"
+            required
+            placeholder="Describe the look, style, pages, features, and anything you want included."></textarea>
         </div>
 
         <div class="form-grid">
-
           <div class="field">
             <label for="colorTheme">
               Preferred Color Theme *
@@ -1124,9 +749,7 @@ footer {
             <select id="colorTheme"
                     name="Preferred Color Theme"
                     required>
-              <option value="">
-                Choose a color theme
-              </option>
+              <option value="">Choose a color theme</option>
               <option>Black & Gold</option>
               <option>Black & Blue</option>
               <option>Black & Red</option>
@@ -1137,14 +760,9 @@ footer {
           </div>
 
           <div class="field">
-            <label for="websiteStyle">
-              Website Style
-            </label>
-            <select id="websiteStyle"
-                    name="Website Style">
-              <option value="">
-                Select a style
-              </option>
+            <label for="websiteStyle">Website Style</label>
+            <select id="websiteStyle" name="Website Style">
+              <option value="">Select a style</option>
               <option>Luxury / Premium</option>
               <option>Modern / Minimal</option>
               <option>Bold / Creative</option>
@@ -1153,123 +771,87 @@ footer {
               <option>Help Me Choose</option>
             </select>
           </div>
-
         </div>
 
         <div class="color-options">
-
           <label class="color-option">
-            <input type="radio"
-                   name="Color Preview"
-                   value="Black & Gold">
+            <input type="radio" name="Color Preview" value="Black & Gold">
             <span class="swatch black-gold"></span>
             Black & Gold
           </label>
 
           <label class="color-option">
-            <input type="radio"
-                   name="Color Preview"
-                   value="Black & Blue">
+            <input type="radio" name="Color Preview" value="Black & Blue">
             <span class="swatch black-blue"></span>
             Black & Blue
           </label>
 
           <label class="color-option">
-            <input type="radio"
-                   name="Color Preview"
-                   value="Black & Red">
+            <input type="radio" name="Color Preview" value="Black & Red">
             <span class="swatch black-red"></span>
             Black & Red
           </label>
 
           <label class="color-option">
-            <input type="radio"
-                   name="Color Preview"
-                   value="White & Blue">
+            <input type="radio" name="Color Preview" value="White & Blue">
             <span class="swatch white-blue"></span>
             White & Blue
           </label>
 
           <label class="color-option">
-            <input type="radio"
-                   name="Color Preview"
-                   value="White & Green">
+            <input type="radio" name="Color Preview" value="White & Green">
             <span class="swatch white-green"></span>
             White & Green
           </label>
 
           <label class="color-option">
-            <input type="radio"
-                   name="Color Preview"
-                   value="Other / Custom Colors">
+            <input type="radio" name="Color Preview" value="Other / Custom Colors">
             <span class="swatch other"></span>
             Other
           </label>
-
         </div>
 
         <div class="field">
           <label for="websiteInspiration">
             Example Websites You Like
           </label>
-          <textarea id="websiteInspiration"
-                    name="Website Inspiration"
-                    placeholder="Paste links or describe websites you like."></textarea>
+          <textarea
+            id="websiteInspiration"
+            name="Website Inspiration"
+            placeholder="Paste links or describe websites you like."></textarea>
         </div>
 
         <div class="field">
           <label>Features You Want Included</label>
 
           <div class="feature-grid">
-
             <label class="feature">
-              <input type="checkbox"
-                     name="Website Features"
-                     value="Booking Calendar">
+              <input type="checkbox" name="Website Features" value="Booking Calendar">
               Booking Calendar
             </label>
-
             <label class="feature">
-              <input type="checkbox"
-                     name="Website Features"
-                     value="Photo Gallery">
+              <input type="checkbox" name="Website Features" value="Photo Gallery">
               Photo Gallery
             </label>
-
             <label class="feature">
-              <input type="checkbox"
-                     name="Website Features"
-                     value="Online Payments">
+              <input type="checkbox" name="Website Features" value="Online Payments">
               Online Payments
             </label>
-
             <label class="feature">
-              <input type="checkbox"
-                     name="Website Features"
-                     value="Customer Reviews">
+              <input type="checkbox" name="Website Features" value="Customer Reviews">
               Customer Reviews
             </label>
-
             <label class="feature">
-              <input type="checkbox"
-                     name="Website Features"
-                     value="Quote Form">
+              <input type="checkbox" name="Website Features" value="Quote Request Form">
               Quote Request Form
             </label>
-
             <label class="feature">
-              <input type="checkbox"
-                     name="Website Features"
-                     value="Online Store">
+              <input type="checkbox" name="Website Features" value="Online Store">
               Online Store
             </label>
-
           </div>
         </div>
-
       </div>
-
-      <!-- MARKETING QUESTIONS -->
 
       <div id="marketingQuestions"
            class="form-section dynamic-section"
@@ -1283,10 +865,11 @@ footer {
           <label for="marketingGoal">
             What Are Your Marketing Goals? *
           </label>
-          <textarea id="marketingGoal"
-                    name="Marketing Goals"
-                    maxlength="5000"
-                    placeholder="Tell us if you want more leads, sales, website traffic, brand awareness, or something else."></textarea>
+          <textarea
+            id="marketingGoal"
+            name="Marketing Goals"
+            maxlength="5000"
+            placeholder="Tell us if you want more leads, sales, website traffic, brand awareness, or something else."></textarea>
         </div>
 
         <div class="field">
@@ -1295,9 +878,7 @@ footer {
           </label>
           <select id="marketingService"
                   name="Marketing Service">
-            <option value="">
-              Select a marketing service
-            </option>
+            <option value="">Select a marketing service</option>
             <option>Organic Marketing</option>
             <option>Meta Ads</option>
             <option>Google Ads</option>
@@ -1307,16 +888,13 @@ footer {
         </div>
 
         <div class="form-grid">
-
           <div class="field">
             <label for="marketingBudget">
               Estimated Monthly Ad Budget
             </label>
             <select id="marketingBudget"
                     name="Monthly Ad Budget">
-              <option value="">
-                Select a budget
-              </option>
+              <option value="">Select a budget</option>
               <option>Not Sure Yet</option>
               <option>Under $500</option>
               <option>$500 - $1,000</option>
@@ -1332,15 +910,12 @@ footer {
             </label>
             <select id="currentMarketing"
                     name="Currently Running Ads">
-              <option value="">
-                Select an option
-              </option>
+              <option value="">Select an option</option>
               <option>Yes</option>
               <option>No</option>
               <option>Previously</option>
             </select>
           </div>
-
         </div>
 
         <p>
@@ -1348,86 +923,77 @@ footer {
           are $1,700/month each, plus your
           chosen advertising budget.
         </p>
-
       </div>
 
-      <!-- CONTACT INFO -->
-
       <div class="form-section">
-
         <h3 class="form-title">
           <span>♙</span> Your Contact Information
         </h3>
 
         <div class="form-grid">
-
           <div class="field">
-            <label for="fullName">
-              Full Name *
-            </label>
-            <input id="fullName"
-                   name="Full Name"
-                   autocomplete="name"
-                   maxlength="120"
-                   required
-                   placeholder="Enter your full name">
+            <label for="fullName">Full Name *</label>
+            <input
+              id="fullName"
+              name="Full Name"
+              autocomplete="name"
+              maxlength="120"
+              placeholder="Enter your full name"
+              required>
           </div>
 
           <div class="field">
-            <label for="email">
-              Email Address *
-            </label>
-            <input id="email"
-                   name="email"
-                   type="email"
-                   autocomplete="email"
-                   required
-                   placeholder="example@email.com">
+            <label for="email">Email Address *</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="example@email.com"
+              required>
           </div>
 
           <div class="field">
-            <label for="phone">
-              Phone Number *
-            </label>
-            <input id="phone"
-                   name="Phone Number"
-                   type="tel"
-                   autocomplete="tel"
-                   maxlength="30"
-                   required
-                   placeholder="(123) 456-7890">
+            <label for="phone">Phone Number *</label>
+            <input
+              id="phone"
+              name="Phone Number"
+              type="tel"
+              autocomplete="tel"
+              maxlength="30"
+              placeholder="(123) 456-7890"
+              required>
           </div>
 
           <div class="field">
             <label for="contactPreference">
               Preferred Contact Method
             </label>
-            <select id="contactPreference"
-                    name="Contact Preference">
+            <select
+              id="contactPreference"
+              name="Contact Preference">
               <option>Email</option>
               <option>Phone Call</option>
               <option>Text Message</option>
             </select>
           </div>
-
         </div>
 
         <div class="field wide">
           <label for="meetingNotes">
             Anything Else We Should Know?
           </label>
-          <textarea id="meetingNotes"
-                    name="Additional Notes"
-                    placeholder="Tell us what you'd like to discuss during your consultation."></textarea>
+          <textarea
+            id="meetingNotes"
+            name="Additional Notes"
+            placeholder="Tell us what you'd like to discuss during your consultation."></textarea>
         </div>
-
       </div>
 
-      <!-- SUBMIT -->
-
-      <button type="submit"
-              id="submitBtn"
-              class="submit-btn">
+      <button
+        id="submitBtn"
+        type="submit"
+        class="submit-btn">
         Request Free Consultation
       </button>
 
@@ -1436,17 +1002,29 @@ footer {
          role="status"
          aria-live="polite"></p>
 
+      <!-- NEW FORM SUBMIT EMAIL LINK -->
+      <div class="backup">
+        <strong>Prefer to contact us directly?</strong>
+        <p>
+          You can also send us a message using
+          our secure contact page.
+        </p>
+        <a
+          href="https://formsubmit.co/el/xumeze"
+          target="_blank"
+          rel="noopener noreferrer">
+          Open VEXTRIVO Contact Form
+        </a>
+      </div>
+
       <p class="privacy">
         Your information will be used to respond
-        to your request. Submitting this form
-        requests a consultation but does not
-        reserve a meeting time.
+        to your request. Submitting this form requests
+        a consultation but does not reserve a meeting time.
       </p>
-
     </form>
 
   </div>
-
 </section>
 
 </main>
@@ -1459,12 +1037,8 @@ footer {
 <script>
 'use strict';
 
-// YEAR
-
 document.getElementById('year').textContent =
   new Date().getFullYear();
-
-// ELEMENTS
 
 const serviceButtons =
   document.querySelectorAll('[data-choice]');
@@ -1490,222 +1064,175 @@ const marketingGoal =
 const bookingForm =
   document.getElementById('bookingForm');
 
-// SERVICE SELECTION
+const submitBtn =
+  document.getElementById('submitBtn');
+
+const formStatus =
+  document.getElementById('formStatus');
+
+// SERVICE BUTTON LOGIC
 
 function selectService(service) {
-
   selectedService.value = service;
 
   serviceButtons.forEach(button => {
-
-    const active =
-      button.dataset.choice === service;
-
+    const active = button.dataset.choice === service;
     button.classList.toggle('active', active);
-
-    button.setAttribute(
-      'aria-pressed',
-      active ? 'true' : 'false'
-    );
-
+    button.setAttribute('aria-pressed', String(active));
   });
 
   const showWebsite =
-    service === 'Websites' ||
-    service === 'Both';
+    service === 'Websites' || service === 'Both';
 
   const showMarketing =
-    service === 'Marketing' ||
-    service === 'Both';
+    service === 'Marketing' || service === 'Both';
 
   websiteQuestions.hidden = !showWebsite;
-
   marketingQuestions.hidden = !showMarketing;
 
   websiteVision.required = showWebsite;
   colorTheme.required = showWebsite;
   marketingGoal.required = showMarketing;
 
-  websiteQuestions.querySelectorAll(
-    'input, select, textarea'
-  ).forEach(field => {
-    field.disabled = !showWebsite;
-  });
+  websiteQuestions
+    .querySelectorAll('input, select, textarea')
+    .forEach(field => {
+      field.disabled = !showWebsite;
+    });
 
-  marketingQuestions.querySelectorAll(
-    'input, select, textarea'
-  ).forEach(field => {
-    field.disabled = !showMarketing;
-  });
-
+  marketingQuestions
+    .querySelectorAll('input, select, textarea')
+    .forEach(field => {
+      field.disabled = !showMarketing;
+    });
 }
 
-// CLICK ON THREE SERVICE BUTTONS
-
 serviceButtons.forEach(button => {
-
   button.addEventListener('click', () => {
-
     selectService(button.dataset.choice);
-
   });
-
 });
 
-// WEBSITE AND MARKETING PRICING BUTTONS
-
-document.querySelectorAll(
-  '[data-service]'
-).forEach(button => {
-
-  button.addEventListener('click', () => {
-
-    selectService(button.dataset.service);
-
+document.querySelectorAll('[data-service]')
+  .forEach(button => {
+    button.addEventListener('click', () => {
+      selectService(button.dataset.service);
+    });
   });
-
-});
 
 // COLOR SELECTION
 
 document.querySelectorAll(
   'input[name="Color Preview"]'
 ).forEach(radio => {
-
   radio.addEventListener('change', () => {
-
     colorTheme.value = radio.value;
-
   });
-
 });
 
 colorTheme.addEventListener('change', () => {
-
   document.querySelectorAll(
     'input[name="Color Preview"]'
   ).forEach(radio => {
-
-    radio.checked =
-      radio.value === colorTheme.value;
-
+    radio.checked = radio.value === colorTheme.value;
   });
-
 });
 
-// OLD STUDIO HASH REDIRECT
+// REDIRECT OLD STUDIO LINKS
 
 if (
   location.hash === '#studio' ||
   location.hash === '#builder'
 ) {
-
-  history.replaceState(
-    null,
-    '',
-    '#demo'
-  );
+  history.replaceState(null, '', '#demo');
 
   window.addEventListener('load', () => {
-
-    document.getElementById('demo')
-      .scrollIntoView();
-
+    document.getElementById('demo').scrollIntoView();
   });
-
 }
-
-// INITIALIZE
 
 selectService('Websites');
 
 // FORM SUBMISSION
 
-bookingForm.addEventListener(
-  'submit',
-  async event => {
+bookingForm.addEventListener('submit', async event => {
+  event.preventDefault();
 
-    event.preventDefault();
+  if (!bookingForm.reportValidity()) {
+    return;
+  }
 
-    if (!bookingForm.reportValidity()) {
-      return;
-    }
+  const formData = new FormData(bookingForm);
 
-    const submitBtn =
-      document.getElementById('submitBtn');
+  formData.set(
+    '_subject',
+    'New VEXTRIVO Consultation - ' +
+    selectedService.value + ' - ' +
+    formData.get('Business Name')
+  );
 
-    const status =
-      document.getElementById('formStatus');
+  formData.set('_url', window.location.href);
 
-    const formData =
-      new FormData(bookingForm);
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending Request...';
 
-    formData.set(
-      '_subject',
-      'New VEXTRIVO Consultation - ' +
-      selectedService.value + ' - ' +
-      formData.get('Business Name')
+  formStatus.classList.remove('error');
+  formStatus.textContent = 'Submitting your request...';
+
+  try {
+    const response = await fetch(
+      'https://formsubmit.co/ajax/nkarpo49@gmail.com',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      }
     );
 
-    submitBtn.disabled = true;
-    submitBtn.textContent =
-      'Sending Request...';
+    const responseText = await response.text();
 
-    status.classList.remove('error');
-    status.textContent =
-      'Submitting your request...';
+    let result;
 
     try {
-
-      const response = await fetch(
-        'https://formsubmit.co/ajax/nkarpo49@gmail.com',
-        {
-          method: 'POST',
-          body: formData,
-          headers: {
-            Accept: 'application/json'
-          }
-        }
+      result = JSON.parse(responseText);
+    } catch {
+      throw new Error(
+        'FormSubmit returned an unexpected response.'
       );
-
-      const result = await response.json();
-
-      if (
-        !response.ok ||
-        result.success === false ||
-        result.success === 'false'
-      ) {
-        throw new Error('Submission failed');
-      }
-
-      status.textContent =
-        'Your consultation request was submitted! ' +
-        'We will contact you to discuss the next steps.';
-
-      bookingForm.reset();
-
-      selectService('Websites');
-
-    } catch (error) {
-
-      status.classList.add('error');
-
-      status.textContent =
-        'Unable to send your request. ' +
-        'Please email ' +
-        'nkarpo49@gmail.com directly.';
-
-    } finally {
-
-      submitBtn.disabled = false;
-
-      submitBtn.textContent =
-        'Request Free Consultation';
-
     }
 
+    const succeeded =
+      result.success === true ||
+      result.success === 'true';
+
+    if (!response.ok || !succeeded) {
+      throw new Error(
+        result.message || 'Submission not confirmed.'
+      );
+    }
+
+    formStatus.textContent =
+      'Your request was submitted successfully! ' +
+      'We will review it and contact you.';
+
+    bookingForm.reset();
+    selectService('Websites');
+
+  } catch (error) {
+    console.error('VEXTRIVO submission error:', error);
+
+    formStatus.classList.add('error');
+
+    formStatus.textContent =
+      'We could not confirm your submission. ' +
+      'Please use the direct contact link below.';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Request Free Consultation';
   }
-);
+});
 </script>
 
 </body>
